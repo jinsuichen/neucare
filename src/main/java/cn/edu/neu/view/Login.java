@@ -23,12 +23,11 @@ public class Login extends Application {
                 BackgroundSize.DEFAULT);
         root.setBackground(new Background(backgroundImage));
 
-
-
-
         primaryStage.setTitle("东软颐养中心-登录");
-        //Scene scene = new Scene(root);
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        //scene.getStylesheets().add("css/login.css");
+        primaryStage.setScene(scene);
+        primaryStage.getScene().getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         primaryStage.show();
     }
 }
