@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="100.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+    <children>
+        <HBox layoutX="113.0" layoutY="39.0" prefHeight="26.0" prefWidth="620.0" spacing="100.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="39.0">
+            <children>
+                <Label text="总览">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                    </font>
+
+                </Label>
+                <Label text="用户管理">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                    </font>
+                </Label>
+                <Label text="评估管理">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                    </font>
+                </Label>
+                <Label text="建筑管理">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <Label layoutX="1039.0" layoutY="40.0" text="你好，FengLing">
+            <font>
+                <Font name="Microsoft YaHei UI Light" size="18.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

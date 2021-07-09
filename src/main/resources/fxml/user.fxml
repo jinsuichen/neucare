@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="overview" text="总览" />
+            <Label id="user" text="用户管理" />
+            <Label id="structure" text="建筑管理" />
+            <Label id="checkin" text="入住管理" />
+            <Label id="equipment" text="设备管理" />
+            <Label id="patient" text="病人管理" />
+            <Label id="question" text="问卷与问题" />
+            <Label id="setting" text="用户设置" />
+            <Label id="about" text="关于" />
+            <Label id="greeting" text="你好，FengLing">
+               <HBox.margin>
+                  <Insets left="80.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="50.0" top="35.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Circle fill="DODGERBLUE" layoutX="325.0" layoutY="246.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="DODGERBLUE" layoutX="871.0" layoutY="246.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+         </children></AnchorPane>
+   </center>
+</BorderPane>

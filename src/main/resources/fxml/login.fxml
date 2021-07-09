@@ -15,13 +15,13 @@
       <PasswordField fx:id="passwordField" layoutX="485.0" layoutY="387.0" prefHeight="36.0" prefWidth="310.0" />
       <ImageView fitHeight="104.0" fitWidth="92.0" layoutX="595.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/socket.png" />
+            <Image url="@../img/icon.png" />
          </image>
       </ImageView>
-      <Button fx:id="login" layoutX="585.0" layoutY="514.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" text="登录">
+      <Button fx:id="loginButton" layoutX="585.0" layoutY="514.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" text="登录">
          <styleClass>
             <String fx:value="btn" />
-            <String fx:value="btn-primary" />
+            <String fx:value="btn-default" />
          </styleClass>
       </Button>
    </children>

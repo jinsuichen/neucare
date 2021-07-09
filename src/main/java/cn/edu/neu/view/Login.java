@@ -27,7 +27,8 @@ public class Login extends Application {
         Scene scene = new Scene(root);
         //scene.getStylesheets().add("css/login.css");
         primaryStage.setScene(scene);
-        primaryStage.getScene().getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 }
