@@ -8,8 +8,8 @@ public interface AdminDao {
     /**
      * 根据用户名查找超级管理员信息
      * @param username 用户名
-     * @return 查询得到的Employee对象。当用户不存在时返回null。
+     * @return 查询得到的Admin对象。当用户不存在时返回null。
      */
-    public Admin finUserByUsername(String username);
+    public Admin findUserByUsername(String username);
 
 }
