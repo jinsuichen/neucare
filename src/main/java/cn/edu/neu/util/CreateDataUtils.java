@@ -11,6 +11,9 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+//fixme 删除这个类
+
 /**
  * 该类提供将创建数据并写入json文件的方法
  */
@@ -36,6 +39,7 @@ public class CreateDataUtils {
             patient.setGender("男");
             patient.setEmergencyContact("sxw");
             patient.setEmergencyTelephone("120");
+            patient.setDeleted(false);
 
             list.add(patient);
         }
@@ -64,6 +68,7 @@ public class CreateDataUtils {
             employee.setTelephone("13998337244");
             employee.setUsername("admin"+i);
             employee.setPassword("admin");
+            employee.setDeleted(false);
 
             int t = i % 3;
             if(t ==0)

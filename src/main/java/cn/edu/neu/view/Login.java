@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -14,7 +13,7 @@ public class Login extends Application {
 
 
         FXMLLoader fx = new FXMLLoader();
-        fx.setLocation(getClass().getClassLoader().getResource("fxml/login.fxml"));
+        fx.setLocation(getClass().getClassLoader().getResource("fxml/other/login.fxml"));
         AnchorPane root = (AnchorPane) fx.load();
 
         //设置背景图片

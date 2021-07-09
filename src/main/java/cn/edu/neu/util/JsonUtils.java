@@ -10,6 +10,10 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.io.OutputStream;
 
+
+/**
+ * 提供与json相关的方法
+ */
 public class JsonUtils {
 
     private static ObjectMapper mapper = new ObjectMapper();
@@ -27,12 +31,14 @@ public class JsonUtils {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
+    //fixme 考虑到数组的存在，方法注释中“Bean”这个描述并不准确
+
 
     /**
      * 序列化，将对象转化为json字符串
      *
-     * @param data
-     * @return
+     * @param data 待序列化的Bean对象
+     * @return 序列化字符串
      */
     public static String toJsonString(Object data) {
         if (data == null) {
@@ -53,9 +59,9 @@ public class JsonUtils {
      * 反序列化，将json字符串转化为对象
      *
      * @param json json字符串
-     * @param clazz
-     * @param <T>
-     * @return
+     * @param clazz Bean对象的类对象
+     * @param <T> Bean对象的类
+     * @return Bean对象
      */
     public static <T> T parse(String json, Class<T> clazz) {
         T t = null;
@@ -70,8 +76,8 @@ public class JsonUtils {
 
     /**
      * 将对象解析后写入输出流
-     * @param data
-     * @param os
+     * @param data 待解析的对象
+     * @param os 输出流
      */
     public static void writeDateToStream(Object data, OutputStream os){
         try {
