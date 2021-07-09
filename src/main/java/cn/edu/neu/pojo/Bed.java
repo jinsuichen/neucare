@@ -6,6 +6,7 @@ public class Bed {
     private Integer pid;
     private Integer wid;
     private String name;
+    private boolean isDeleted;
 
     public Integer getBid() {
         return bid;
@@ -39,6 +40,14 @@ public class Bed {
         this.name = name;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "Bed{" +
@@ -46,6 +55,7 @@ public class Bed {
                 ", pid=" + pid +
                 ", wid=" + wid +
                 ", name='" + name + '\'' +
+                ", isDelete=" + isDeleted +
                 '}';
     }
 }

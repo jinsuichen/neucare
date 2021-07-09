@@ -9,8 +9,6 @@ import java.io.IOException;
 
 public class FxUtils {
 
-
-
     /**
      * 根据fxml文件获得AnchorPane对象。注意: fxml文件的根结点应为AnchorPane。
      * @param path fxml文件的相对路径

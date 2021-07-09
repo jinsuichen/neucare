@@ -4,10 +4,10 @@ public class Question {
 
     private Integer qid;
     private String title;
-
-    private Integer cid1;
-    private Integer cid2;
-    private Integer cid3;
+    private String choice1;
+    private String choice2;
+    private String choice3;
+    private boolean isDeleted;
 
     public Integer getQid() {
         return qid;
@@ -25,28 +25,36 @@ public class Question {
         this.title = title;
     }
 
-    public Integer getCid1() {
-        return cid1;
+    public String getChoice1() {
+        return choice1;
     }
 
-    public void setCid1(Integer cid1) {
-        this.cid1 = cid1;
+    public void setChoice1(String choice1) {
+        this.choice1 = choice1;
     }
 
-    public Integer getCid2() {
-        return cid2;
+    public String getChoice2() {
+        return choice2;
     }
 
-    public void setCid2(Integer cid2) {
-        this.cid2 = cid2;
+    public void setChoice2(String choice2) {
+        this.choice2 = choice2;
     }
 
-    public Integer getCid3() {
-        return cid3;
+    public String getChoice3() {
+        return choice3;
     }
 
-    public void setCid3(Integer cid3) {
-        this.cid3 = cid3;
+    public void setChoice3(String choice3) {
+        this.choice3 = choice3;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     @Override
@@ -54,9 +62,10 @@ public class Question {
         return "Question{" +
                 "qid=" + qid +
                 ", title='" + title + '\'' +
-                ", cid1=" + cid1 +
-                ", cid2=" + cid2 +
-                ", cid3=" + cid3 +
+                ", choice1='" + choice1 + '\'' +
+                ", choice2='" + choice2 + '\'' +
+                ", choice3='" + choice3 + '\'' +
+                ", isDelete=" + isDeleted +
                 '}';
     }
 }

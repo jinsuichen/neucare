@@ -8,6 +8,7 @@ public class Patient {
     private String telephone;
     private String emergencyContact;
     private String emergencyTelephone;
+    private boolean isDeleted;
 
     public Integer getPid() {
         return pid;
@@ -65,16 +66,25 @@ public class Patient {
         this.emergencyTelephone = emergencyTelephone;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
                 "pid=" + pid +
-                ", pname='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", emergencyContact='" + emergencyContact + '\'' +
                 ", emergencyTelephone='" + emergencyTelephone + '\'' +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

@@ -3,6 +3,7 @@ package cn.edu.neu.pojo;
 public class Structure {
     private Integer sid;
     private String name;
+    private boolean isDeleted;
 
     public Integer getSid() {
         return sid;
@@ -20,11 +21,20 @@ public class Structure {
         this.name = name;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "Structure{" +
                 "sid=" + sid +
                 ", name='" + name + '\'' +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

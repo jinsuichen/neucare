@@ -5,6 +5,7 @@ public class RareEquipment {
     private Integer rid;
     private RareEquipmentType type;
     private Integer fid;
+    private boolean isDeleted;
 
     public Integer getRid() {
         return rid;
@@ -30,12 +31,22 @@ public class RareEquipment {
         this.fid = fid;
     }
 
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "RareEquipment{" +
                 "rid=" + rid +
                 ", type=" + type +
                 ", fid=" + fid +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

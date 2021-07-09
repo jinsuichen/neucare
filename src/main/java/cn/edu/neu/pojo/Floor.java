@@ -4,6 +4,7 @@ public class Floor {
     private Integer fid;
     private Integer sid;
     private Integer height;
+    private Integer isDeleted;
 
     public Integer getFid() {
         return fid;
@@ -29,12 +30,21 @@ public class Floor {
         this.height = height;
     }
 
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
     @Override
     public String toString() {
         return "Floor{" +
                 "fid=" + fid +
                 ", sid=" + sid +
                 ", height=" + height +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

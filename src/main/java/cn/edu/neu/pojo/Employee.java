@@ -10,6 +10,7 @@ public class Employee {
     private String expertSkill;
     private String telephone;
     private String identificationNumber;
+    private boolean isDeleted;
 
     public Integer getEid() {
         return eid;
@@ -83,6 +84,14 @@ public class Employee {
         this.identificationNumber = identificationNumber;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -95,6 +104,7 @@ public class Employee {
                 ", expertSkill='" + expertSkill + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", identificationNumber='" + identificationNumber + '\'' +
+                ", isDelete=" + isDeleted +
                 '}';
     }
 }
