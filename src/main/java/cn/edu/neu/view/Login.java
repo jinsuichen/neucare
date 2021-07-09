@@ -1,7 +1,7 @@
 package cn.edu.neu.view;
 
+import cn.edu.neu.util.FxUtils;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -11,10 +11,7 @@ public class Login extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-
-        FXMLLoader fx = new FXMLLoader();
-        fx.setLocation(getClass().getClassLoader().getResource("fxml/other/login.fxml"));
-        AnchorPane root = (AnchorPane) fx.load();
+        AnchorPane root = FxUtils.loadAnchor("fxml/other/login.fxml");
 
         //设置背景图片
         BackgroundImage backgroundImage= new BackgroundImage(new Image("img/login.jpg",1280,720,false,true),

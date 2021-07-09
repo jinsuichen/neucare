@@ -16,7 +16,7 @@ public class FxUtils {
      * @param path fxml文件的相对路径
      * @return AnchorPane对象
      */
-    public static AnchorPane loadItem(String path){
+    public static AnchorPane loadAnchor(String path){
         return (AnchorPane) loadNode(path);
     }
 
@@ -55,9 +55,9 @@ public class FxUtils {
     public static BorderPane getTotalPane(String category1, String category2){
         BorderPane borderPane = loadRoot();
 
-        AnchorPane left = loadItem("fxml/common/left.fxml");
-        AnchorPane top = loadItem("fxml/common/top.fxml");
-        AnchorPane center = loadItem("fxml/center/" + category1 + "/" + category2 + ".fxml");
+        AnchorPane left = loadAnchor("fxml/common/left.fxml");
+        AnchorPane top = loadAnchor("fxml/common/top.fxml");
+        AnchorPane center = loadAnchor("fxml/center/" + category1 + "/" + category2 + ".fxml");
 
         borderPane.setTop(top);
         borderPane.setLeft(left);

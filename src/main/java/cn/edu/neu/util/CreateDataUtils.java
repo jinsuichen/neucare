@@ -1,14 +1,11 @@
 package cn.edu.neu.util;
 
+import cn.edu.neu.pojo.Admin;
 import cn.edu.neu.pojo.Employee;
 import cn.edu.neu.pojo.EmployeeType;
 import cn.edu.neu.pojo.Patient;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.lang.reflect.Array;
-import java.net.URL;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -20,8 +17,29 @@ import java.util.ArrayList;
 public class CreateDataUtils {
 
     public static void main(String[] args) {
+
+        createAdmin();
         createEmployee();
         createPatient();
+    }
+
+    public static void createAdmin(){
+        ArrayList<Admin> list = new ArrayList<>();
+        for(int i = 1; i<=3; i++){
+            Admin admin = new Admin();
+            admin.setUsername("admin"+i);
+            admin.setPassword("admin");
+            list.add(admin);
+        }
+        System.out.println(JsonUtils.serialize(list));
+
+        try {
+            FileUtils.write(JsonUtils.serialize(list), "data/admin.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public static void createPatient() {
@@ -29,7 +47,7 @@ public class CreateDataUtils {
         ArrayList<Patient> list = new ArrayList<>();
 
 
-        for(int i = 1; i<=100; i++){
+        for (int i = 1; i <= 100; i++) {
             Patient patient = new Patient();
 
             patient.setPid(i);
@@ -44,11 +62,13 @@ public class CreateDataUtils {
             list.add(patient);
         }
 
+
         try {
-            JsonUtils.writeDateToStream(list, new FileOutputStream(new File("src/main/resources/data/patient.json")));
-        } catch (FileNotFoundException e) {
+            FileUtils.write(JsonUtils.serialize(list), "data/patient.json");
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
 
@@ -57,7 +77,7 @@ public class CreateDataUtils {
         ArrayList<Employee> list = new ArrayList<>();
 
 
-        for(int i = 1; i<=100; i++){
+        for (int i = 1; i <= 100; i++) {
             Employee employee = new Employee();
 
             employee.setEid(i);
@@ -66,27 +86,33 @@ public class CreateDataUtils {
             employee.setExpertSkill("play");
             employee.setIdentificationNumber("210106200206073619");
             employee.setTelephone("13998337244");
-            employee.setUsername("admin"+i);
-            employee.setPassword("admin");
+            employee.setUsername("employee" + i);
+            employee.setPassword("employee");
             employee.setDeleted(false);
 
             int t = i % 3;
-            if(t ==0)
+            if (t == 0) {
                 employee.setType(EmployeeType.DOCTOR);
-            else if(t ==1)
+
+            } else if (t == 1) {
+
                 employee.setType(EmployeeType.NURSE);
-            else
+            } else {
+
                 employee.setType(EmployeeType.CAREWORKER);
+            }
 
 
             list.add(employee);
         }
 
+
         try {
-            JsonUtils.writeDateToStream(list, new FileOutputStream(new File("src/main/resources/data/employee.json")));
-        } catch (FileNotFoundException e) {
+            FileUtils.write(JsonUtils.serialize(list), "data/employee.json");
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 

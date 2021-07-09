@@ -1,14 +1,18 @@
 package cn.edu.neu.util;
 
+import cn.edu.neu.pojo.Admin;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -16,75 +20,122 @@ import java.io.OutputStream;
  */
 public class JsonUtils {
 
-    private static ObjectMapper mapper = new ObjectMapper();
-
-    static {
-        // 对于空的对象转json的时候不抛出错误
-        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-        // 允许属性名称没有引号
-        mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-        // 允许单引号
-        mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
-        // 设置输入时忽略在json字符串中存在但在java对象实际没有的属性
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        // 设置输出时包含属性的风格
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-    }
-
-    //fixme 考虑到数组的存在，方法注释中“Bean”这个描述并不准确
-
+    public static final ObjectMapper mapper = new ObjectMapper();
 
     /**
-     * 序列化，将对象转化为json字符串
-     *
-     * @param data 待序列化的Bean对象
-     * @return 序列化字符串
+     * 序列化对象（转json）
+     * @param obj
+     * @return java.lang.String
      */
-    public static String toJsonString(Object data) {
-        if (data == null) {
+    public static String serialize(Object obj) {
+        if (obj == null) {
             return null;
         }
-
-        String json = null;
+        if (obj.getClass() == String.class) {
+            return (String) obj;
+        }
         try {
-            json = mapper.writeValueAsString(data);
+            return mapper.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            System.err.println("json序列化出错：" + obj);
+            return null;
         }
-        return json;
+    }
+
+    /**
+     * 反序列化（json转为Bean）
+     * @param json
+     * @param tClass
+     * @return T
+     */
+    public static <T> T parse(String json, Class<T> tClass) {
+        try {
+            return mapper.readValue(json, tClass);
+        } catch (IOException e) {
+            System.err.println("json解析出错：" + json);
+            return null;
+        }
+    }
+
+    /**
+     * 反序列化（json转List）
+     * @param json
+     * @param eClass
+     * @return java.util.List<E>
+     */
+    public static <E> List<E> parseList(String json, Class<E> eClass) {
+        try {
+            return mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, eClass));
+        } catch (IOException e) {
+            System.err.println("json解析出错：" + json);
+            return null;
+        }
+    }
+
+    /**
+     * 反序列化（json转Map）
+     * @param json
+     * @param kClass
+     * @param vClass
+     * @return java.util.Map<K,V>
+     */
+    public static <K, V> Map<K, V> parseMap(String json, Class<K> kClass, Class<V> vClass) {
+        try {
+            return mapper.readValue(json, mapper.getTypeFactory().constructMapType(Map.class, kClass, vClass));
+        } catch (IOException e) {
+            System.err.println("json解析出错：" + json);
+            return null;
+        }
+    }
+
+    /**
+     * json转复杂对象
+     * @param json
+     * @param type
+     * @return T
+     */
+    public static <T> T nativeRead(String json, TypeReference<T> type) {
+        try {
+            return mapper.readValue(json, type);
+        } catch (IOException e) {
+            System.err.println("json解析出错：" + json);
+            return null;
+        }
     }
 
 
-    /**
-     * 反序列化，将json字符串转化为对象
-     *
-     * @param json json字符串
-     * @param clazz Bean对象的类对象
-     * @param <T> Bean对象的类
-     * @return Bean对象
-     */
-    public static <T> T parse(String json, Class<T> clazz) {
-        T t = null;
-        try {
-            t = mapper.readValue(json, clazz);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return t;
-    }
+/*    *//**
+     * 从文件反序列化，将json字符流转化为对象
+     * @param path 文件路径
+     * @param
+     *//*
+    public static <T> List<T> parseFromFile(String path, Class<T[]> clazz) {
 
+        String jsonString = null;
 
-    /**
-     * 将对象解析后写入输出流
-     * @param data 待解析的对象
-     * @param os 输出流
-     */
-    public static void writeDateToStream(Object data, OutputStream os){
+        File file = new File(JsonUtils.class.getClassLoader().getResource(path).getPath());
+        BufferedReader reader = null;
+        StringBuffer sbf = new StringBuffer();
         try {
-            mapper.writeValue(os, data);
+            reader = new BufferedReader(new FileReader(file));
+            String tempStr;
+            while ((tempStr = reader.readLine()) != null) {
+                sbf.append(tempStr);
+            }
+            reader.close();
+            jsonString = sbf.toString();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
-    }
-
+        jsonString = sbf.toString();
+        return parseFromString(jsonString, clazz);
+    }*/
 }
