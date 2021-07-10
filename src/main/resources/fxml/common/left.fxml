@@ -8,7 +8,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="620.0" prefWidth="200.0" BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="cn.edu.neu.controller.LeftController" prefHeight="620.0" prefWidth="200.0" BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox prefHeight="620.0" prefWidth="200.0" spacing="40.0">
             <children>

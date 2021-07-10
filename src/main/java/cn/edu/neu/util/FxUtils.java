@@ -66,5 +66,13 @@ public class FxUtils {
         return borderPane;
     }
 
+    /**
+     * 更换中心版面
+     */
+    public static void changeCenter(BorderPane borderPane, String category1, String category2){
+        AnchorPane center = loadAnchor("fxml/center/" + category1 + "/" + category2 + ".fxml");
+        borderPane.setCenter(center);
+    }
+
 
 }
