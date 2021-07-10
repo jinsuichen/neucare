@@ -1,6 +1,8 @@
 package cn.edu.neu.pojo;
 
-public class Employee {
+import java.util.Objects;
+
+public class Employee implements Comparable<Employee>{
     private Integer eid;
     private String username;
     private String password;
@@ -11,6 +13,13 @@ public class Employee {
     private String telephone;
     private String identificationNumber;
     private boolean isDeleted;
+
+    public Employee() {
+    }
+
+    public Employee(String username) {
+        this.username = username;
+    }
 
     public Integer getEid() {
         return eid;
@@ -106,5 +115,23 @@ public class Employee {
                 ", identificationNumber='" + identificationNumber + '\'' +
                 ", isDelete=" + isDeleted +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return this.username.compareTo(o.username);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return isDeleted == employee.isDeleted && Objects.equals(username, employee.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, isDeleted);
     }
 }

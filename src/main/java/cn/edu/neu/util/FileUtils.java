@@ -7,16 +7,15 @@ public class FileUtils {
     public static String toString(String path){
         File file = new File(JsonUtils.class.getClassLoader().getResource(path).getPath());
         BufferedReader reader = null;
-        StringBuffer sbf = new StringBuffer();
-        String jsonString;
+        StringBuffer stringBuffer = new StringBuffer();
         try {
             reader = new BufferedReader(new FileReader(file));
             String tempStr;
             while ((tempStr = reader.readLine()) != null) {
-                sbf.append(tempStr);
+                stringBuffer.append(tempStr);
             }
             reader.close();
-            return sbf.toString();
+            return stringBuffer.toString();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -28,7 +27,7 @@ public class FileUtils {
                 }
             }
         }
-        return sbf.toString();
+        return stringBuffer.toString();
     }
 
     public static void write(String content, String path) throws IOException {

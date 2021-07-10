@@ -1,5 +1,9 @@
 package cn.edu.neu.controller;
 
+import cn.edu.neu.dao.impl.EmployeeDaoImpl;
+import cn.edu.neu.service.AdminService;
+import cn.edu.neu.service.impl.AdminServiceImpl;
+import cn.edu.neu.service.impl.EmployeeServiceImpl;
 import cn.edu.neu.util.FxUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,11 +40,11 @@ public class LoginController {
 
         loginButton.setOnAction(event -> {
 
-            //TODO 设置用户名密码的检验
-            boolean flag= true;
+            //进行登录检验
+            boolean flag1= new AdminServiceImpl().login(testField.getText(), passwordField.getText());
+            boolean flag2 = new EmployeeServiceImpl().login(testField.getText(), passwordField.getText());
 
-
-            if(flag){
+            if(flag1 || flag2){
 
                 //关闭登陆界面
                 Stage oldStage = (Stage) root.getScene().getWindow();
@@ -57,6 +61,9 @@ public class LoginController {
                 //scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 
             }
+
+            //TODO 验证失败进行弹窗提示
+
         });
 
 

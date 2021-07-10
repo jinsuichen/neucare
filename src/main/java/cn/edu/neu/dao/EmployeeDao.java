@@ -2,7 +2,7 @@ package cn.edu.neu.dao;
 
 import cn.edu.neu.pojo.Employee;
 
-public interface UserDao {
+public interface EmployeeDao {
 
 
     /**
