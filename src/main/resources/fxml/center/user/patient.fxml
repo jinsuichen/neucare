@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Text?>
-<AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Text layoutX="447.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="patient" />
+      <TableView layoutX="54.0" layoutY="94.0" prefHeight="348.0" prefWidth="973.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="姓名" />
+          <TableColumn prefWidth="75.0" text="年龄" />
+            <TableColumn prefWidth="75.0" text="性别" />
+            <TableColumn prefWidth="165.0" text="联系电话" />
+            <TableColumn minWidth="0.0" prefWidth="166.0" text="紧急联系人" />
+            <TableColumn prefWidth="280.0" text="紧急联系电话" />
+        </columns>
+      </TableView>
+      <TextField layoutX="110.0" layoutY="482.0" prefHeight="36.0" prefWidth="160.0" />
+      <TextField layoutX="110.0" layoutY="536.0" prefHeight="36.0" prefWidth="160.0" />
+      <TextField layoutX="408.0" layoutY="482.0" prefHeight="36.0" prefWidth="160.0" />
+      <TextField layoutX="408.0" layoutY="536.0" prefHeight="36.0" prefWidth="160.0" />
+      <TextField layoutX="715.0" layoutY="482.0" prefHeight="36.0" prefWidth="160.0" />
+      <TextField layoutX="715.0" layoutY="536.0" prefHeight="36.0" prefWidth="160.0" />
+      <Button layoutX="929.0" layoutY="482.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="929.0" layoutY="536.0" mnemonicParsing="false" text="Button" />
+      <Label layoutX="50.0" layoutY="488.0" text="姓名" />
+      <Label layoutX="50.0" layoutY="542.0" text="性别" />
+      <Label layoutX="313.0" layoutY="488.0" text="出生日期" />
+      <Label layoutX="313.0" layoutY="542.0" text="联系电话" />
+      <Label layoutX="607.0" layoutY="488.0" text="紧急联系人" />
+      <Label layoutX="598.0" layoutY="542.0" text="紧急联系电话" />
+      <Button layoutX="56.0" layoutY="32.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="155.0" layoutY="32.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="253.0" layoutY="32.0" mnemonicParsing="false" text="Button" />
 
     </children>
 </AnchorPane>

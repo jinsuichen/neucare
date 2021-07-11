@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 
 public class RootController {
     @FXML
-    public BorderPane root;
+    private BorderPane root;
 
 
     public RootController() {

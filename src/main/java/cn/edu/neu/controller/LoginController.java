@@ -16,16 +16,16 @@ import javafx.stage.Stage;
 public class LoginController {
 
     @FXML
-    public PasswordField passwordField;
+    private PasswordField passwordField;
 
     @FXML
-    public TextField testField;
+    private TextField testField;
 
     @FXML
-    public Button loginButton;
+    private Button loginButton;
 
     @FXML
-    public AnchorPane root;
+    private AnchorPane root;
 
 
     public LoginController(){

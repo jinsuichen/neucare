@@ -1,5 +1,6 @@
 package cn.edu.neu.util;
 
+import cn.edu.neu.commom.Status;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -67,9 +68,42 @@ public class FxUtils {
     }
 
     /**
-     * 更换中心版面
+     * 更换中心版面，并更新category
      */
     public static void changeCenter(BorderPane borderPane, String category1, String category2){
+        Status.overview.setStyle("-fx-text-fill: black");
+        Status.structure.setStyle("-fx-text-fill: black");
+        Status.evaluation.setStyle("-fx-text-fill: black");
+        Status.user.setStyle("-fx-text-fill: black");
+
+        Status.lbl1.setStyle("-fx-text-fill: black");
+        Status.lbl2.setStyle("-fx-text-fill: black");
+        Status.lbl3.setStyle("-fx-text-fill: black");
+        Status.lbl4.setStyle("-fx-text-fill: black");
+        Status.lbl5.setStyle("-fx-text-fill: black");
+
+        if("overview".equals(category1)){
+            Status.overview.setStyle("-fx-text-fill: #2585a6");
+        }else if("evaluation".equals(category1)){
+            Status.evaluation.setStyle("-fx-text-fill: #2585a6");
+        }else if("structure".equals(category1)){
+            Status.structure.setStyle("-fx-text-fill: #2585a6");
+        }else if("user".equals(category1)){
+            Status.user.setStyle("-fx-text-fill: #2585a6");
+        }
+
+
+        if("hospital".equals(category2) || "patient".equals(category2) || "template".equals(category2) || "building".equals(category2)){
+            Status.lbl1.setStyle("-fx-text-fill: #2585a6");
+        }else if("bed".equals(category2) || "question".equals(category2)){
+            Status.lbl2.setStyle("-fx-text-fill: #2585a6");
+        }else if("rareEquipment".equals(category2)){
+            Status.lbl3.setStyle("-fx-text-fill: #2585a6");
+        }
+
+        Status.category1 = category1;
+        Status.category2 = category2;
+
         AnchorPane center = loadAnchor("fxml/center/" + category1 + "/" + category2 + ".fxml");
         borderPane.setCenter(center);
     }
