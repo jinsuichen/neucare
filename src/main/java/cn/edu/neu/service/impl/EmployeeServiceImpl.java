@@ -8,11 +8,10 @@ import cn.edu.neu.service.EmployeeService;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeDao dao = new EmployeeDaoImpl();
+    private final EmployeeDao dao = new EmployeeDaoImpl();
 
     @Override
     public boolean login(String username, String password) {
-
         Employee employee = dao.finUserByUsername(username);
         return employee != null && employee.getPassword().equals(password);
     }

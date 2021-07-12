@@ -7,11 +7,14 @@ import cn.edu.neu.pojo.Admin;
 import cn.edu.neu.pojo.Employee;
 import cn.edu.neu.service.EmployeeService;
 
+import java.util.Collections;
+
 public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee finUserByUsername(String username) {
 
+        Collections.sort(DataBase.employeeData);
         int index = Algorithm.binarySearch(DataBase.employeeData, new Employee(username));
         if (index == -1) {
             return null;

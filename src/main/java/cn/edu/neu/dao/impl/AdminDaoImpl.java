@@ -5,6 +5,8 @@ import cn.edu.neu.dao.AdminDao;
 import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.Admin;
 
+import java.util.Collections;
+
 public class AdminDaoImpl implements AdminDao {
 
 
@@ -16,6 +18,7 @@ public class AdminDaoImpl implements AdminDao {
     @Override
     public Admin findUserByUsername(String username) {
 
+        Collections.sort(DataBase.adminData);
         int index = Algorithm.binarySearch(DataBase.adminData, new Admin(username));
         if(index == -1) {
             return null;
