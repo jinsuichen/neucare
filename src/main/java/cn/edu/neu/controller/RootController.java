@@ -27,23 +27,8 @@ public class RootController {
     public void initialize() {
         Status.root = this.root;
 
-        /*Stage stage = (Stage) root.getScene().getWindow();
-        stage.setOnCloseRequest(event -> {
-            try {
-                FileUtils.write(JsonUtils.serialize(DataBase.adminData), "data/admin.json");
-                FileUtils.write(JsonUtils.serialize(DataBase.patientData), "data/patient.json");
-                FileUtils.write(JsonUtils.serialize(DataBase.bedData), "data/bed.json");
-                FileUtils.write(JsonUtils.serialize(DataBase.employeeData), "data/employee.json");
-                FileUtils.write(JsonUtils.serialize(DataBase.floorData), "data/floor.json");
-                FileUtils.write(JsonUtils.serialize(DataBase.questionData), "data/question.json");
-                FileUtils.write(JsonUtils.serialize(DataBase.rareEquipmentData), "data/rareEquipment.json");
-                FileUtils.write(JsonUtils.serialize(DataBase.structureData), "data/structure.json");
-                System.exit(0);
-            } catch (IOException e) {
-                System.err.println("出现严重错误：数据未得到有效保存！");
-                e.printStackTrace();
-            }
-        });*/
+        root.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+
 
 
     }

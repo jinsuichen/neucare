@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.AdminController">
+   <children>
+      <TableView layoutX="77.0" layoutY="175.0" prefHeight="461.0" prefWidth="1122.0" />
+      <Button layoutX="1008.0" layoutY="92.0" mnemonicParsing="false" text="添加" />
+      <Button layoutX="1094.0" layoutY="92.0" mnemonicParsing="false" text="删除" />
+      <TextField layoutX="324.0" layoutY="92.0" />
+      <Button layoutX="591.0" layoutY="92.0" mnemonicParsing="false" text="姓名查询" />
+      <ComboBox layoutX="108.0" layoutY="92.0" prefWidth="150.0" />
+      
+   </children>
+</AnchorPane>

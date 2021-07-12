@@ -1,6 +1,7 @@
 package cn.edu.neu;
 
 import cn.edu.neu.po.DataBase;
+import cn.edu.neu.util.CreateDataUtils;
 import cn.edu.neu.util.FileUtils;
 import cn.edu.neu.util.FxUtils;
 import cn.edu.neu.util.JsonUtils;
@@ -20,6 +21,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        //FIXME 造假数据测试使用 记得删除
+        CreateDataUtils.main(null);
 
         AnchorPane root = FxUtils.loadAnchor("fxml/other/login.fxml");
 

@@ -169,6 +169,7 @@ public class PatientController {
         });
 
 
+        //TODO 删除提示框
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
