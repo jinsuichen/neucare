@@ -27,6 +27,11 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public boolean deleteById(int id) {
+        return dao.deleteById(id);
+    }
+
+    @Override
     public boolean update(Patient oldPatient, Patient newPatient) {
         return dao.update(oldPatient, newPatient);
     }

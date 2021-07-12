@@ -29,6 +29,13 @@ public interface PatientDao {
 
 
     /**
+     * 根据病患ID删除病患
+     * @param id 病患ID
+     * @return 是否删除成功
+     */
+    public boolean deleteById(int id);
+
+    /**
      * 根据病患姓名删除病患
      * @param name 病患姓名
      * @return 是否删除成功

@@ -45,10 +45,6 @@ public class LoginController {
             flag1 = true;
 
 
-
-
-
-
             if(flag1 || flag2){
 
                 if(flag1){

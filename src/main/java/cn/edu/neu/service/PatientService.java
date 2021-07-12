@@ -26,6 +26,14 @@ public interface PatientService {
 
 
     /**
+     * 根据ID删除病患
+     * @param id
+     * @return
+     */
+    public boolean deleteById(int id);
+
+
+    /**
      * 更新病患信息
      * @param oldPatient 旧病患
      * @param newPatient 新病患
