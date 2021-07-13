@@ -34,6 +34,8 @@ public class FileUtils {
         path = FileUtils.class.getClassLoader().getResource(path).getPath();
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path))) {
             bufferedWriter.write(content);
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
     }

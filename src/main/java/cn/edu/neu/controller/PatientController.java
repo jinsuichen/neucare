@@ -182,20 +182,11 @@ public class PatientController {
                 }
 
                 for(int i = indexList.size() - 1 ;i>=0; i--){
-
-                    System.out.println(i);
-
                     int index = indexList.get(i);
                     int id = list.get(index).getPid();
 
-
-                    System.out.println(index);
-                    System.out.println(id);
-
                     list.remove(index);
                     patientService.deleteById(id);
-
-
                 }
 
 

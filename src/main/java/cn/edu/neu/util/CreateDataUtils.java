@@ -1,11 +1,9 @@
 package cn.edu.neu.util;
 
-import cn.edu.neu.pojo.Admin;
-import cn.edu.neu.pojo.Employee;
-import cn.edu.neu.pojo.EmployeeType;
-import cn.edu.neu.pojo.Patient;
+import cn.edu.neu.pojo.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -16,11 +14,56 @@ import java.util.ArrayList;
  */
 public class CreateDataUtils {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
 
         createAdmin();
         createEmployee();
         createPatient();
+        creatStructure();
+
+    }
+
+
+    public  static void createFloor(){
+        ArrayList<Floor> list = new ArrayList<>();
+
+        for(int i = 1; i<=6; i++){
+
+        }
+    }
+
+    public static void creatStructure() {
+
+        ArrayList<Structure> list = new ArrayList<>();
+        Structure structure1 = new Structure();
+        structure1.setDeleted(false);
+        structure1.setName("门诊楼");
+        structure1.setSid(1);
+
+        Structure structure2 = new Structure();
+        structure2.setSid(2);
+        structure2.setName("急诊楼");
+        structure2.setDeleted(false);
+
+        Structure structure3 = new Structure();
+        structure3.setSid(3);
+        structure3.setName("综合楼");
+        structure3.setDeleted(false);
+
+
+        list.add(structure1);
+        list.add(structure2);
+        list.add(structure3);
+
+        System.out.println(JsonUtils.serialize(list));
+
+        try {
+            FileUtils.write(JsonUtils.serialize(list), "data/structure.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void createAdmin(){
@@ -31,7 +74,6 @@ public class CreateDataUtils {
             admin.setPassword("admin");
             list.add(admin);
         }
-        System.out.println(JsonUtils.serialize(list));
 
         try {
             FileUtils.write(JsonUtils.serialize(list), "data/admin.json");

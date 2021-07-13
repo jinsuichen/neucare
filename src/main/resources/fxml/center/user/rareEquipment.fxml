@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
 <AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Text layoutX="447.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rareEquipment" />
+        <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="447.0" prefWidth="973.0">
 
+        </TableView>
+        <Button layoutX="224.0" layoutY="34.0" mnemonicParsing="false" text="查询">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-default"/>
+            </styleClass>
+        </Button>
+        <Button layoutX="332.0" layoutY="34.0" mnemonicParsing="false" text="申请">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-default"/>
+            </styleClass>
+        </Button>
+        <TextField layoutX="54.0" layoutY="38.0"/>
     </children>
 </AnchorPane>

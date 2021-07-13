@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
+
 <AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Text layoutX="447.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bed" />
+        <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="447.0" prefWidth="973.0">
 
+        </TableView>
+        <Button layoutX="450.0" layoutY="34.0" mnemonicParsing="false" text="查询">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-default"/>
+            </styleClass>
+        </Button>
+        <Button layoutX="940.0" layoutY="34.0" mnemonicParsing="false" text="退院">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-danger"/>
+            </styleClass>
+        </Button>
+        <Label layoutX="60.0" layoutY="43.0" text="楼号"/>
+        <Label layoutX="190.0" layoutY="43.0" text="楼层"/>
+        <Label layoutX="320.0" layoutY="43.0" text="房间"/>
+        <ComboBox layoutX="90.0" layoutY="37.0" prefHeight="25.0" prefWidth="80.0"/>
+        <ComboBox layoutX="220.0" layoutY="37.0" prefHeight="25.0" prefWidth="80.0"/>
+        <ComboBox layoutX="350.0" layoutY="37.0" prefHeight="25.0" prefWidth="80.0"/>
+        <Button layoutX="550.0" layoutY="34.0" mnemonicParsing="false" text="床位对调">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-default"/>
+            </styleClass>
+        </Button>
+        <Button layoutX="650.0" layoutY="34.0" mnemonicParsing="false" text="新增">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-success"/>
+            </styleClass>
+        </Button>
     </children>
 </AnchorPane>

@@ -7,37 +7,39 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="top" fx:controller="cn.edu.neu.controller.TopController" prefHeight="100.0" prefWidth="1280.0" BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="top" fx:controller="cn.edu.neu.controller.TopController" prefHeight="100.0" prefWidth="1280.0"
+            BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox layoutX="113.0" layoutY="39.0" prefHeight="26.0" prefWidth="620.0" spacing="100.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="39.0">
+        <HBox layoutX="113.0" layoutY="39.0" prefHeight="26.0" prefWidth="620.0" spacing="100.0"
+              AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="39.0">
             <children>
                 <Label fx:id="overview" text="总览">
                     <font>
-                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
                     </font>
 
                 </Label>
                 <Label fx:id="user" text="用户管理">
                     <font>
-                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
                     </font>
                 </Label>
 
                 <Label fx:id="evaluation" text="评估管理">
                     <font>
-                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
                     </font>
                 </Label>
                 <Label fx:id="structure" text="建筑管理">
                     <font>
-                        <Font name="Microsoft YaHei UI Light" size="18.0" />
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
                     </font>
                 </Label>
             </children>
         </HBox>
         <Label fx:id="greeting" layoutX="1039.0" layoutY="40.0" text="你好，FengLing">
             <font>
-                <Font name="Microsoft YaHei UI Light" size="18.0" />
+                <Font name="Microsoft YaHei UI Light" size="18.0"/>
             </font>
         </Label>
     </children>
