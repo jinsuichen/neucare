@@ -17,20 +17,20 @@ public class DataBase {
     public static List<Question> questionData;
     public static List<RareEquipment> rareEquipmentData;
     public static List<Structure> structureData;
+    public static List<Ward> wardData;
 
     //FIXME 抽取为方法
 
     static{
         adminData = JsonUtils.parseList(FileUtils.toString("data/admins.json"), Admin.class);
-
-
-        //bedData = JsonUtils.parseList(FileUtils.toString("data/beds.json"), Bed.class);
+        bedData = JsonUtils.parseList(FileUtils.toString("data/beds.json"), Bed.class);
+        wardData = JsonUtils.parseList(FileUtils.toString("data/wards.json"), Ward.class);
         employeeData = JsonUtils.parseList(FileUtils.toString("data/employees.json"), Employee.class);
-        //floorData = JsonUtils.parseList(FileUtils.toString("data/floors.json"), Floor.class);
+        floorData = JsonUtils.parseList(FileUtils.toString("data/floors.json"), Floor.class);
         patientData = JsonUtils.parseList(FileUtils.toString("data/patients.json"), Patient.class);
-        //questionData = JsonUtils.parseList(FileUtils.toString("data/questions.json"), Question.class);
-        //rareEquipmentData = JsonUtils.parseList(FileUtils.toString("data/rareEquipments.json"), RareEquipment.class);
-        //structureData = JsonUtils.parseList(FileUtils.toString("data/structures.json"), Structure.class);
+        questionData = JsonUtils.parseList(FileUtils.toString("data/questions.json"), Question.class);
+        rareEquipmentData = JsonUtils.parseList(FileUtils.toString("data/rareEquipments.json"), RareEquipment.class);
+        structureData = JsonUtils.parseList(FileUtils.toString("data/structures.json"), Structure.class);
     }
 
 }

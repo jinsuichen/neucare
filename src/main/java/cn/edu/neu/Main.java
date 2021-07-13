@@ -50,19 +50,18 @@ public class Main extends Application {
 
         try {
 
-            //FIXME 打开注释
             FileUtils.write(JsonUtils.serialize(DataBase.adminData), "data/admins.json");
             FileUtils.write(JsonUtils.serialize(DataBase.patientData), "data/patients.json");
-            //FileUtils.write(JsonUtils.serialize(DataBase.bedData), "data/beds.json");
+            FileUtils.write(JsonUtils.serialize(DataBase.bedData), "data/beds.json");
             FileUtils.write(JsonUtils.serialize(DataBase.employeeData), "data/employees.json");
-            //FileUtils.write(JsonUtils.serialize(DataBase.floorData), "data/floors.json");
-            //FileUtils.write(JsonUtils.serialize(DataBase.questionData), "data/questions.json");
-            //FileUtils.write(JsonUtils.serialize(DataBase.rareEquipmentData), "data/rareEquipments.json");
-            //FileUtils.write(JsonUtils.serialize(DataBase.structureData), "data/structures.json");
+            FileUtils.write(JsonUtils.serialize(DataBase.floorData), "data/floors.json");
+            FileUtils.write(JsonUtils.serialize(DataBase.questionData), "data/questions.json");
+            FileUtils.write(JsonUtils.serialize(DataBase.rareEquipmentData), "data/rareEquipments.json");
+            FileUtils.write(JsonUtils.serialize(DataBase.structureData), "data/structures.json");
             System.exit(0);
         } catch (IOException e) {
-            System.err.println("出现严重错误：数据未得到有效保存！");
-            //e.printStackTrace();
+            System.err.println("出现严重错误：数据未得到有效保存");
+            e.printStackTrace();
         }
     }
 }

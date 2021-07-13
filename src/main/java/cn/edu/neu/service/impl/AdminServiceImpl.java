@@ -11,7 +11,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public boolean login(String username, String password) {
-        Admin admin = dao.findUserByUsername(username);
+        Admin admin = dao.queryUserByUsername(username);
         return admin != null && admin.getPassword().equals(password);
     }
 }

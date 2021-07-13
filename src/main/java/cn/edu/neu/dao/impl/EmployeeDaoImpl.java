@@ -12,7 +12,7 @@ import java.util.Collections;
 public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
-    public Employee finUserByUsername(String username) {
+    public Employee queryUserByUsername(String username) {
 
         Collections.sort(DataBase.employeeData);
         int index = Algorithm.binarySearch(DataBase.employeeData, new Employee(username));

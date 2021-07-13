@@ -19,7 +19,7 @@ public class PatientDaoImpl implements PatientDao {
      * @return 病患。当未找到时返回null
      */
     @Override
-    public Patient findByName(String name) {
+    public Patient queryPatientByName(String name) {
         for (Patient patient : DataBase.patientData) {
             if (name.equals(patient.getName()) && !patient.isDeleted()) {
                 return patient;
@@ -34,7 +34,7 @@ public class PatientDaoImpl implements PatientDao {
      * @return 病患列表
      */
     @Override
-    public List<Patient> findAll() {
+    public List<Patient> queryAllPatients() {
         List<Patient> list = new ArrayList<>();
         for (Patient patient : DataBase.patientData) {
             if (!patient.isDeleted()) {
@@ -51,8 +51,8 @@ public class PatientDaoImpl implements PatientDao {
      * @return 是否增加成功
      */
     @Override
-    public boolean add(Patient patient) {
-        if (patient.getName() != null && findByName(patient.getName()) == null) {
+    public boolean addPatient(Patient patient) {
+        if (patient.getName() != null && queryPatientByName(patient.getName()) == null) {
             int maxId = 0;
             for (Patient p : DataBase.patientData) {
                 maxId = max(maxId, p.getPid());
@@ -75,7 +75,7 @@ public class PatientDaoImpl implements PatientDao {
      * @return 是否删除成功
      */
     @Override
-    public boolean deleteById(int id) {
+    public boolean deletePatientById(int id) {
         for (Patient p : DataBase.patientData) {
             if (p.getPid() == id && !p.isDeleted()) {
                 p.setDeleted(true);
@@ -97,8 +97,8 @@ public class PatientDaoImpl implements PatientDao {
      * @return 是否删除成功
      */
     @Override
-    public boolean deleteByName(String name) {
-        Patient patient = findByName(name);
+    public boolean deletePatientByName(String name) {
+        Patient patient = queryPatientByName(name);
         if (patient == null) {
             System.err.println("未找到相应患者，无法正确删除。");
             return false;
@@ -116,8 +116,8 @@ public class PatientDaoImpl implements PatientDao {
      * @return 是否更新成功
      */
     @Override
-    public boolean update(Patient oldPatient, Patient newPatient) {
-        Patient patient = findByName(oldPatient.getName());
+    public boolean updatePatient(Patient oldPatient, Patient newPatient) {
+        Patient patient = queryPatientByName(oldPatient.getName());
         if (patient == null) {
             System.err.println("未找到相应患者，无法正确更新。");
             return false;
