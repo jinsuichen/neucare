@@ -8,37 +8,44 @@ public interface PatientService {
 
     /**
      * 查询所有病患信息
+     *
      * @return 病患列表
      */
-    public List<Patient> findAll();
+    public List<Patient> getAllPatients();
 
     /**
      * 增加病患
+     *
+     * @param patient 待添加的病患
      * @return 是否增加成功
      */
-    public boolean add(Patient patient);
+    public boolean addPatient(Patient patient);
 
     /**
      * 根据姓名删除病患
-     * @return
+     *
+     * @param name 患者姓名
+     * @return 是否删除成功
      */
-    public boolean deleteByName(String name);
+    public boolean deletePatientByName(String name);
 
 
     /**
      * 根据ID删除病患
-     * @param id
-     * @return
+     *
+     * @param id 病患ID
+     * @return 是否删除成功
      */
-    public boolean deleteById(int id);
+    public boolean deletePatientById(int id);
 
 
     /**
      * 更新病患信息
+     *
      * @param oldPatient 旧病患
      * @param newPatient 新病患
      * @return 是否更新成功
      */
-    public boolean update(Patient oldPatient, Patient newPatient);
+    public boolean updatePatient(Patient oldPatient, Patient newPatient);
 
 }

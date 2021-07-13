@@ -12,27 +12,27 @@ public class PatientServiceImpl implements PatientService {
     private final PatientDao dao = new PatientDaoImpl();
 
     @Override
-    public List<Patient> findAll() {
+    public List<Patient> getAllPatients() {
         return dao.queryAllPatients();
     }
 
     @Override
-    public boolean add(Patient patient) {
+    public boolean addPatient(Patient patient) {
         return dao.addPatient(patient);
     }
 
     @Override
-    public boolean deleteByName(String name) {
+    public boolean deletePatientByName(String name) {
         return dao.deletePatientByName(name);
     }
 
     @Override
-    public boolean deleteById(int id) {
+    public boolean deletePatientById(int id) {
         return dao.deletePatientById(id);
     }
 
     @Override
-    public boolean update(Patient oldPatient, Patient newPatient) {
+    public boolean updatePatient(Patient oldPatient, Patient newPatient) {
         return dao.updatePatient(oldPatient, newPatient);
     }
 }

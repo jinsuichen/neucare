@@ -28,8 +28,8 @@ public class DataBase {
         employeeData = JsonUtils.parseList(FileUtils.toString("data/employees.json"), Employee.class);
         floorData = JsonUtils.parseList(FileUtils.toString("data/floors.json"), Floor.class);
         patientData = JsonUtils.parseList(FileUtils.toString("data/patients.json"), Patient.class);
-        questionData = JsonUtils.parseList(FileUtils.toString("data/questions.json"), Question.class);
-        rareEquipmentData = JsonUtils.parseList(FileUtils.toString("data/rareEquipments.json"), RareEquipment.class);
+        //questionData = JsonUtils.parseList(FileUtils.toString("data/questions.json"), Question.class);
+        //rareEquipmentData = JsonUtils.parseList(FileUtils.toString("data/rareEquipments.json"), RareEquipment.class);
         structureData = JsonUtils.parseList(FileUtils.toString("data/structures.json"), Structure.class);
     }
 

@@ -4,9 +4,6 @@ import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.service.PatientService;
 import cn.edu.neu.service.impl.PatientServiceImpl;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,10 +12,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,7 +154,7 @@ public class PatientController {
                 patient.setTelephone(telephone.getText());
                 patient.setEmergencyTelephone(emergencyTelephone.getText());
                 patient.setEmergencyContact(emergencyContact.getText());
-                boolean flag = patientService.add(patient);
+                boolean flag = patientService.addPatient(patient);
 
                 if(flag){
                     list.add(patient);
@@ -186,7 +181,7 @@ public class PatientController {
                     int id = list.get(index).getPid();
 
                     list.remove(index);
-                    patientService.deleteById(id);
+                    patientService.deletePatientById(id);
                 }
 
 

@@ -68,6 +68,7 @@ public class JsonUtils {
             return mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, eClass));
         } catch (IOException e) {
             System.err.println("json解析出错：" +  (json == null || "".equals(json) ? "json为 null/空" : json));
+            e.printStackTrace();
             return null;
         }
     }
