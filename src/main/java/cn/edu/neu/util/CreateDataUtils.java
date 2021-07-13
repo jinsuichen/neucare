@@ -3,7 +3,6 @@ package cn.edu.neu.util;
 import cn.edu.neu.pojo.*;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -21,15 +20,107 @@ public class CreateDataUtils {
         createEmployee();
         createPatient();
         creatStructure();
+        createFloor();
+        createWard();
+        createBed();
+
 
     }
 
+    public static void createBed(){
+        ArrayList<Bed> list = new ArrayList<>();
 
-    public  static void createFloor(){
+        int bedId = 1;
+
+        //一共42个房间，为每个房间添加4张床
+        for(int i = 1; i<=42; i++){
+            for (int j = 1; j <= 4; j++) {
+                Bed bed = new Bed();
+                bed.setBid(bedId++);
+                bed.setName( i + (i <= 9 ? "0" : "") + j + "床位");
+                bed.setWid(i);
+                bed.setDeleted(false);
+
+                //未设置患者
+                bed.setPid(null);
+
+                list.add(bed);
+            }
+        }
+
+        try {
+            FileUtils.write(JsonUtils.serialize(list), "data/beds.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void createWard() {
+        ArrayList<Ward> list = new ArrayList<>();
+
+        int wardId = 1;
+
+        //一共有14个楼层，这里为每个楼层添加三个房间
+        for (int i = 1; i <= 14; i++) {
+            for (int j = 1; j <= 3; j++) {
+                Ward ward = new Ward();
+                ward.setDeleted(false);
+                ward.setWid(wardId++);
+                ward.setFid(i);
+                ward.setName("病房A" + i + (i <= 9 ? "0" : "") + j);
+                list.add(ward);
+            }
+        }
+
+
+        try {
+            FileUtils.write(JsonUtils.serialize(list), "data/wards.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void createFloor() {
+
+
         ArrayList<Floor> list = new ArrayList<>();
 
-        for(int i = 1; i<=6; i++){
+        //为一号楼添加数据
+        for (int i = 1; i <= 6; i++) {
+            Floor floor = new Floor();
+            floor.setFid(i);
+            floor.setSid(1);
+            floor.setHeight(i);
+            floor.setDeleted(false);
+            list.add(floor);
+        }
 
+        //为二号楼添加数据
+        for (int i = 7; i <= 9; i++) {
+            Floor floor = new Floor();
+            floor.setFid(i);
+            floor.setSid(2);
+            floor.setHeight(i - 6);
+            floor.setDeleted(false);
+            list.add(floor);
+        }
+
+        //为三号楼添加信息
+        for (int i = 10; i <= 14; i++) {
+            Floor floor = new Floor();
+            floor.setFid(i);
+            floor.setSid(3);
+            floor.setHeight(i - 9);
+            floor.setDeleted(false);
+            list.add(floor);
+        }
+
+        try {
+            FileUtils.write(JsonUtils.serialize(list), "data/floors.json");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -56,27 +147,26 @@ public class CreateDataUtils {
         list.add(structure2);
         list.add(structure3);
 
-        System.out.println(JsonUtils.serialize(list));
 
         try {
-            FileUtils.write(JsonUtils.serialize(list), "data/structure.json");
+            FileUtils.write(JsonUtils.serialize(list), "data/structures.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    public static void createAdmin(){
+    public static void createAdmin() {
         ArrayList<Admin> list = new ArrayList<>();
-        for(int i = 1; i<=3; i++){
+        for (int i = 1; i <= 3; i++) {
             Admin admin = new Admin();
-            admin.setUsername("admin"+i);
+            admin.setUsername("admin" + i);
             admin.setPassword("admin");
             list.add(admin);
         }
 
         try {
-            FileUtils.write(JsonUtils.serialize(list), "data/admin.json");
+            FileUtils.write(JsonUtils.serialize(list), "data/admins.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,7 +196,7 @@ public class CreateDataUtils {
 
 
         try {
-            FileUtils.write(JsonUtils.serialize(list), "data/patient.json");
+            FileUtils.write(JsonUtils.serialize(list), "data/patients.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -150,7 +240,7 @@ public class CreateDataUtils {
 
 
         try {
-            FileUtils.write(JsonUtils.serialize(list), "data/employee.json");
+            FileUtils.write(JsonUtils.serialize(list), "data/employees.json");
         } catch (IOException e) {
             e.printStackTrace();
         }

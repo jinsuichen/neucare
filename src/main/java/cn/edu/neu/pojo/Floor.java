@@ -4,7 +4,7 @@ public class Floor {
     private Integer fid;
     private Integer sid;
     private Integer height;
-    private Integer isDeleted;
+    private Boolean isDeleted;
 
     public Integer getFid() {
         return fid;
@@ -30,12 +30,12 @@ public class Floor {
         this.height = height;
     }
 
-    public Integer getIsDeleted() {
+    public Boolean getDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     @Override

@@ -3,10 +3,7 @@ package cn.edu.neu.po;
 import cn.edu.neu.pojo.*;
 import cn.edu.neu.util.FileUtils;
 import cn.edu.neu.util.JsonUtils;
-import com.fasterxml.jackson.core.type.TypeReference;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -24,16 +21,16 @@ public class DataBase {
     //FIXME 抽取为方法
 
     static{
-        adminData = JsonUtils.parseList(FileUtils.toString("data/admin.json"), Admin.class);
+        adminData = JsonUtils.parseList(FileUtils.toString("data/admins.json"), Admin.class);
 
 
-        //bedData = JsonUtils.parseList(FileUtils.toString("data/bed.json"), Bed.class);
-        employeeData = JsonUtils.parseList(FileUtils.toString("data/employee.json"), Employee.class);
-        //floorData = JsonUtils.parseList(FileUtils.toString("data/floor.json"), Floor.class);
-        patientData = JsonUtils.parseList(FileUtils.toString("data/patient.json"), Patient.class);
-        //questionData = JsonUtils.parseList(FileUtils.toString("data/question.json"), Question.class);
-        //rareEquipmentData = JsonUtils.parseList(FileUtils.toString("data/rareEquipment.json"), RareEquipment.class);
-        //structureData = JsonUtils.parseList(FileUtils.toString("data/structure.json"), Structure.class);
+        //bedData = JsonUtils.parseList(FileUtils.toString("data/beds.json"), Bed.class);
+        employeeData = JsonUtils.parseList(FileUtils.toString("data/employees.json"), Employee.class);
+        //floorData = JsonUtils.parseList(FileUtils.toString("data/floors.json"), Floor.class);
+        patientData = JsonUtils.parseList(FileUtils.toString("data/patients.json"), Patient.class);
+        //questionData = JsonUtils.parseList(FileUtils.toString("data/questions.json"), Question.class);
+        //rareEquipmentData = JsonUtils.parseList(FileUtils.toString("data/rareEquipments.json"), RareEquipment.class);
+        //structureData = JsonUtils.parseList(FileUtils.toString("data/structures.json"), Structure.class);
     }
 
 }
