@@ -18,11 +18,29 @@ public class WardDaoImpl implements WardDao {
     @Override
     public List<Ward> queryWardsByFid(int fid) {
         List<Ward> list = new ArrayList<>();
-        for(Ward ward : DataBase.wardData){
-            if(ward.getFid() == fid){
+        for (Ward ward : DataBase.wardData) {
+            if (ward.getFid() == fid) {
                 list.add(ward);
             }
         }
         return list;
     }
+
+    /**
+     * 根据病房ID查找病房
+     *
+     * @param wid 病房的ID
+     * @return 病房
+     */
+    @Override
+    public Ward queryWardByWid(int wid) {
+        for (Ward ward : DataBase.wardData){
+            if(ward.getWid() == wid){
+                return ward;
+            }
+        }
+        return null;
+    }
+
+
 }

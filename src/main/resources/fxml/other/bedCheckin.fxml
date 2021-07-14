@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <TableView layoutX="34.0" layoutY="42.0" prefHeight="358.0" prefWidth="732.0">
+        <columns>
+
+        </columns>
+      </TableView>
+      <Button layoutX="255.0" layoutY="420.0" mnemonicParsing="false" text="选择" />
+      <Button layoutX="486.0" layoutY="420.0" mnemonicParsing="false" text="返回" />
+   </children>
+</AnchorPane>

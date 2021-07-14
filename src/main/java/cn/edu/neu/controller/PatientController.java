@@ -137,6 +137,7 @@ public class PatientController {
         emergencyTelephoneColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
+        //设置可多选
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 

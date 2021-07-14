@@ -21,4 +21,14 @@ public class WardServiceImpl implements WardService {
     public List<Ward> getWardsByFid(int fid) {
         return wardDao.queryWardsByFid(fid);
     }
+
+    /**
+     * 根据病房ID获得病房
+     * @param wid 病房ID
+     * @return 病房
+     */
+    @Override
+    public Ward getWardByWid(int wid) {
+        return wardDao.queryWardByWid(wid);
+    }
 }

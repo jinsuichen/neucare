@@ -12,4 +12,19 @@ public interface WardDao {
      * @return 病房集合
      */
     public List<Ward> queryWardsByFid(int fid);
+
+    /**
+     * 根据病房ID查找病房
+     * @param wid 病房的ID
+     * @return 病房
+     */
+    public Ward queryWardByWid(int wid);
+
+
+   /* *//**
+     * 根据床位ID查找病房
+     * @param bid 床位的ID
+     * @return 病房
+     *//*
+    public Ward queryWardByBid(int bid);*/
 }

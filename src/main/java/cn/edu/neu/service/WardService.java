@@ -13,4 +13,11 @@ public interface WardService {
      */
     public List<Ward> getWardsByFid(int fid);
 
+    /**
+     * 根据病房ID获得病房
+     * @param wid 病房ID
+     * @return 病房
+     */
+    public Ward getWardByWid(int wid);
+
 }

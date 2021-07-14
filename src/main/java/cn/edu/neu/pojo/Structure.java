@@ -29,12 +29,17 @@ public class Structure {
         isDeleted = deleted;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Structure{" +
                 "sid=" + sid +
                 ", name='" + name + '\'' +
                 ", isDeleted=" + isDeleted +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

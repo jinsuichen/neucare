@@ -38,7 +38,7 @@ public class Floor {
         isDeleted = deleted;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Floor{" +
                 "fid=" + fid +
@@ -46,5 +46,9 @@ public class Floor {
                 ", height=" + height +
                 ", isDeleted=" + isDeleted +
                 '}';
+    }*/
+    @Override
+    public String toString() {
+        return height + "楼";
     }
 }

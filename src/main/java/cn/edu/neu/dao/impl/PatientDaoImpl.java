@@ -2,6 +2,7 @@ package cn.edu.neu.dao.impl;
 
 import cn.edu.neu.dao.PatientDao;
 import cn.edu.neu.po.DataBase;
+import cn.edu.neu.pojo.Bed;
 import cn.edu.neu.pojo.Patient;
 
 import java.util.ArrayList;
@@ -45,13 +46,43 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     /**
+     * 根据病患ID查找病患
+     * @param pid 病患ID
+     * @return 病患
+     */
+    @Override
+    public Patient queryPatientByPid(int pid) {
+        for(Patient patient : DataBase.patientData){
+            if(patient.getPid() == pid){
+                return patient;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 根据床位的ID查找病患
+     * @return 病患
+     */
+    @Override
+    public Patient queryPatientByBid(int bid) {
+        for(Bed bed : DataBase.bedData){
+            if(bed.getBid() == bid){
+                int pid = bed.getPid();
+                return queryPatientByPid(pid);
+            }
+        }
+        return null;
+    }
+
+    /**
      * 增加病患
      *
      * @param patient 病患
      * @return 是否增加成功
      */
     @Override
-    public boolean addPatient(Patient patient) {
+    public boolean createPatient(Patient patient) {
         if (patient.getName() != null && queryPatientByName(patient.getName()) == null) {
             int maxId = 0;
             for (Patient p : DataBase.patientData) {

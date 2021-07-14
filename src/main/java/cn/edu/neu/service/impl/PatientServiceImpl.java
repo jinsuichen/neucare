@@ -11,6 +11,8 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientDao dao = new PatientDaoImpl();
 
+    //TODO 写注释
+
     @Override
     public List<Patient> getAllPatients() {
         return dao.queryAllPatients();
@@ -18,7 +20,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public boolean addPatient(Patient patient) {
-        return dao.addPatient(patient);
+        return dao.createPatient(patient);
     }
 
     @Override
@@ -34,5 +36,15 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public boolean updatePatient(Patient oldPatient, Patient newPatient) {
         return dao.updatePatient(oldPatient, newPatient);
+    }
+
+    /**
+     * 根据床位的ID获取病患信息
+     * @param bid 床位的ID
+     * @return 病患
+     */
+    @Override
+    public Patient getPatientByBid(int bid) {
+        return dao.queryPatientByBid(bid);
     }
 }

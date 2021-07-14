@@ -37,12 +37,15 @@ public class CreateDataUtils {
             for (int j = 1; j <= 4; j++) {
                 Bed bed = new Bed();
                 bed.setBid(bedId++);
-                bed.setName( i + (i <= 9 ? "0" : "") + j + "床位");
+                bed.setName( i + (i <= 9 ? "0" : "") + j + "床");
                 bed.setWid(i);
                 bed.setDeleted(false);
 
-                //未设置患者
-                bed.setPid(null);
+                //设置患者
+                if(j == 1)
+                    bed.setPid(i);
+                else if( j == 2)
+                    bed.setPid(42+i);
 
                 list.add(bed);
             }
@@ -68,7 +71,7 @@ public class CreateDataUtils {
                 ward.setDeleted(false);
                 ward.setWid(wardId++);
                 ward.setFid(i);
-                ward.setName("病房A" + i + (i <= 9 ? "0" : "") + j);
+                ward.setName("A" + i + (i <= 9 ? "0" : "") + j);
                 list.add(ward);
             }
         }

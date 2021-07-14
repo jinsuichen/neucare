@@ -38,7 +38,7 @@ public class Ward {
         isDeleted = deleted;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Ward{" +
                 "wid=" + wid +
@@ -46,5 +46,10 @@ public class Ward {
                 ", name='" + name + '\'' +
                 ", isDeleted=" + isDeleted +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

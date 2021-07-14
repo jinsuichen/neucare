@@ -50,6 +50,11 @@ public class Bed {
 
     @Override
     public String toString() {
+        return name;
+    }
+
+    /*@Override
+    public String toString() {
         return "Bed{" +
                 "bid=" + bid +
                 ", pid=" + pid +
@@ -57,5 +62,5 @@ public class Bed {
                 ", name='" + name + '\'' +
                 ", isDelete=" + isDeleted +
                 '}';
-    }
+    }*/
 }

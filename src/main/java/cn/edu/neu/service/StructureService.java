@@ -12,4 +12,12 @@ public interface StructureService {
      */
     public List<Structure> getAllStructures();
 
+
+    /**
+     * 根据建筑ID获得建筑
+     * @param sid 建筑的ID
+     * @return 建筑
+     */
+    public Structure getStructureBySid(int sid);
+
 }

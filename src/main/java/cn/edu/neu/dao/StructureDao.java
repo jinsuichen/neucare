@@ -13,4 +13,11 @@ public interface StructureDao {
      */
     public List<Structure> queryAllStructures();
 
+    /**
+     * 根据建筑的ID查询建筑
+     * @param sid 建筑ID
+     * @return 建筑
+     */
+    public Structure queryStructureBySid(int sid);
+
 }

@@ -20,12 +20,27 @@ public interface PatientDao {
      */
     public List<Patient> queryAllPatients();
 
+
+    /**
+     * 根据病患ID查找病患
+     * @param pid 病患ID
+     * @return 病患
+     */
+    public Patient queryPatientByPid(int pid);
+
+    /**
+     * 根据床位的ID查找病患
+     * @return 病患
+     */
+    public Patient queryPatientByBid(int bid);
+
+
     /**
      * 增加病患
      * @param patient 病患
      * @return 是否增加成功
      */
-    public boolean addPatient(Patient patient);
+    public boolean createPatient(Patient patient);
 
 
     /**
@@ -49,5 +64,7 @@ public interface PatientDao {
      * @return 是否更新成功
      */
     public boolean updatePatient(Patient oldPatient, Patient newPatient);
+
+
 
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="left" fx:controller="cn.edu.neu.controller.LeftController" prefHeight="620.0" prefWidth="200.0"
+            BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox prefHeight="620.0" prefWidth="200.0" spacing="40.0">
+            <children>
+                <Label fx:id="lbl1" text="患者管理">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="lbl2" text="床位管理">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="lbl3" text="设备管理">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="lbl4" text="">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="lbl5" text="">
+                    <font>
+                        <Font name="Microsoft YaHei UI Light" size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+            <padding>
+                <Insets left="60.0" top="40.0"/>
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

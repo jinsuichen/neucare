@@ -13,4 +13,11 @@ public interface FloorService {
      */
     public List<Floor> getFloorsBySid(int sid);
 
+    /**
+     * 根据楼层ID获得楼层
+     * @param fid 楼层ID
+     * @return 楼层
+     */
+    public Floor getFloorByFid(int fid);
+
 }

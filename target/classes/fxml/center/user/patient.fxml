@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.PatientController">
+    <children>
+        <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="348.0" prefWidth="973.0">
+        </TableView>
+        <TextField fx:id="name" layoutX="110.0" layoutY="482.0" prefHeight="36.0" prefWidth="160.0"/>
+        <TextField fx:id="gender" layoutX="110.0" layoutY="536.0" prefHeight="36.0" prefWidth="160.0"/>
+        <TextField fx:id="birthday" layoutX="408.0" layoutY="482.0" prefHeight="36.0" prefWidth="160.0"/>
+        <TextField fx:id="telephone" layoutX="408.0" layoutY="536.0" prefHeight="36.0" prefWidth="160.0"/>
+        <TextField fx:id="emergencyContact" layoutX="715.0" layoutY="482.0" prefHeight="36.0" prefWidth="160.0"/>
+        <TextField fx:id="emergencyTelephone" layoutX="715.0" layoutY="536.0" prefHeight="36.0" prefWidth="160.0"/>
+        <Button fx:id="addButton" layoutX="929.0" layoutY="482.0" mnemonicParsing="false" text="添加"/>
+        <Button fx:id="searchButton" layoutX="224.0" layoutY="34.0" mnemonicParsing="false" text="查找">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-default"/>
+            </styleClass>
+        </Button>
+        <Label layoutX="50.0" layoutY="488.0" text="姓名"/>
+        <Label layoutX="50.0" layoutY="542.0" text="性别"/>
+        <Label layoutX="313.0" layoutY="488.0" text="出生日期"/>
+        <Label layoutX="313.0" layoutY="542.0" text="联系电话"/>
+        <Label layoutX="607.0" layoutY="488.0" text="紧急联系人"/>
+        <Label layoutX="598.0" layoutY="542.0" text="紧急联系电话"/>
+        <Button fx:id="deleteButton" layoutX="940.0" layoutY="34.0" mnemonicParsing="false" text="删除">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-danger"/>
+            </styleClass>
+        </Button>
+        <Button fx:id="updateButton" layoutX="440.0" layoutY="34.0" mnemonicParsing="false" text="修改">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-default"/>
+            </styleClass>
+        </Button>
+        <Button fx:id="evaluateButton" layoutX="538.0" layoutY="34.0" mnemonicParsing="false" text="评估">
+            <styleClass>
+                <String fx:value="btn"/>
+                <String fx:value="btn-default"/>
+            </styleClass>
+        </Button>
+        <TextField layoutX="54.0" layoutY="38.0"/>
+
+    </children>
+</AnchorPane>

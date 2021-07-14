@@ -25,4 +25,19 @@ public class FloorDaoImpl implements FloorDao {
         }
         return list;
     }
+
+    /**
+     * 根据楼层的ID查找楼层
+     * @param fid 楼层的ID
+     * @return 楼层
+     */
+    @Override
+    public Floor queryFloorByFid(int fid) {
+        for(Floor floor : DataBase.floorData){
+            if(floor.getFid() == fid){
+                return floor;
+            }
+        }
+        return null;
+    }
 }

@@ -21,4 +21,15 @@ public class StructureServiceImpl implements StructureService {
     public List<Structure> getAllStructures() {
         return structureDao.queryAllStructures();
     }
+
+
+    /**
+     * 根据建筑ID获得建筑
+     * @param sid 建筑的ID
+     * @return 建筑
+     */
+    @Override
+    public Structure getStructureBySid(int sid) {
+        return structureDao.queryStructureBySid(sid);
+    }
 }

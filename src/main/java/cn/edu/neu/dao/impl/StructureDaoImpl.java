@@ -17,4 +17,23 @@ public class StructureDaoImpl implements StructureDao {
     public List<Structure> queryAllStructures() {
         return DataBase.structureData;
     }
+
+
+    /**
+     * 根据建筑的ID查询建筑
+     *
+     * @param sid 建筑ID
+     * @return 建筑
+     */
+    @Override
+    public Structure queryStructureBySid(int sid) {
+        for(Structure structure : DataBase.structureData){
+            if(structure.getSid() == sid){
+                return structure;
+            }
+        }
+        return null;
+    }
+
+
 }

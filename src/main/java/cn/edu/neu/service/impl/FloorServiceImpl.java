@@ -20,4 +20,15 @@ public class FloorServiceImpl implements FloorService {
     public List<Floor> getFloorsBySid(int sid) {
         return floorDao.queryFloorsBySid(sid);
     }
+
+
+    /**
+     * 根据楼层ID获得楼层
+     * @param fid 楼层ID
+     * @return 楼层
+     */
+    @Override
+    public Floor getFloorByFid(int fid) {
+        return floorDao.queryFloorByFid(fid);
+    }
 }

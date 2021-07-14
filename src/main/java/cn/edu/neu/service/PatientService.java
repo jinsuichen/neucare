@@ -48,4 +48,11 @@ public interface PatientService {
      */
     public boolean updatePatient(Patient oldPatient, Patient newPatient);
 
+    /**
+     * 根据床位的ID获取病患信息
+     * @param bid 床位的ID
+     * @return 病患
+     */
+    public Patient getPatientByBid(int bid);
+
 }
