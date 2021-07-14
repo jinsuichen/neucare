@@ -28,6 +28,11 @@ public interface BedService {
      */
     public Boolean addBed(Bed bed);
 
-    //TODO start here
+    /**
+     * 将床位上的病患进行退院操作
+     * @param bed 床位
+     * @return 是否退院成功
+     */
+    public Boolean checkOut(Bed bed);
 
 }

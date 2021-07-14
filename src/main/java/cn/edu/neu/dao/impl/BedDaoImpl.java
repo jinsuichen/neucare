@@ -25,4 +25,27 @@ public class BedDaoImpl implements BedDao {
         }
         return list;
     }
+
+    /**
+     * 添加床位
+     * @param bed 床位
+     * @return 是否添加成功
+     */
+    @Override
+    public boolean addBed(Bed bed) {
+        DataBase.bedData.add(bed);
+        return true;
+    }
+
+    /**
+     * 更改床位的病患信息
+     * @param bed 床位
+     * @param pid 病患ID
+     * @return 是否更改成功
+     */
+    @Override
+    public boolean updatePatient(Bed bed, Integer pid) {
+        bed.setPid(pid);
+        return true;
+    }
 }

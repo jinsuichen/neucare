@@ -2,6 +2,7 @@ package cn.edu.neu.controller;
 
 import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.pojo.Structure;
+import cn.edu.neu.service.StructureService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,6 +29,7 @@ public class BedController {
 
 
 
+
     public BedController() {
     }
 
@@ -35,6 +37,7 @@ public class BedController {
     public void initialize(){
 
         ObservableList<Structure> list = FXCollections.observableArrayList();
+
 
 
 
