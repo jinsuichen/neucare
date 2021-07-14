@@ -14,6 +14,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public Employee queryUserByUsername(String username) {
 
+        //TODO 取消算法 并考虑isDeleted
         Collections.sort(DataBase.employeeData);
         int index = Algorithm.binarySearch(DataBase.employeeData, new Employee(username));
         if (index == -1) {

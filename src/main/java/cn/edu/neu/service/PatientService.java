@@ -14,6 +14,12 @@ public interface PatientService {
     public List<Patient> getAllPatients();
 
     /**
+     * 获取所有没有床位的病患信息
+     * @return 病患集合
+     */
+    public List<Patient> getAllPatientsWithNoBed();
+
+    /**
      * 增加病患
      *
      * @param patient 待添加的病患
@@ -54,5 +60,8 @@ public interface PatientService {
      * @return 病患
      */
     public Patient getPatientByBid(int bid);
+
+
+
 
 }

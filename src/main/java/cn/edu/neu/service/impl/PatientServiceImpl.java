@@ -11,28 +11,66 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientDao dao = new PatientDaoImpl();
 
-    //TODO 写注释
 
+    /**
+     * 查询所有病患信息
+     *
+     * @return 病患列表
+     */
     @Override
     public List<Patient> getAllPatients() {
         return dao.queryAllPatients();
     }
 
+    /**
+     * 获取所有没有床位的病患信息
+     * @return 病患集合
+     */
+    @Override
+    public List<Patient> getAllPatientsWithNoBed() {
+        return dao.queryAllPatientsWithNoBed();
+    }
+
+    /**
+     * 增加病患
+     *
+     * @param patient 待添加的病患
+     * @return 是否增加成功
+     */
     @Override
     public boolean addPatient(Patient patient) {
         return dao.createPatient(patient);
     }
 
+    /**
+     * 根据姓名删除病患
+     *
+     * @param name 患者姓名
+     * @return 是否删除成功
+     */
     @Override
     public boolean deletePatientByName(String name) {
         return dao.deletePatientByName(name);
     }
 
+    /**
+     * 根据ID删除病患
+     *
+     * @param id 病患ID
+     * @return 是否删除成功
+     */
     @Override
     public boolean deletePatientById(int id) {
         return dao.deletePatientById(id);
     }
 
+    /**
+     * 更新病患信息
+     *
+     * @param oldPatient 旧病患
+     * @param newPatient 新病患
+     * @return 是否更新成功
+     */
     @Override
     public boolean updatePatient(Patient oldPatient, Patient newPatient) {
         return dao.updatePatient(oldPatient, newPatient);

@@ -80,11 +80,7 @@ public class PatientController {
         //创建可观察列表
         ObservableList<Patient> list = FXCollections.observableArrayList();
         //为可观察列表添加数据
-        for(Patient p : DataBase.patientData){
-            if(!p.isDeleted()){
-                list.add(p);
-            }
-        }
+        list.addAll(patientService.getAllPatients());
         //将可观察列表与表格绑定
         tableView.setItems(list);
 

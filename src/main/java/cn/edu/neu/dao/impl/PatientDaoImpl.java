@@ -1,9 +1,11 @@
 package cn.edu.neu.dao.impl;
 
+import cn.edu.neu.dao.BedDao;
 import cn.edu.neu.dao.PatientDao;
 import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.Bed;
 import cn.edu.neu.pojo.Patient;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,31 @@ public class PatientDaoImpl implements PatientDao {
         return list;
     }
 
+
+    /**
+     * 查询所有没有床位的病患
+     * @return 病患集合
+     */
+    @Override
+    public List<Patient> queryAllPatientsWithNoBed() {
+        List<Patient> list = new ArrayList<>();
+        for(Patient patient : DataBase.patientData){
+            if(!patient.isDeleted() ){
+                Boolean flag = false;
+                for(Bed bed : DataBase.bedData){
+                    if(!bed.isDeleted() && bed.getPid()!= null && bed.getPid().equals(patient.getPid())){
+                        flag = true;
+                    }
+                }
+                if(!flag) {
+                    list.add(patient);
+                }
+            }
+        }
+        return list;
+
+    }
+
     /**
      * 根据病患ID查找病患
      * @param pid 病患ID
@@ -53,7 +80,7 @@ public class PatientDaoImpl implements PatientDao {
     @Override
     public Patient queryPatientByPid(int pid) {
         for(Patient patient : DataBase.patientData){
-            if(patient.getPid() == pid){
+            if(!patient.isDeleted() && patient.getPid() == pid){
                 return patient;
             }
         }
@@ -67,7 +94,7 @@ public class PatientDaoImpl implements PatientDao {
     @Override
     public Patient queryPatientByBid(int bid) {
         for(Bed bed : DataBase.bedData){
-            if(bed.getBid() == bid){
+            if(!bed.isDeleted() && bed.getBid() == bid){
                 int pid = bed.getPid();
                 return queryPatientByPid(pid);
             }
@@ -110,6 +137,13 @@ public class PatientDaoImpl implements PatientDao {
         for (Patient p : DataBase.patientData) {
             if (p.getPid() == id && !p.isDeleted()) {
                 p.setDeleted(true);
+
+                for(Bed b : DataBase.bedData){
+                    if(!b.isDeleted() && b.getPid()!= null && b.getPid() == id){
+                        b.setPid(null);
+                        break;
+                    }
+                }
                 return true;
             } else if (p.getPid() == id && p.isDeleted()) {
                 System.err.println("ID为" + id + "的病患曾被删除，无需再次删除");
@@ -134,6 +168,12 @@ public class PatientDaoImpl implements PatientDao {
             System.err.println("未找到相应患者，无法正确删除。");
             return false;
         } else {
+            for(Bed b : DataBase.bedData){
+                if(!b.isDeleted() && b.getPid().equals(patient.getPid())){
+                    b.setPid(null);
+                    break;
+                }
+            }
             patient.setDeleted(true);
             return true;
         }

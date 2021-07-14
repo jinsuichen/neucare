@@ -34,6 +34,7 @@ public class Ward {
         return isDeleted;
     }
 
+
     public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
     }

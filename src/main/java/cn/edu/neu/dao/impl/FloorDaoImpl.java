@@ -19,7 +19,7 @@ public class FloorDaoImpl implements FloorDao {
         List<Floor> list = new ArrayList<>();
 
         for( Floor floor : DataBase.floorData){
-            if(floor.getSid() == sid){
+            if(!floor.getDeleted() && floor.getSid() == sid){
                 list.add(floor);
             }
         }
@@ -34,7 +34,7 @@ public class FloorDaoImpl implements FloorDao {
     @Override
     public Floor queryFloorByFid(int fid) {
         for(Floor floor : DataBase.floorData){
-            if(floor.getFid() == fid){
+            if(!floor.getDeleted() && floor.getFid() == fid){
                 return floor;
             }
         }

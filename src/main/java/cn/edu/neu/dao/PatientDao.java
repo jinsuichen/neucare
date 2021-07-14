@@ -22,6 +22,13 @@ public interface PatientDao {
 
 
     /**
+     * 查询所有没有床位的病患
+     * @return 病患集合
+     */
+    public List<Patient> queryAllPatientsWithNoBed();
+
+
+    /**
      * 根据病患ID查找病患
      * @param pid 病患ID
      * @return 病患

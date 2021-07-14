@@ -4,6 +4,7 @@ import cn.edu.neu.dao.StructureDao;
 import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.Structure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StructureDaoImpl implements StructureDao {
@@ -15,7 +16,13 @@ public class StructureDaoImpl implements StructureDao {
      */
     @Override
     public List<Structure> queryAllStructures() {
-        return DataBase.structureData;
+        List<Structure> list = new ArrayList<>();
+        for(Structure structure : DataBase.structureData){
+            if(!structure.isDeleted()){
+                list.add(structure);
+            }
+        }
+        return list;
     }
 
 
@@ -28,7 +35,7 @@ public class StructureDaoImpl implements StructureDao {
     @Override
     public Structure queryStructureBySid(int sid) {
         for(Structure structure : DataBase.structureData){
-            if(structure.getSid() == sid){
+            if(!structure.isDeleted() && structure.getSid() == sid){
                 return structure;
             }
         }

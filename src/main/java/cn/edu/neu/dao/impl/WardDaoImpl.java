@@ -19,7 +19,7 @@ public class WardDaoImpl implements WardDao {
     public List<Ward> queryWardsByFid(int fid) {
         List<Ward> list = new ArrayList<>();
         for (Ward ward : DataBase.wardData) {
-            if (ward.getFid() == fid) {
+            if (!ward.getDeleted() && ward.getFid() == fid) {
                 list.add(ward);
             }
         }
@@ -35,7 +35,7 @@ public class WardDaoImpl implements WardDao {
     @Override
     public Ward queryWardByWid(int wid) {
         for (Ward ward : DataBase.wardData){
-            if(ward.getWid() == wid){
+            if(!ward.getDeleted() && ward.getWid() == wid){
                 return ward;
             }
         }

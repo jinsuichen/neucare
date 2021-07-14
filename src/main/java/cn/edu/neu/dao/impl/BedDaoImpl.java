@@ -20,7 +20,13 @@ public class BedDaoImpl implements BedDao {
      */
     @Override
     public List<Bed> queryAllBeds() {
-        return DataBase.bedData;
+        List<Bed> list = new ArrayList<>();
+        for(Bed bed : DataBase.bedData){
+            if(!bed.isDeleted()){
+                list.add(bed);
+            }
+        }
+        return list;
     }
 
     /**
@@ -33,7 +39,7 @@ public class BedDaoImpl implements BedDao {
     public List<Bed> queryBedsBySid(int sid) {
         List<Bed> list = new ArrayList<>();
         for(Floor floor : DataBase.floorData){
-            if(floor.getSid() == sid){
+            if(!floor.getDeleted() && floor.getSid() == sid){
                 list.addAll(queryBedsByFid(floor.getFid()));
             }
         }
@@ -50,7 +56,7 @@ public class BedDaoImpl implements BedDao {
     public List<Bed> queryBedsByFid(int fid) {
         List<Bed> list = new ArrayList<>();
         for (Ward ward : DataBase.wardData) {
-            if (ward.getFid() == fid) {
+            if (!ward.getDeleted() && ward.getFid() == fid) {
                 list.addAll(queryBedsByWid(ward.getWid()));
             }
         }
@@ -67,7 +73,7 @@ public class BedDaoImpl implements BedDao {
     public List<Bed> queryBedsByWid(int wid) {
         List<Bed> list = new ArrayList<>();
         for (Bed bed : DataBase.bedData) {
-            if (bed.getWid() == wid) {
+            if (!bed.isDeleted() && bed.getWid() == wid) {
                 list.add(bed);
             }
         }
@@ -83,7 +89,7 @@ public class BedDaoImpl implements BedDao {
     @Override
     public Bed queryBedByBid(int bid) {
         for (Bed bed : DataBase.bedData) {
-            if (bed.getBid() == bid) {
+            if (!bed.isDeleted() && bed.getBid() == bid) {
                 return bed;
             }
         }

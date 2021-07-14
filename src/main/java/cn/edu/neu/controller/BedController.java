@@ -266,11 +266,7 @@ public class BedController {
                     //创建可观察列表
                     ObservableList<Patient> list = FXCollections.observableArrayList();
                     //为可观察列表添加数据
-                    for (Patient p : DataBase.patientData) {
-                        if (!p.isDeleted()) {
-                            list.add(p);
-                        }
-                    }
+                    list.addAll(patientService.getAllPatientsWithNoBed());
                     //将可观察列表与表格绑定
                     patientTable.setItems(list);
 
@@ -302,11 +298,17 @@ public class BedController {
                     submit.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
-                            Patient patient = (Patient) patientTable.getSelectionModel().getSelectedItem();
-                            Integer pid = patient.getPid();
-                            bedService.checkin(bed, patient);
-                            stage.close();
-                            tableView.refresh();
+                            try{
+                                Patient patient = (Patient) patientTable.getSelectionModel().getSelectedItem();
+                                Integer pid = patient.getPid();
+                                bedService.checkin(bed, patient);
+                                stage.close();
+                                tableView.refresh();
+
+                            }catch (Exception e){
+                                System.err.println("选择失败");
+                                //TODO 弹窗
+                            }
                         }
                     });
 
