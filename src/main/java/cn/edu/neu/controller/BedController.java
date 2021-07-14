@@ -30,8 +30,6 @@ public class BedController {
     @FXML
     private TableView tableView;
     @FXML
-    private Button queryButton;
-    @FXML
     private Button checkoutButton;
     @FXML
     private ComboBox structureBox;
@@ -48,7 +46,27 @@ public class BedController {
     private final BedService bedService = new BedServiceImpl();
     private final PatientService patientService = new PatientServiceImpl();
 
+    //表格数据源
+    private ObservableList<Bed> list = null;
+
     public BedController() {
+    }
+
+    private void query(){
+        Structure structure = (Structure) structureBox.getValue();
+        Floor floor = (Floor) floorBox.getValue();
+        Ward ward = (Ward) wardBox.getValue();
+        list.remove(0, list.size());
+
+        if(structure == null){
+            list.addAll(bedService.getAllBeds());
+        }else if(floor == null){
+            list.addAll(bedService.getBedsBySid(structure.getSid()));
+        }else if(ward == null){
+            list.addAll(bedService.getBedsByFid(floor.getFid()));
+        }else{
+            list.addAll(bedService.getBedsByWid(ward.getWid()));
+        }
     }
 
     @FXML
@@ -56,7 +74,7 @@ public class BedController {
 
 
         //创建可观察列表作为表格数据源
-        ObservableList<Bed> list = FXCollections.observableArrayList();
+        list = FXCollections.observableArrayList();
 
         list.addAll(bedService.getAllBeds());
 
@@ -188,6 +206,7 @@ public class BedController {
                 int sid = (int) newValue + 1;
                 floorBox.getItems().remove(0, floorBox.getItems().size());
                 floorBox.getItems().addAll(floorService.getFloorsBySid(sid));
+                query();
 
             }
         });
@@ -198,28 +217,15 @@ public class BedController {
                 int fid = (int) newValue + 1;
                 wardBox.getItems().remove(0, wardBox.getItems().size());
                 wardBox.getItems().addAll(wardService.getWardsByFid(fid));
+                query();
+
             }
         });
 
-
-        queryButton.setOnAction(new EventHandler<ActionEvent>() {
+        wardBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Structure structure = (Structure) structureBox.getValue();
-                Floor floor = (Floor) floorBox.getValue();
-                Ward ward = (Ward) wardBox.getValue();
-                list.remove(0, list.size());
-
-                if(structure == null){
-                    list.addAll(bedService.getAllBeds());
-                }else if(floor == null){
-                    list.addAll(bedService.getBedsBySid(structure.getSid()));
-                }else if(ward == null){
-                    list.addAll(bedService.getBedsByFid(floor.getFid()));
-                }else{
-                    list.addAll(bedService.getBedsByWid(ward.getWid()));
-                }
-
+                query();
 
             }
         });

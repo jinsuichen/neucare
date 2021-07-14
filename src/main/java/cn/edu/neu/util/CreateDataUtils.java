@@ -37,7 +37,7 @@ public class CreateDataUtils {
             for (int j = 1; j <= 4; j++) {
                 Bed bed = new Bed();
                 bed.setBid(bedId++);
-                bed.setName( i + (i <= 9 ? "0" : "") + j + "床");
+                bed.setName( j + "床");
                 bed.setWid(i);
                 bed.setDeleted(false);
 
@@ -71,7 +71,9 @@ public class CreateDataUtils {
                 ward.setDeleted(false);
                 ward.setWid(wardId++);
                 ward.setFid(i);
-                ward.setName("A" + i + (i <= 9 ? "0" : "") + j);
+                if(i<=6) ward.setName(i+"0"+j);
+                else if(i<=9) ward.setName(i-6+"0"+j);
+                else ward.setName(i-9+"0"+j);
                 list.add(ward);
             }
         }
