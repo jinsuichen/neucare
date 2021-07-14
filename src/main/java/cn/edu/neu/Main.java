@@ -48,6 +48,8 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
 
+        //FIXME 错误在底层就被抛出，这个try-catch没有什么卵用
+
         try {
 
             FileUtils.write(JsonUtils.serialize(DataBase.adminData), "data/admins.json");

@@ -85,6 +85,7 @@ public class PatientController {
         tableView.getColumns().add(emergencyTelephoneColumn);
 
 
+        //设置更改模式
         tableView.setEditable(true);
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         ageColumn.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Number>() {

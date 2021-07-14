@@ -25,6 +25,7 @@ public class CreateDataUtils {
         createWard();
         createBed();
         createQuestion();
+        createTemplate();
 
 
     }
@@ -100,6 +101,8 @@ public class CreateDataUtils {
             } else {
                 question.setTid(3);
             }
+
+            question.setType("A");
 
             list.add(question);
         }
