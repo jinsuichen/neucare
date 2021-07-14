@@ -1,17 +1,20 @@
 package cn.edu.neu.controller;
 
-import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.service.PatientService;
 import cn.edu.neu.service.impl.PatientServiceImpl;
+import cn.edu.neu.util.FxUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.util.ArrayList;
@@ -20,25 +23,10 @@ import java.util.List;
 public class PatientController {
 
     @FXML
+    private TextField searchText;
+
+    @FXML
     private TableView tableView;
-
-    @FXML
-    private TextField birthday;
-
-    @FXML
-    private TextField name;
-
-    @FXML
-    private TextField gender;
-
-    @FXML
-    private TextField telephone;
-
-    @FXML
-    private TextField emergencyTelephone;
-
-    @FXML
-    private TextField emergencyContact;
 
     @FXML
     private Button addButton;
@@ -50,24 +38,12 @@ public class PatientController {
     private Button deleteButton;
 
     @FXML
-    private Button updateButton;
-
-    @FXML
     private Button evaluateButton;
 
     private final PatientService patientService = new PatientServiceImpl();
 
-    private final ObservableList<Patient> list = FXCollections.observableArrayList();
+    private  ObservableList<Patient> list = FXCollections.observableArrayList();
 
-
-    //FIXME 这个方法好像没什么卵用
-    private void loadTable(){
-        for(Patient p : DataBase.patientData){
-            if(!p.isDeleted()){
-                list.add(p);
-            }
-        }
-    }
 
     public PatientController() {
     }
@@ -77,8 +53,7 @@ public class PatientController {
     public void initialize() {
 
 
-        //创建可观察列表
-        ObservableList<Patient> list = FXCollections.observableArrayList();
+
         //为可观察列表添加数据
         list.addAll(patientService.getAllPatients());
         //将可观察列表与表格绑定
@@ -137,26 +112,92 @@ public class PatientController {
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 
+        //TODO 增强模糊查询，改为全字段查询
+        //模糊查询功能
+        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("run");
 
+                String keyword = searchText.getText();
+
+                if(keyword == null || keyword.isEmpty()){
+                    list.remove(0, list.size());
+                    list.addAll(patientService.getAllPatients());
+                }else{
+                    list.remove(0, list.size());
+                    list.addAll(patientService.fuzzyQueryPatients(searchText.getText()));
+                    System.out.println("run");
+                }
+
+                //tableView.refresh();
+            }
+        });
 
 
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Patient patient = new Patient();
-                patient.setName(name.getText());
-                patient.setGender(gender.getText());
-                //FIXME 根据生日设置年龄
-                patient.setAge(16);
-                patient.setTelephone(telephone.getText());
-                patient.setEmergencyTelephone(emergencyTelephone.getText());
-                patient.setEmergencyContact(emergencyContact.getText());
-                boolean flag = patientService.addPatient(patient);
+                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addPatient.fxml");
+                Stage stage = new Stage();
+                Scene scene = new Scene(anchorPane);
+                stage.setScene(scene);
 
-                if(flag){
-                    list.add(patient);
-                    tableView.refresh();
-                }
+                //FIXME for test
+                //System.out.println(anchorPane.getChildren());
+                //anchorPane.getChildren().forEach(System.out::println);
+
+                TextField nameField = (TextField) anchorPane.getChildren().get(0);
+                TextField birthdayField = (TextField) anchorPane.getChildren().get(1);
+                TextField genderField = (TextField) anchorPane.getChildren().get(2);
+                TextField telephoneField = (TextField) anchorPane.getChildren().get(3);
+                TextField emergencyContactField = (TextField) anchorPane.getChildren().get(4);
+                TextField emergencyTelephoneField = (TextField) anchorPane.getChildren().get(5);
+
+                Button submitButton = (Button) anchorPane.getChildren().get(12);
+                Button cancelButton = (Button) anchorPane.getChildren().get(13);
+
+
+                submitButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        String errMsg = "";
+
+
+                        Patient patient = new Patient();
+                        patient.setName(nameField.getText());
+                        //TODO 根据生日生成年龄
+                        patient.setAge(16);
+                        patient.setGender(genderField.getText());
+                        patient.setTelephone(telephoneField.getText());
+                        patient.setEmergencyContact(emergencyContactField.getText());
+                        patient.setEmergencyTelephone(emergencyTelephoneField.getText());
+
+                        if(patientService.addPatient(patient)){
+                            //如果添加成功，进行数据展示并关闭窗口
+                            list.add(patient);
+                            stage.close();
+                        }
+
+
+
+
+                    }
+                });
+
+                cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        stage.close();
+                    }
+                });
+
+
+                stage.show();
+
+
+
+
             }
         });
 
@@ -186,12 +227,6 @@ public class PatientController {
         });
 
 
-        searchButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-            }
-        });
 
 
 

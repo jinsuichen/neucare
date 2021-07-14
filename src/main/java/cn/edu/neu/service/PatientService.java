@@ -61,7 +61,12 @@ public interface PatientService {
      */
     public Patient getPatientByBid(int bid);
 
-
+    /**
+     * 根据病患的姓名模糊查询病患
+     * @param keyword 关键词
+     * @return 病患集合
+     */
+    public List<Patient> fuzzyQueryPatients(String keyword);
 
 
 }

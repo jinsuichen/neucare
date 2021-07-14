@@ -85,4 +85,14 @@ public class PatientServiceImpl implements PatientService {
     public Patient getPatientByBid(int bid) {
         return dao.queryPatientByBid(bid);
     }
+
+    /**
+     * 根据病患的姓名模糊查询病患
+     * @param keyword 关键词
+     * @return 病患集合
+     */
+    @Override
+    public List<Patient> fuzzyQueryPatients(String keyword) {
+        return dao.fuzzyQueryPatients(keyword);
+    }
 }

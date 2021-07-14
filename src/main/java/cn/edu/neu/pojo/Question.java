@@ -3,6 +3,7 @@ package cn.edu.neu.pojo;
 public class Question {
 
     private Integer qid;
+    private Integer tid;
     private String title;
     private String choice1;
     private String choice2;
@@ -15,6 +16,14 @@ public class Question {
 
     public void setQid(Integer qid) {
         this.qid = qid;
+    }
+
+    public Integer getTid() {
+        return tid;
+    }
+
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 
     public String getTitle() {
@@ -61,11 +70,12 @@ public class Question {
     public String toString() {
         return "Question{" +
                 "qid=" + qid +
+                ", tid=" + tid +
                 ", title='" + title + '\'' +
                 ", choice1='" + choice1 + '\'' +
                 ", choice2='" + choice2 + '\'' +
                 ", choice3='" + choice3 + '\'' +
-                ", isDelete=" + isDeleted +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

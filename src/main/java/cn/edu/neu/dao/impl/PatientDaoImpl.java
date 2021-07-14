@@ -103,6 +103,21 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     /**
+     * 根据病患的姓名模糊查询病患
+     * @return 病患集合
+     */
+    @Override
+    public List<Patient> fuzzyQueryPatients(String keyword) {
+        List<Patient> list = new ArrayList<>();
+        for(Patient patient : DataBase.patientData){
+            if(!patient.isDeleted() && patient.getName().contains(keyword)){
+                list.add(patient);
+            }
+        }
+        return list;
+    }
+
+    /**
      * 增加病患
      *
      * @param patient 病患

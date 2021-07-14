@@ -55,7 +55,8 @@ public class Main extends Application {
             FileUtils.write(JsonUtils.serialize(DataBase.bedData), "data/beds.json");
             FileUtils.write(JsonUtils.serialize(DataBase.employeeData), "data/employees.json");
             FileUtils.write(JsonUtils.serialize(DataBase.floorData), "data/floors.json");
-            //FileUtils.write(JsonUtils.serialize(DataBase.questionData), "data/questions.json");
+            FileUtils.write(JsonUtils.serialize(DataBase.questionData), "data/questions.json");
+            FileUtils.write(JsonUtils.serialize(DataBase.templateData), "data/templates.json");
             //FileUtils.write(JsonUtils.serialize(DataBase.rareEquipmentData), "data/rareEquipments.json");
             FileUtils.write(JsonUtils.serialize(DataBase.structureData), "data/structures.json");
             System.exit(0);

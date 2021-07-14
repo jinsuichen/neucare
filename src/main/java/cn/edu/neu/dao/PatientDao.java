@@ -37,10 +37,17 @@ public interface PatientDao {
 
     /**
      * 根据床位的ID查找病患
+     * @param bid 床位的ID
      * @return 病患
      */
     public Patient queryPatientByBid(int bid);
 
+    /**
+     * 根据病患的姓名模糊查询病患
+     * @param keyword 关键词
+     * @return 病患集合
+     */
+    public List<Patient> fuzzyQueryPatients(String keyword);
 
     /**
      * 增加病患
