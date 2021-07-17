@@ -1,6 +1,7 @@
 package cn.edu.neu.controller;
 
 import cn.edu.neu.pojo.Patient;
+import cn.edu.neu.pojo.Question;
 import cn.edu.neu.service.PatientService;
 import cn.edu.neu.service.impl.PatientServiceImpl;
 import cn.edu.neu.util.FxUtils;
@@ -213,25 +214,20 @@ public class PatientController {
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList selectedIndices = tableView.getSelectionModel().getSelectedIndices();
+                ObservableList selectedItems = tableView.getSelectionModel().getSelectedItems();
 
-                List<Integer> indexList = new ArrayList<>();
+                List<Object> itemList = new ArrayList<>();
+                itemList.addAll(selectedItems);
 
-                for(Object index :selectedIndices){
-                    indexList.add((int)index);
+                for(Object o : itemList){
+                    Patient patient = (Patient)o;
+                    patientService.deletePatientById(patient.getPid());
+                    list.remove(patient);
                 }
-
-                for(int i = indexList.size() - 1 ;i>=0; i--){
-                    int index = indexList.get(i);
-                    int id = list.get(index).getPid();
-
-                    list.remove(index);
-                    patientService.deletePatientById(id);
-                }
-
-
             }
         });
+
+
 
 
 

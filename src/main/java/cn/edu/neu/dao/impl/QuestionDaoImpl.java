@@ -8,6 +8,8 @@ import cn.edu.neu.service.QuestionService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sun.swing.MenuItemLayoutHelper.max;
+
 public class QuestionDaoImpl implements QuestionDao {
 
 
@@ -24,6 +26,39 @@ public class QuestionDaoImpl implements QuestionDao {
             }
         }
         return list;
+    }
+
+
+    /**
+     * 添加问题
+     * @param question 待添加的问题
+     * @return 是否添加成功
+     */
+    @Override
+    public boolean createQuestion(Question question) {
+        int maxQid = 1;
+        for(Question q : DataBase.questionData){
+            maxQid = max(maxQid, q.getQid());
+        }
+        question.setQid(maxQid + 1);
+        DataBase.questionData.add(question);
+        return true;
+    }
+
+
+    /**
+     * 根据问题ID删除问题
+     * @param id 问题的ID
+     */
+    @Override
+    public boolean deletePatientById(int id) {
+        for(Question q : DataBase.questionData){
+            if(!q.isDeleted() && q.getQid() == id){
+                q.setDeleted(true);
+                return true;
+            }
+        }
+        return false;
     }
 
 

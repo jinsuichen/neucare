@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         //FIXME 造假数据测试使用 记得删除
-        //CreateDataUtils.main(null);
+        CreateDataUtils.main(null);
 
         AnchorPane root = FxUtils.loadAnchor("fxml/other/login.fxml");
 

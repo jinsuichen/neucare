@@ -14,16 +14,10 @@
         <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="477.0" prefWidth="973.0">
 
         </TableView>
-        <Button fx:id="addButton" layoutX="380.0" layoutY="34.0" mnemonicParsing="false" text="新建">
+        <Button fx:id="addButton" layoutX="280.0" layoutY="34.0" mnemonicParsing="false" text="新建">
             <styleClass>
                 <String fx:value="btn"/>
                 <String fx:value="btn-success"/>
-            </styleClass>
-        </Button>
-        <Button fx:id="detailButton" layoutX="281.0" layoutY="34.0" mnemonicParsing="false" text="详情">
-            <styleClass>
-                <String fx:value="btn"/>
-                <String fx:value="btn-default"/>
             </styleClass>
         </Button>
         <Button fx:id="deleteButton" layoutX="940.0" layoutY="34.0" mnemonicParsing="false" text="删除">

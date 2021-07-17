@@ -1,26 +1,32 @@
 package cn.edu.neu.controller;
 
+import cn.edu.neu.dao.QuestionDao;
 import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.pojo.Question;
 import cn.edu.neu.service.QuestionService;
 import cn.edu.neu.service.impl.QuestionServiceImpl;
+import cn.edu.neu.util.FxUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionController {
     @FXML
     private TableView tableView;
     @FXML
     private Button addButton;
-    @FXML
-    private Button detailButton;
     @FXML
     private Button deleteButton;
 
@@ -69,6 +75,82 @@ public class QuestionController {
         choice2Column.setCellFactory(TextFieldTableCell.forTableColumn());
         choice3Column.setCellFactory(TextFieldTableCell.forTableColumn());
         typeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        //绑定提交事件 当更改提交时，进行保存
+        titleColumn.setOnEditCommit(event -> event.getRowValue().setTitle(event.getNewValue()));
+        choice1Column.setOnEditCommit(event -> event.getRowValue().setChoice1(event.getNewValue()));
+        choice2Column.setOnEditCommit(event -> event.getRowValue().setChoice2(event.getNewValue()));
+        choice3Column.setOnEditCommit(event -> event.getRowValue().setChoice3(event.getNewValue()));
+        typeColumn.setOnEditCommit(event -> event.getRowValue().setType(event.getNewValue()));
+
+        //设置可多选
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = new Stage();
+                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addQuestion.fxml");
+                Scene scene = new Scene(anchorPane);
+                stage.setScene(scene);
+
+                stage.show();
+
+
+                TextField titleTextField = (TextField) anchorPane.getChildren().get(4);
+                TextField choice1TextField = (TextField) anchorPane.getChildren().get(5);
+                TextField choice2TextField = (TextField) anchorPane.getChildren().get(6);
+                TextField choice3TextField = (TextField) anchorPane.getChildren().get(7);
+                Button confirmButton = (Button) anchorPane.getChildren().get(8);
+                Button cancelButton = (Button) anchorPane.getChildren().get(9);
+
+
+
+                cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        stage.close();
+                    }
+                });
+
+                confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Question question = new Question();
+                        question.setTitle(titleTextField.getText());
+                        question.setChoice1(choice1TextField.getText());
+                        question.setChoice2(choice2TextField.getText());
+                        question.setChoice3(choice3TextField.getText());
+                        if(questionService.addQuestion(question)){
+                            //如果添加成功，进行数据展示并关闭窗口
+                            list.add(question);
+                            stage.close();
+                        }
+                    }
+                });
+
+            }
+        });
+
+
+        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ObservableList selectedItems = tableView.getSelectionModel().getSelectedItems();
+
+                List<Object> itemList = new ArrayList<>();
+                itemList.addAll(selectedItems);
+
+                for(Object o : itemList){
+                    Question question = (Question)o;
+                    questionService.deletePatientById(question.getQid());
+                    list.remove(question);
+
+                }
+
+            }
+        });
 
 
     }

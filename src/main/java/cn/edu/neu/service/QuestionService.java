@@ -12,4 +12,17 @@ public interface QuestionService {
      */
     public List<Question> getAllQuestions();
 
+    /**
+     * 添加问题
+     * @param question 待添加的问题
+     * @return 是否添加成功
+     */
+    public boolean addQuestion(Question question);
+
+
+    /**
+     * 根据问题ID删除问题
+     * @param id 问题的ID
+     */
+    boolean deletePatientById(int id);
 }
