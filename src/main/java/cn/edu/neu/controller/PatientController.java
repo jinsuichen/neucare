@@ -109,6 +109,14 @@ public class PatientController {
         emergencyTelephoneColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
+        //绑定提交事件 当更改提交时，进行保存
+        nameColumn.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
+        ageColumn.setOnEditCommit(event -> event.getRowValue().setAge((Integer) event.getNewValue()));
+        genderColumn.setOnEditCommit(event -> event.getRowValue().setGender(event.getNewValue()));
+        telephoneColumn.setOnEditCommit(event -> event.getRowValue().setTelephone(event.getNewValue()));
+        emergencyContactColumn.setOnEditCommit(event -> event.getRowValue().setEmergencyContact(event.getNewValue()));
+        emergencyTelephoneColumn.setOnEditCommit(event -> event.getRowValue().setEmergencyTelephone(event.getNewValue()));
+
         //设置可多选
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -118,7 +126,6 @@ public class PatientController {
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("run");
 
                 String keyword = searchText.getText();
 
@@ -127,8 +134,7 @@ public class PatientController {
                     list.addAll(patientService.getAllPatients());
                 }else{
                     list.remove(0, list.size());
-                    list.addAll(patientService.fuzzyQueryPatients(searchText.getText()));
-                    System.out.println("run");
+                    list.addAll(patientService.fuzzyQueryPatients(keyword));
                 }
 
                 //tableView.refresh();

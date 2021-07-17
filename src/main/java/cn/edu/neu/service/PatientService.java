@@ -54,6 +54,15 @@ public interface PatientService {
      */
     public boolean updatePatient(Patient oldPatient, Patient newPatient);
 
+
+    /**
+     *
+     * @param pid 病患ID
+     * @param newPatient 更改后的病患对象
+     * @return 是否更新成功
+     */
+    public boolean updatePatientByPid(int pid, Patient newPatient);
+
     /**
      * 根据床位的ID获取病患信息
      * @param bid 床位的ID
@@ -67,6 +76,7 @@ public interface PatientService {
      * @return 病患集合
      */
     public List<Patient> fuzzyQueryPatients(String keyword);
+
 
 
 }

@@ -77,6 +77,22 @@ public class PatientServiceImpl implements PatientService {
     }
 
     /**
+     *
+     * @param pid 病患ID
+     * @param newPatient 更改后的病患对象
+     * @return 是否更新成功
+     */
+    @Override
+    public boolean updatePatientByPid(int pid, Patient newPatient) {
+        Patient patient = dao.queryPatientByPid(pid);
+        if(patient == null){
+            return false;
+        }
+        patient = newPatient;
+        return true;
+    }
+
+    /**
      * 根据床位的ID获取病患信息
      * @param bid 床位的ID
      * @return 病患

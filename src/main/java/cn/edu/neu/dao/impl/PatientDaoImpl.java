@@ -203,7 +203,7 @@ public class PatientDaoImpl implements PatientDao {
      */
     @Override
     public boolean updatePatient(Patient oldPatient, Patient newPatient) {
-        Patient patient = queryPatientByName(oldPatient.getName());
+        Patient patient = queryPatientByPid(oldPatient.getPid());
         if (patient == null) {
             System.err.println("未找到相应患者，无法正确更新。");
             return false;

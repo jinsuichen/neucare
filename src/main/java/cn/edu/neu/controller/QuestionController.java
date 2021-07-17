@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
 
 public class QuestionController {
     @FXML
@@ -59,6 +61,14 @@ public class QuestionController {
         tableView.getColumns().add(choice2Column);
         tableView.getColumns().add(choice3Column);
         tableView.getColumns().add(typeColumn);
+
+        //设置更改模式
+        tableView.setEditable(true);
+        titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        choice1Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        choice2Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        choice3Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        typeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
     }
