@@ -26,10 +26,6 @@ public class RootController {
     @FXML
     public void initialize() {
         Status.root = this.root;
-
         root.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-
-
-
     }
 }

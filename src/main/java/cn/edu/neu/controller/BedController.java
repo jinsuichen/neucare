@@ -52,19 +52,19 @@ public class BedController {
     public BedController() {
     }
 
-    private void query(){
+    private void query() {
         Structure structure = (Structure) structureBox.getValue();
         Floor floor = (Floor) floorBox.getValue();
         Ward ward = (Ward) wardBox.getValue();
         list.remove(0, list.size());
 
-        if(structure == null){
+        if (structure == null) {
             list.addAll(bedService.getAllBeds());
-        }else if(floor == null){
+        } else if (floor == null) {
             list.addAll(bedService.getBedsBySid(structure.getSid()));
-        }else if(ward == null){
+        } else if (ward == null) {
             list.addAll(bedService.getBedsByFid(floor.getFid()));
-        }else{
+        } else {
             list.addAll(bedService.getBedsByWid(ward.getWid()));
         }
     }
@@ -200,25 +200,24 @@ public class BedController {
         structureBox.getItems().addAll(structureService.getAllStructures());
 
 
-        structureBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+        structureBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                int sid = (int) newValue + 1;
+            public void handle(ActionEvent event) {
+                int sid = ((Structure) structureBox.getValue()).getSid();
                 floorBox.getItems().remove(0, floorBox.getItems().size());
+                wardBox.getItems().remove(0, wardBox.getItems().size());
                 floorBox.getItems().addAll(floorService.getFloorsBySid(sid));
                 query();
-
             }
         });
 
-        floorBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        floorBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                int fid = (int) newValue + 1;
+            public void handle(ActionEvent event) {
+                int fid = ((Floor) floorBox.getValue()).getFid();
                 wardBox.getItems().remove(0, wardBox.getItems().size());
                 wardBox.getItems().addAll(wardService.getWardsByFid(fid));
                 query();
-
             }
         });
 
@@ -304,14 +303,14 @@ public class BedController {
                     submit.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
-                            try{
+                            try {
                                 Patient patient = (Patient) patientTable.getSelectionModel().getSelectedItem();
                                 Integer pid = patient.getPid();
                                 bedService.checkin(bed, patient);
                                 stage.close();
                                 tableView.refresh();
 
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 System.err.println("选择失败");
                                 //TODO 弹窗
                             }

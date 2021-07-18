@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -150,6 +151,8 @@ public class PatientController {
                 Stage stage = new Stage();
                 Scene scene = new Scene(anchorPane);
                 stage.setScene(scene);
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
 
                 //FIXME for test
                 //System.out.println(anchorPane.getChildren());

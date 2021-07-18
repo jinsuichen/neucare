@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -94,8 +95,9 @@ public class QuestionController {
                 AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addQuestion.fxml");
                 Scene scene = new Scene(anchorPane);
                 stage.setScene(scene);
-
+                stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
+                stage.setResizable(false);
 
 
                 TextField titleTextField = (TextField) anchorPane.getChildren().get(4);
@@ -151,6 +153,8 @@ public class QuestionController {
 
             }
         });
+
+
 
 
     }

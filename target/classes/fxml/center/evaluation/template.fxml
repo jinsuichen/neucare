@@ -7,24 +7,24 @@
 
 
 <AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.TemplateController">
     <children>
         <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="477.0" prefWidth="973.0">
 
         </TableView>
-        <Button layoutX="380.0" layoutY="34.0" mnemonicParsing="false" text="新建">
+        <Button fx:id="addButton" layoutX="380.0" layoutY="34.0" mnemonicParsing="false" text="新建">
             <styleClass>
                 <String fx:value="btn"/>
                 <String fx:value="btn-success"/>
             </styleClass>
         </Button>
-        <Button layoutX="281.0" layoutY="34.0" mnemonicParsing="false" text="预览">
+        <Button fx:id="detailButton" layoutX="281.0" layoutY="34.0" mnemonicParsing="false" text="预览">
             <styleClass>
                 <String fx:value="btn"/>
                 <String fx:value="btn-default"/>
             </styleClass>
         </Button>
-        <Button layoutX="940.0" layoutY="34.0" mnemonicParsing="false" text="删除">
+        <Button fx:id="deleteButton" layoutX="940.0" layoutY="34.0" mnemonicParsing="false" text="删除">
             <styleClass>
                 <String fx:value="btn"/>
                 <String fx:value="btn-danger"/>
