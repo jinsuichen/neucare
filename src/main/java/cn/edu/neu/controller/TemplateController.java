@@ -220,7 +220,77 @@ public class TemplateController {
                 addQuestionButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+                        AnchorPane ap = (AnchorPane) FxUtils.loadNode("fxml/other/bindQuestion.fxml");
+                        Scene scene = new Scene(ap);
+                        Stage bindQuestionStage = new Stage();
+                        bindQuestionStage.setScene(scene);
+                        bindQuestionStage.setResizable(false);
+                        bindQuestionStage.initModality(Modality.APPLICATION_MODAL);
 
+                        //获取子控件
+                        TableView questionTable = (TableView) ap.getChildren().get(1);
+                        Button confirmButton = (Button) ap.getChildren().get(2);
+                        Button cancelButton = (Button) ap.getChildren().get(3);
+                        bindQuestionStage.show();
+
+                        //在问题表格中展示问题数据
+                        List<Question> questionList = questionService.getQuestionsWithNoTemplate();
+                        ObservableList<Question> bindableObservableList = FXCollections.observableArrayList();
+                        bindableObservableList.addAll(questionList);
+                        questionTable.setItems(bindableObservableList);
+
+                        TableColumn<Question, Number> idColumn = new TableColumn<>("ID");
+                        TableColumn<Question, String> titleColumn = new TableColumn<>("标题");
+                        TableColumn<Question, String> choice1Column = new TableColumn<>("选项1");
+                        TableColumn<Question, String> choice2Column = new TableColumn<>("选项2");
+                        TableColumn<Question, String> choice3Column = new TableColumn<>("选项3");
+                        TableColumn<Question, String> typeColumn = new TableColumn<>("类型");
+
+                        idColumn.setCellValueFactory(new PropertyValueFactory<Question, Number>("qid"));
+                        titleColumn.setCellValueFactory(new PropertyValueFactory<Question, String>("title"));
+                        choice1Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice1"));
+                        choice2Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice2"));
+                        choice3Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice3"));
+                        typeColumn.setCellValueFactory(new PropertyValueFactory<Question, String>("type"));
+
+                        questionTable.getColumns().add(idColumn);
+                        questionTable.getColumns().add(titleColumn);
+                        questionTable.getColumns().add(choice1Column);
+                        questionTable.getColumns().add(choice2Column);
+                        questionTable.getColumns().add(choice3Column);
+                        questionTable.getColumns().add(typeColumn);
+
+                        //设置可多选
+                        questionTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
+                        confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) {
+
+                                ObservableList selectedItems = questionTable.getSelectionModel().getSelectedItems();
+
+
+                                List<Object> itemList = new ArrayList<>();
+                                itemList.addAll(selectedItems);
+
+                                for (Object o : itemList) {
+                                    Question question = (Question) o;
+                                    templateService.bindQuestion(selectedTemplate.getTid(), question.getQid());
+                                    questionObservableList.add(question);
+                                }
+
+                                //stage.close();
+                                bindQuestionStage.close();
+                            }
+                        });
+
+                        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) {
+                                bindQuestionStage.close();
+                            }
+                        });
                     }
                 });
 
@@ -228,7 +298,17 @@ public class TemplateController {
                 delQuestionButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+                        ObservableList selectedItems = questionTable.getSelectionModel().getSelectedItems();
 
+                        List<Object> itemList = new ArrayList<>();
+                        itemList.addAll(selectedItems);
+
+                        for (Object o : itemList) {
+                            Question question = (Question) o;
+                            //FIXME -1
+                            templateService.removeQuestion(-1, question.getQid());
+                            questionObservableList.remove(question);
+                        }
                     }
                 });
 

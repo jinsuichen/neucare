@@ -31,6 +31,16 @@ public class QuestionServiceImpl implements QuestionService {
 
 
     /**
+     * 查询所有未被绑定的问题
+     * @return 问题集合
+     */
+    @Override
+    public List<Question> getQuestionsWithNoTemplate() {
+        return questionDao.queryQuestionsWithNoTemplate();
+    }
+
+
+    /**
      * 添加问题
      * @param question 待添加的问题
      * @return 是否添加成功

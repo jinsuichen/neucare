@@ -23,7 +23,9 @@ public interface TemplateDao {
     /**
      * 增加模板
      * @param template 模板
-     * @return 是否增加成功
+     * @return 是否添加成功
      */
     boolean createTemplate(Template template);
+
+
 }

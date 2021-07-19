@@ -30,5 +30,21 @@ public interface TemplateService {
      */
     boolean addTemplate(Template template);
 
+    /**
+     * 为指定模板移除指定问题
+     * @param tid 模板ID
+     * @param qid 问题ID
+     * @return 是否移除成功
+     */
+    boolean removeQuestion(int tid, int qid);
+
+    /**
+     * 为指定模板绑定指定问题
+     * @param tid 模板ID
+     * @param qid 问题ID
+     * @return 是否移除成功
+     */
+    boolean bindQuestion(int tid, int qid);
+
 
 }

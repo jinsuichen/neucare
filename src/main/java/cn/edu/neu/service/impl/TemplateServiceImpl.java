@@ -1,7 +1,10 @@
 package cn.edu.neu.service.impl;
 
+import cn.edu.neu.dao.QuestionDao;
 import cn.edu.neu.dao.TemplateDao;
+import cn.edu.neu.dao.impl.QuestionDaoImpl;
 import cn.edu.neu.dao.impl.TemplateDaoImpl;
+import cn.edu.neu.pojo.Question;
 import cn.edu.neu.pojo.Template;
 import cn.edu.neu.service.TemplateService;
 
@@ -9,7 +12,8 @@ import java.util.List;
 
 public class TemplateServiceImpl implements TemplateService {
 
-    private TemplateDao dao = new TemplateDaoImpl();
+    private TemplateDao templateDao = new TemplateDaoImpl();
+    private QuestionDao questionDao = new QuestionDaoImpl();
 
 
     /**
@@ -18,7 +22,7 @@ public class TemplateServiceImpl implements TemplateService {
      */
     @Override
     public List<Template> getAllTemplates() {
-        return dao.queryAllTemplates();
+        return templateDao.queryAllTemplates();
     }
 
     /**
@@ -28,7 +32,7 @@ public class TemplateServiceImpl implements TemplateService {
      */
     @Override
     public boolean deleteTemplateById(int tid) {
-        return dao.deleteTemplateById(tid);
+        return templateDao.deleteTemplateById(tid);
     }
 
 
@@ -39,10 +43,35 @@ public class TemplateServiceImpl implements TemplateService {
      */
     @Override
     public boolean addTemplate(Template template) {
-        return dao.createTemplate(template);
+        return templateDao.createTemplate(template);
     }
 
 
+    /**
+     * 根据模板ID删除模板
+     *
+     * @param tid 模板的ID
+     * @return 是否删除成功
+     */
+    @Override
+    public boolean removeQuestion(int tid, int qid) {
+        Question question = questionDao.queryQuestionByQid(qid);
+        question.setTid(null);
+        return true;
+    }
+
+    /**
+     * 为指定模板绑定指定问题
+     * @param tid 模板ID
+     * @param qid 问题ID
+     * @return 是否移除成功
+     */
+    @Override
+    public boolean bindQuestion(int tid, int qid) {
+        Question question = questionDao.queryQuestionByQid(qid);
+        question.setTid(tid);
+        return true;
+    }
 
 
 }

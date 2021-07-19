@@ -30,6 +30,36 @@ public class QuestionDaoImpl implements QuestionDao {
     }
 
     /**
+     * 根据问题的ID查找问题
+     * @param qid 文体ID
+     * @return 问题
+     */
+    @Override
+    public Question queryQuestionByQid(int qid) {
+        for(Question q : DataBase.questionData){
+            if(!q.isDeleted() && q.getQid() == qid){
+                return q;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 查询所有未被绑定的问题
+     * @return 问题集合
+     */
+    @Override
+    public List<Question> queryQuestionsWithNoTemplate() {
+        List<Question> list = new ArrayList<>();
+        for (Question question : DataBase.questionData) {
+            if (!question.isDeleted() && question.getTid() == null) {
+                list.add(question);
+            }
+        }
+        return list;
+    }
+
+    /**
      * 根据模板ID查找所有问题
      *
      * @return 问题集合
@@ -38,7 +68,7 @@ public class QuestionDaoImpl implements QuestionDao {
     public List<Question> queryQuestionsByTid(int tid) {
         List<Question> list = new ArrayList<>();
         for (Question q : DataBase.questionData) {
-            if(!q.isDeleted() && q.getTid() == tid){
+            if(!q.isDeleted() && q.getTid()!=null && q.getTid() == tid){
                 list.add(q);
             }
         }

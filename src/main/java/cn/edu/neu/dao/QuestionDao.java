@@ -14,6 +14,20 @@ public interface QuestionDao {
 
 
     /**
+     * 根据问题的ID查找问题
+     * @param qid 文体ID
+     * @return 问题
+     */
+    public Question queryQuestionByQid(int qid);
+
+    /**
+     * 查询所有未被绑定的问题
+     * @return 问题集合
+     */
+    public List<Question> queryQuestionsWithNoTemplate();
+
+
+    /**
      * 根据模板ID查找所有问题
      * @return 问题集合
      */
