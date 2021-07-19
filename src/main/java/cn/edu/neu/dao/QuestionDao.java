@@ -12,6 +12,13 @@ public interface QuestionDao {
      */
     public List<Question> queryAllQuestions();
 
+
+    /**
+     * 根据模板ID查找所有问题
+     * @return 问题集合
+     */
+    public List<Question> queryQuestionsByTid(int tid);
+
     /**
      * 添加问题
      * @param question 待添加的问题

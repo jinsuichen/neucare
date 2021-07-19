@@ -1,16 +1,10 @@
 package cn.edu.neu.util;
 
-import cn.edu.neu.pojo.Admin;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -105,38 +99,4 @@ public class JsonUtils {
     }
 
 
-/*    *//**
-     * 从文件反序列化，将json字符流转化为对象
-     * @param path 文件路径
-     * @param
-     *//*
-    public static <T> List<T> parseFromFile(String path, Class<T[]> clazz) {
-
-        String jsonString = null;
-
-        File file = new File(JsonUtils.class.getClassLoader().getResource(path).getPath());
-        BufferedReader reader = null;
-        StringBuffer sbf = new StringBuffer();
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String tempStr;
-            while ((tempStr = reader.readLine()) != null) {
-                sbf.append(tempStr);
-            }
-            reader.close();
-            jsonString = sbf.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
-        jsonString = sbf.toString();
-        return parseFromString(jsonString, clazz);
-    }*/
 }

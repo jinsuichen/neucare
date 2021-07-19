@@ -13,6 +13,12 @@ public interface QuestionService {
     public List<Question> getAllQuestions();
 
     /**
+     * 根据模板ID查找所有问题
+     * @return 问题集合
+     */
+    public List<Question> getQuestionsByTid(int tid);
+
+    /**
      * 添加问题
      * @param question 待添加的问题
      * @return 是否添加成功

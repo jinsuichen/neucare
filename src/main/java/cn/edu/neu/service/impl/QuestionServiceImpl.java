@@ -20,6 +20,15 @@ public class QuestionServiceImpl implements QuestionService {
         return questionDao.queryAllQuestions();
     }
 
+    /**
+     * 根据模板ID查找所有问题
+     * @return 问题集合
+     */
+    @Override
+    public List<Question> getQuestionsByTid(int tid) {
+        return questionDao.queryQuestionsByTid(tid);
+    }
+
 
     /**
      * 添加问题

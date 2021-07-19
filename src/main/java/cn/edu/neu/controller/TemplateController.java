@@ -1,22 +1,28 @@
 package cn.edu.neu.controller;
 
 import cn.edu.neu.pojo.Patient;
+import cn.edu.neu.pojo.Question;
 import cn.edu.neu.pojo.Template;
 import cn.edu.neu.service.PatientService;
+import cn.edu.neu.service.QuestionService;
 import cn.edu.neu.service.TemplateService;
 import cn.edu.neu.service.impl.PatientServiceImpl;
+import cn.edu.neu.service.impl.QuestionServiceImpl;
 import cn.edu.neu.service.impl.TemplateServiceImpl;
+import cn.edu.neu.util.FxUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import javax.xml.transform.Templates;
@@ -40,10 +46,11 @@ public class TemplateController {
     private ObservableList<Template> list = FXCollections.observableArrayList();
 
     private TemplateService templateService = new TemplateServiceImpl();
+    private QuestionService questionService = new QuestionServiceImpl();
 
 
     @FXML
-    public void initialize(){
+    public void initialize() {
 
         //为可观察列表添加数据
         list.addAll(templateService.getAllTemplates());
@@ -88,7 +95,7 @@ public class TemplateController {
                 List<Object> itemList = new ArrayList<>();
                 itemList.addAll(selectedItems);
 
-                for(Object o : itemList){
+                for (Object o : itemList) {
                     Template template = (Template) o;
                     templateService.deleteTemplateById(template.getTid());
                     list.remove(template);
@@ -97,10 +104,140 @@ public class TemplateController {
         });
 
 
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addTemplate.fxml");
+                Scene scene = new Scene(anchorPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+
+                stage.show();
+
+
+                TextField nameTextFiled = (TextField) anchorPane.getChildren().get(2);
+                TextField typeTextFiled = (TextField) anchorPane.getChildren().get(3);
+                Button confirmButton = (Button) anchorPane.getChildren().get(4);
+                Button cancelButton = (Button) anchorPane.getChildren().get(5);
+
+
+                cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        stage.close();
+                    }
+                });
+
+                confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        String name = nameTextFiled.getText();
+                        String type = typeTextFiled.getText();
+
+                        Template template = new Template();
+                        template.setName(name);
+                        template.setType(type);
+
+                        if (templateService.addTemplate(template)) {
+                            list.add(template);
+                            stage.close();
+                        }
+
+                        stage.close();
+                    }
+                });
+
+
+            }
+        });
+
+
+        detailButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                ObservableList selectedItems = tableView.getSelectionModel().getSelectedItems();
+
+                if (selectedItems.size() != 1) {
+                    return;
+                }
+
+                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/templateDetail.fxml");
+                Scene scene = new Scene(anchorPane);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                //获取子控件
+                Label label = (Label) anchorPane.getChildren().get(0);
+                TableView questionTable = (TableView) anchorPane.getChildren().get(1);
+                Button addQuestionButton = (Button) anchorPane.getChildren().get(2);
+                Button delQuestionButton = (Button) anchorPane.getChildren().get(3);
+                stage.show();
+
+                //获取模板信息
+                Template selectedTemplate = (Template)selectedItems.get(0);
+
+                //为label添加模板名称
+                label.setText("当前: " + selectedTemplate.getName());
+
+                //在问题表格中展示问题数据
+                List<Question> questionList = questionService.getQuestionsByTid(selectedTemplate.getTid());
+                ObservableList<Question> questionObservableList = FXCollections.observableArrayList();
+                questionObservableList.addAll(questionList);
+                questionTable.setItems(questionObservableList);
+
+                TableColumn<Question, Number> idColumn = new TableColumn<>("ID");
+                TableColumn<Question, String> titleColumn = new TableColumn<>("标题");
+                TableColumn<Question, String> choice1Column = new TableColumn<>("选项1");
+                TableColumn<Question, String> choice2Column = new TableColumn<>("选项2");
+                TableColumn<Question, String> choice3Column = new TableColumn<>("选项3");
+                TableColumn<Question, String> typeColumn = new TableColumn<>("类型");
+
+                idColumn.setCellValueFactory(new PropertyValueFactory<Question, Number>("qid"));
+                titleColumn.setCellValueFactory(new PropertyValueFactory<Question, String>("title"));
+                choice1Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice1"));
+                choice2Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice2"));
+                choice3Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice3"));
+                typeColumn.setCellValueFactory(new PropertyValueFactory<Question, String>("type"));
+
+                questionTable.getColumns().add(idColumn);
+                questionTable.getColumns().add(titleColumn);
+                questionTable.getColumns().add(choice1Column);
+                questionTable.getColumns().add(choice2Column);
+                questionTable.getColumns().add(choice3Column);
+                questionTable.getColumns().add(typeColumn);
+
+                //设置可多选
+                questionTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
+                //添加问题
+                addQuestionButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+
+                    }
+                });
+
+                //删除问题
+                delQuestionButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+
+                    }
+                });
+
+
+            }
+        });
+
 
     }
-
-
 
 
 }

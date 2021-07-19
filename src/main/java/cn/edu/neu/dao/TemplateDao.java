@@ -19,4 +19,11 @@ public interface TemplateDao {
      * @return 是否删除成功
      */
     boolean deleteTemplateById(int tid);
+
+    /**
+     * 增加模板
+     * @param template 模板
+     * @return 是否增加成功
+     */
+    boolean createTemplate(Template template);
 }

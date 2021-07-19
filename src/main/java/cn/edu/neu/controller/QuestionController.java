@@ -69,6 +69,9 @@ public class QuestionController {
         tableView.getColumns().add(choice3Column);
         tableView.getColumns().add(typeColumn);
 
+        //设置可多选
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         //设置更改模式
         tableView.setEditable(true);
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -83,10 +86,6 @@ public class QuestionController {
         choice2Column.setOnEditCommit(event -> event.getRowValue().setChoice2(event.getNewValue()));
         choice3Column.setOnEditCommit(event -> event.getRowValue().setChoice3(event.getNewValue()));
         typeColumn.setOnEditCommit(event -> event.getRowValue().setType(event.getNewValue()));
-
-        //设置可多选
-        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
 
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override

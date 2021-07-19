@@ -131,6 +131,7 @@ public class PatientDaoImpl implements PatientDao {
                 maxId = max(maxId, p.getPid());
             }
             patient.setPid(maxId + 1);
+            patient.setDeleted(false);
             DataBase.patientData.add(patient);
             return true;
         } else {

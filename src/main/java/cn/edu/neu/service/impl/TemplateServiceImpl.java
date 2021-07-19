@@ -11,6 +11,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     private TemplateDao dao = new TemplateDaoImpl();
 
+
     /**
      * 查询所有模板
      * @return 模板集合
@@ -29,4 +30,19 @@ public class TemplateServiceImpl implements TemplateService {
     public boolean deleteTemplateById(int tid) {
         return dao.deleteTemplateById(tid);
     }
+
+
+    /**
+     * 增加模板
+     * @param template 模板
+     * @return 是否增加成功
+     */
+    @Override
+    public boolean addTemplate(Template template) {
+        return dao.createTemplate(template);
+    }
+
+
+
+
 }

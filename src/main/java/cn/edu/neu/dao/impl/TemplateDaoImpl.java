@@ -11,6 +11,8 @@ import cn.edu.neu.service.TemplateService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sun.swing.MenuItemLayoutHelper.max;
+
 public class TemplateDaoImpl implements TemplateDao {
 
     /**
@@ -42,6 +44,28 @@ public class TemplateDaoImpl implements TemplateDao {
             }
         }
         return false;
+    }
+
+
+    /**
+     * 增加模板
+     * @param template 模板
+     * @return 是否增加成功
+     */
+    @Override
+    public boolean createTemplate(Template template) {
+        if (template.getName() != null) {
+            int maxId = 0;
+            for (Template t : DataBase.templateData) {
+                maxId = max(maxId, t.getTid());
+            }
+            template.setTid(maxId + 1);
+            template.setDeleted(false);
+            DataBase.templateData.add(template);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
