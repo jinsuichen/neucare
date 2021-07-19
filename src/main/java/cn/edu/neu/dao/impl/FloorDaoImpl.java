@@ -3,9 +3,13 @@ package cn.edu.neu.dao.impl;
 import cn.edu.neu.dao.FloorDao;
 import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.Floor;
+import cn.edu.neu.pojo.Question;
+import cn.edu.neu.pojo.Structure;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static sun.swing.MenuItemLayoutHelper.max;
 
 public class FloorDaoImpl implements FloorDao {
 
@@ -40,4 +44,24 @@ public class FloorDaoImpl implements FloorDao {
         }
         return null;
     }
+
+
+    /**
+     * 新增楼层
+     * @param floor 楼层
+     * @return 是否新增成功
+     */
+    @Override
+    public boolean createFloor(Floor floor) {
+        int maxQid = 1;
+        for (Floor f : DataBase.floorData) {
+            maxQid = max(maxQid, f.getFid());
+        }
+        floor.setFid(maxQid + 1);
+        floor.setDeleted(false);
+        DataBase.floorData.add(floor);
+        return true;
+    }
+
+
 }

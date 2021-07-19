@@ -31,4 +31,15 @@ public class FloorServiceImpl implements FloorService {
     public Floor getFloorByFid(int fid) {
         return floorDao.queryFloorByFid(fid);
     }
+
+
+    /**
+     * 新增楼层
+     * @param floor 楼层
+     * @return 是否新增成功
+     */
+    @Override
+    public boolean addFloor(Floor floor) {
+        return floorDao.createFloor(floor);
+    }
 }

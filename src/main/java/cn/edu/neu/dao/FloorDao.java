@@ -1,6 +1,7 @@
 package cn.edu.neu.dao;
 
 import cn.edu.neu.pojo.Floor;
+import cn.edu.neu.pojo.Structure;
 
 import java.util.List;
 
@@ -19,5 +20,14 @@ public interface FloorDao {
      * @return 楼层
      */
     public Floor queryFloorByFid(int fid);
+
+
+    /**
+     * 新增楼层
+     * @param floor 楼层
+     * @return 是否新增成功
+     */
+    public boolean createFloor(Floor floor);
+
 
 }

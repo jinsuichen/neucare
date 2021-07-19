@@ -45,7 +45,7 @@ public class LoginController {
 
             //FIXME 方便测试，登录恒为真，记得删除
             flag2 = true;
-            flag1 = true;
+            //flag1 = true;
 
 
             //FIXME isAdmin状态可能用不到

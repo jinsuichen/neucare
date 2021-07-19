@@ -16,7 +16,7 @@ public class AdminDaoImpl implements AdminDao {
      * @return 查询得到的Admin对象。当用户不存在时返回null。
      */
     @Override
-    public Admin queryUserByUsername(String username) {
+    public Admin queryAdminByUsername(String username) {
 
         Collections.sort(DataBase.adminData);
         int index = Algorithm.binarySearch(DataBase.adminData, new Admin(username));

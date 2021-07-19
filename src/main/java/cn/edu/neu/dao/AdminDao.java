@@ -10,6 +10,6 @@ public interface AdminDao {
      * @param username 用户名
      * @return 查询得到的Admin对象。当用户不存在时返回null。
      */
-    public Admin queryUserByUsername(String username);
+    public Admin queryAdminByUsername(String username);
 
 }

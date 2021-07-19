@@ -103,12 +103,13 @@ public class BedDaoImpl implements BedDao {
      * @return 是否添加成功
      */
     @Override
-    public boolean addBed(Bed bed) {
+    public boolean createBed(Bed bed) {
         int maxId = 0;
         for (Bed b : DataBase.bedData) {
             maxId = max(maxId, b.getBid());
         }
         bed.setBid(maxId + 1);
+        bed.setDeleted(false);
         DataBase.bedData.add(bed);
         return true;
     }

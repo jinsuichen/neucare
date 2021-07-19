@@ -108,7 +108,7 @@ public class BedController {
                 int sid = floor.getSid();
                 Structure structure = structureService.getStructureBySid(sid);
 
-                String str = structure.getName() + " -> " + floor.getHeight() + " -> " + ward.getName() + " -> " + bed.getName();
+                String str = structure.getName() + " -> " + floor.getName() + " -> " + ward.getName() + " -> " + bed.getName();
                 SimpleStringProperty simpleStringProperty = new SimpleStringProperty(str);
                 return simpleStringProperty;
             }
@@ -216,6 +216,9 @@ public class BedController {
         floorBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if(floorBox.getValue() == null){
+                    return;
+                }
                 int fid = ((Floor) floorBox.getValue()).getFid();
                 wardBox.getItems().remove(0, wardBox.getItems().size());
                 wardBox.getItems().addAll(wardService.getWardsByFid(fid));

@@ -31,4 +31,15 @@ public class WardServiceImpl implements WardService {
     public Ward getWardByWid(int wid) {
         return wardDao.queryWardByWid(wid);
     }
+
+
+    /**
+     * 新增病房
+     * @param ward 病房
+     * @return 是否新增成功
+     */
+    @Override
+    public boolean addWard(Ward ward) {
+        return wardDao.createWard(ward);
+    }
 }

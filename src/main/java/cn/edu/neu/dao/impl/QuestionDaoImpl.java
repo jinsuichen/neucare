@@ -89,6 +89,7 @@ public class QuestionDaoImpl implements QuestionDao {
             maxQid = max(maxQid, q.getQid());
         }
         question.setQid(maxQid + 1);
+        question.setDeleted(false);
         DataBase.questionData.add(question);
         return true;
     }

@@ -20,4 +20,12 @@ public interface FloorService {
      */
     public Floor getFloorByFid(int fid);
 
+
+    /**
+     * 新增楼层
+     * @param floor 楼层
+     * @return 是否新增成功
+     */
+    public boolean addFloor(Floor floor);
+
 }

@@ -20,4 +20,12 @@ public interface WardService {
      */
     public Ward getWardByWid(int wid);
 
+
+    /**
+     * 新增病房
+     * @param ward 病房
+     * @return 是否新增成功
+     */
+    public boolean addWard(Ward ward);
+
 }

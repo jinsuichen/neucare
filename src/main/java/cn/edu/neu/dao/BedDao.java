@@ -1,6 +1,7 @@
 package cn.edu.neu.dao;
 
 import cn.edu.neu.pojo.Bed;
+import cn.edu.neu.pojo.Structure;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public interface BedDao {
      * @param bed 床位
      * @return 是否添加成功
      */
-    public boolean addBed(Bed bed);
+    public boolean createBed(Bed bed);
 
     /**
      * 更改床位的病患信息
@@ -55,5 +56,8 @@ public interface BedDao {
      * @return 是否更改成功
      */
     public boolean updatePatient(Bed bed, Integer pid);
+
+
+
 
 }

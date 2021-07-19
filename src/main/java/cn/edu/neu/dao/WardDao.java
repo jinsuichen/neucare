@@ -1,5 +1,6 @@
 package cn.edu.neu.dao;
 
+import cn.edu.neu.pojo.Structure;
 import cn.edu.neu.pojo.Ward;
 
 import java.util.List;
@@ -21,10 +22,11 @@ public interface WardDao {
     public Ward queryWardByWid(int wid);
 
 
-   /* *//**
-     * 根据床位ID查找病房
-     * @param bid 床位的ID
-     * @return 病房
-     *//*
-    public Ward queryWardByBid(int bid);*/
+    /**
+     * 新增病房
+     * @param ward 病房
+     * @return 是否新增成功
+     */
+    public boolean createWard(Ward ward);
+
 }

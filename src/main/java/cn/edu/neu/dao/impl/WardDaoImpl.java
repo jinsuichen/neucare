@@ -2,10 +2,13 @@ package cn.edu.neu.dao.impl;
 
 import cn.edu.neu.dao.WardDao;
 import cn.edu.neu.po.DataBase;
+import cn.edu.neu.pojo.Structure;
 import cn.edu.neu.pojo.Ward;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static sun.swing.MenuItemLayoutHelper.max;
 
 public class WardDaoImpl implements WardDao {
 
@@ -40,6 +43,23 @@ public class WardDaoImpl implements WardDao {
             }
         }
         return null;
+    }
+
+    /**
+     * 新增病房
+     * @param ward 病房
+     * @return 是否新增成功
+     */
+    @Override
+    public boolean createWard(Ward ward) {
+        int maxQid = 1;
+        for (Ward w : DataBase.wardData) {
+            maxQid = max(maxQid, w.getWid());
+        }
+        ward.setWid(maxQid + 1);
+        ward.setDeleted(false);
+        DataBase.wardData.add(ward);
+        return true;
     }
 
 

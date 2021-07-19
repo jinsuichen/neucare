@@ -186,7 +186,7 @@ public class CreateDataUtils {
             Floor floor = new Floor();
             floor.setFid(i);
             floor.setSid(1);
-            floor.setHeight(i);
+            floor.setName(i + "层");
             floor.setDeleted(false);
             list.add(floor);
         }
@@ -196,7 +196,7 @@ public class CreateDataUtils {
             Floor floor = new Floor();
             floor.setFid(i);
             floor.setSid(2);
-            floor.setHeight(i - 6);
+            floor.setName(i - 6 + "层");
             floor.setDeleted(false);
             list.add(floor);
         }
@@ -206,7 +206,7 @@ public class CreateDataUtils {
             Floor floor = new Floor();
             floor.setFid(i);
             floor.setSid(3);
-            floor.setHeight(i - 9);
+            floor.setName(i - 9 +  "层");
             floor.setDeleted(false);
             list.add(floor);
         }

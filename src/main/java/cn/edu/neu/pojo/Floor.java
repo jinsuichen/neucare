@@ -3,7 +3,7 @@ package cn.edu.neu.pojo;
 public class Floor {
     private Integer fid;
     private Integer sid;
-    private Integer height;
+    private String name;
     private Boolean isDeleted;
 
     public Integer getFid() {
@@ -22,12 +22,12 @@ public class Floor {
         this.sid = sid;
     }
 
-    public Integer getHeight() {
-        return height;
+    public String getName() {
+        return name;
     }
 
-    public void setHeight(Integer height) {
-        this.height = height;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Boolean getDeleted() {
@@ -38,17 +38,8 @@ public class Floor {
         isDeleted = deleted;
     }
 
-    /*@Override
-    public String toString() {
-        return "Floor{" +
-                "fid=" + fid +
-                ", sid=" + sid +
-                ", height=" + height +
-                ", isDeleted=" + isDeleted +
-                '}';
-    }*/
     @Override
     public String toString() {
-        return height + "楼";
+        return name;
     }
 }

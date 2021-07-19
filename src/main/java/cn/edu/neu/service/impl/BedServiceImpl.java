@@ -80,7 +80,7 @@ public class BedServiceImpl implements BedService {
      */
     @Override
     public Boolean addBed(Bed bed) {
-        return bedDao.addBed(bed);
+        return bedDao.createBed(bed);
     }
 
     /**

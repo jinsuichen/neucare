@@ -20,4 +20,11 @@ public interface StructureService {
      */
     public Structure getStructureBySid(int sid);
 
+    /**
+     * 新增建筑
+     * @param structure 建筑
+     * @return 是否新增成功
+     */
+    public boolean addStructure(Structure structure);
+
 }

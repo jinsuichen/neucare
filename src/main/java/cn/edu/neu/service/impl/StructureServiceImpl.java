@@ -32,4 +32,15 @@ public class StructureServiceImpl implements StructureService {
     public Structure getStructureBySid(int sid) {
         return structureDao.queryStructureBySid(sid);
     }
+
+
+    /**
+     * 新增建筑
+     * @param structure 建筑
+     * @return 是否新增成功
+     */
+    @Override
+    public boolean addStructure(Structure structure) {
+        return structureDao.createStructure(structure);
+    }
 }
