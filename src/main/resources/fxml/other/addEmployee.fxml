@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.ReisterController">
+    <children>
+        <TextField layoutX="220.0" layoutY="97.0" />
+        <TextField layoutX="220.0" layoutY="167.0" />
+        <TextField layoutX="220.0" layoutY="237.0" />
+        <ComboBox layoutX="221.0" layoutY="307.0" prefHeight="36.0" prefWidth="242.0" />
+        <TextField layoutX="220.0" layoutY="377.0" />
+        <TextField layoutX="220.0" layoutY="447.0" />
+        <TextField layoutX="221.0" layoutY="517.0" />
+        <TextField layoutX="221.0" layoutY="587.0" />
+
+        <Label layoutX="135.0" layoutY="103.0" text="用户名" />
+        <Label layoutX="115.0" layoutY="173.0" text="密码" />
+        <Label layoutX="135.0" layoutY="243.0" text="真实姓名" />
+        <Label layoutX="135.0" layoutY="314.0" text="职称" />
+        <Label layoutX="100.0" layoutY="383.0" text="出生日期" />
+        <Label layoutX="110.0" layoutY="453.0" text="专长" />
+        <Label layoutX="111.0" layoutY="523.0" text="电话" />
+        <Label layoutX="111.0" layoutY="593.0" text="身份证号码" />
+
+        <Button layoutX="131.0" layoutY="640.0" mnemonicParsing="false" text="确定" />
+        <Button layoutX="287.0" layoutY="640.0" mnemonicParsing="false" text="取消" />
+
+    </children>
+</AnchorPane>

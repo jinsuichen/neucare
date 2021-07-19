@@ -116,6 +116,8 @@ public class BedController {
 
         //TODO 添加起止日期
 
+        //生成表格数据
+
         statusColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Bed, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Bed, String> param) {
