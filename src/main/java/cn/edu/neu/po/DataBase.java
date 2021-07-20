@@ -19,6 +19,7 @@ public class DataBase {
     public static List<Structure> structureData;
     public static List<Ward> wardData;
     public static List<Template> templateData;
+    public static List<EvaluationInfo> evaluationInfoData;
 
     //FIXME 抽取为方法
 
@@ -33,6 +34,7 @@ public class DataBase {
         templateData = JsonUtils.parseList(FileUtils.toString("data/templates.json"), Template.class);
         //rareEquipmentData = JsonUtils.parseList(FileUtils.toString("data/rareEquipments.json"), RareEquipment.class);
         structureData = JsonUtils.parseList(FileUtils.toString("data/structures.json"), Structure.class);
+        evaluationInfoData = JsonUtils.parseList(FileUtils.toString("data/evaluationInfos.json"), EvaluationInfo.class);
     }
 
 }

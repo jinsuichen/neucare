@@ -10,7 +10,7 @@
     <children>
         <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="447.0" prefWidth="973.0">
         </TableView>
-        <Button fx:id="addButton" layoutX="420.0" layoutY="34.0" mnemonicParsing="false" text="添加">
+        <Button fx:id="addButton" layoutX="600.0" layoutY="34.0" mnemonicParsing="false" text="添加">
             <styleClass>
                 <String fx:value="btn" />
                 <String fx:value="btn-success" />
@@ -29,7 +29,8 @@
             </styleClass>
         </Button>
 
-        <Button fx:id="evaluateButton" layoutX="320.0" layoutY="34.0" mnemonicParsing="false" text="评估">
+        <ComboBox fx:id="comboBox" layoutX="330.0" layoutY="38.0" prefWidth="150.0" />
+        <Button fx:id="evaluateButton" layoutX="500.0" layoutY="34.0" mnemonicParsing="false" text="评估">
             <styleClass>
                 <String fx:value="btn" />
                 <String fx:value="btn-default" />

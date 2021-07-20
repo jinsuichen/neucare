@@ -26,7 +26,27 @@ public class CreateDataUtils {
         createBed();
         createQuestion();
         createTemplate();
+        creatEvaluationInfo();
 
+
+    }
+
+    public static void creatEvaluationInfo(){
+        List<EvaluationInfo> list = new ArrayList<>();
+        EvaluationInfo evaluationInfo = new EvaluationInfo();
+        evaluationInfo.setEid(1);
+        evaluationInfo.setPid(1);
+        evaluationInfo.setTid(1);
+        evaluationInfo.setTime("now");
+        evaluationInfo.setSuggestion("热死的");
+        evaluationInfo.setDeleted(false);
+        list.add(evaluationInfo);
+
+        try {
+            FileUtils.write(JsonUtils.serialize(list), "data/evaluationInfos.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

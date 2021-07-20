@@ -4,7 +4,7 @@ public class Floor {
     private Integer fid;
     private Integer sid;
     private String name;
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     public Integer getFid() {
         return fid;
@@ -30,11 +30,11 @@ public class Floor {
         this.name = name;
     }
 
-    public Boolean getDeleted() {
+    public boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 

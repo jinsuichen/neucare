@@ -2,7 +2,6 @@ package cn.edu.neu.dao.impl;
 
 import cn.edu.neu.dao.WardDao;
 import cn.edu.neu.po.DataBase;
-import cn.edu.neu.pojo.Structure;
 import cn.edu.neu.pojo.Ward;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class WardDaoImpl implements WardDao {
     public List<Ward> queryWardsByFid(int fid) {
         List<Ward> list = new ArrayList<>();
         for (Ward ward : DataBase.wardData) {
-            if (!ward.getDeleted() && ward.getFid() == fid) {
+            if (!ward.isDeleted() && ward.getFid() == fid) {
                 list.add(ward);
             }
         }
@@ -38,7 +37,7 @@ public class WardDaoImpl implements WardDao {
     @Override
     public Ward queryWardByWid(int wid) {
         for (Ward ward : DataBase.wardData){
-            if(!ward.getDeleted() && ward.getWid() == wid){
+            if(!ward.isDeleted() && ward.getWid() == wid){
                 return ward;
             }
         }

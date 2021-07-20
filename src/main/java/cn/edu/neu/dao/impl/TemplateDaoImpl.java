@@ -2,11 +2,7 @@ package cn.edu.neu.dao.impl;
 
 import cn.edu.neu.dao.TemplateDao;
 import cn.edu.neu.po.DataBase;
-import cn.edu.neu.pojo.Bed;
-import cn.edu.neu.pojo.Patient;
-import cn.edu.neu.pojo.Question;
 import cn.edu.neu.pojo.Template;
-import cn.edu.neu.service.TemplateService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +19,7 @@ public class TemplateDaoImpl implements TemplateDao {
     public List<Template> queryAllTemplates() {
         List<Template> list = new ArrayList<>();
         for(Template t : DataBase.templateData){
-            if(!t.getDeleted()){
+            if(!t.isDeleted()){
                 list.add(t);
             }
         }
@@ -38,7 +34,7 @@ public class TemplateDaoImpl implements TemplateDao {
     @Override
     public boolean deleteTemplateById(int tid) {
         for(Template t : DataBase.templateData){
-            if(!t.getDeleted() && t.getTid() == tid){
+            if(!t.isDeleted() && t.getTid() == tid){
                 t.setDeleted(true);
                 return true;
             }

@@ -7,7 +7,7 @@ public class Template {
     private Integer tid;
     private String name;
     private String type;
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     public Integer getTid() {
         return tid;
@@ -33,21 +33,16 @@ public class Template {
         this.type = type;
     }
 
-    public Boolean getDeleted() {
+    public boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 
     @Override
     public String toString() {
-        return "Template{" +
-                "tid=" + tid +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", isDeleted=" + isDeleted +
-                '}';
+        return name;
     }
 }

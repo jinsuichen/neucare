@@ -39,7 +39,7 @@ public class BedDaoImpl implements BedDao {
     public List<Bed> queryBedsBySid(int sid) {
         List<Bed> list = new ArrayList<>();
         for(Floor floor : DataBase.floorData){
-            if(!floor.getDeleted() && floor.getSid() == sid){
+            if(!floor.isDeleted() && floor.getSid() == sid){
                 list.addAll(queryBedsByFid(floor.getFid()));
             }
         }
@@ -56,7 +56,7 @@ public class BedDaoImpl implements BedDao {
     public List<Bed> queryBedsByFid(int fid) {
         List<Bed> list = new ArrayList<>();
         for (Ward ward : DataBase.wardData) {
-            if (!ward.getDeleted() && ward.getFid() == fid) {
+            if (!ward.isDeleted() && ward.getFid() == fid) {
                 list.addAll(queryBedsByWid(ward.getWid()));
             }
         }

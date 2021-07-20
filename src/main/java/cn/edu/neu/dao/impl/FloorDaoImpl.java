@@ -3,8 +3,6 @@ package cn.edu.neu.dao.impl;
 import cn.edu.neu.dao.FloorDao;
 import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.Floor;
-import cn.edu.neu.pojo.Question;
-import cn.edu.neu.pojo.Structure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +21,7 @@ public class FloorDaoImpl implements FloorDao {
         List<Floor> list = new ArrayList<>();
 
         for( Floor floor : DataBase.floorData){
-            if(!floor.getDeleted() && floor.getSid() == sid){
+            if(!floor.isDeleted() && floor.getSid() == sid){
                 list.add(floor);
             }
         }
@@ -38,7 +36,7 @@ public class FloorDaoImpl implements FloorDao {
     @Override
     public Floor queryFloorByFid(int fid) {
         for(Floor floor : DataBase.floorData){
-            if(!floor.getDeleted() && floor.getFid() == fid){
+            if(!floor.isDeleted() && floor.getFid() == fid){
                 return floor;
             }
         }

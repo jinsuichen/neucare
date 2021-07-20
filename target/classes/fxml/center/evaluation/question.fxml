@@ -14,7 +14,7 @@
         <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="477.0" prefWidth="973.0">
 
         </TableView>
-        <Button fx:id="addButton" layoutX="280.0" layoutY="34.0" mnemonicParsing="false" text="新建">
+        <Button fx:id="addButton" layoutX="80.0" layoutY="34.0" mnemonicParsing="false" text="新建">
             <styleClass>
                 <String fx:value="btn"/>
                 <String fx:value="btn-success"/>
@@ -26,6 +26,5 @@
                 <String fx:value="btn-danger"/>
             </styleClass>
         </Button>
-        <ComboBox layoutX="82.0" layoutY="38.0" prefWidth="150.0"/>
     </children>
 </AnchorPane>

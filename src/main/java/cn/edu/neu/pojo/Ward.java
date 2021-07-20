@@ -4,7 +4,7 @@ public class Ward {
     private Integer wid;
     private Integer fid;
     private String name;
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     public Integer getWid() {
         return wid;
@@ -30,12 +30,12 @@ public class Ward {
         this.name = name;
     }
 
-    public Boolean getDeleted() {
+    public boolean isDeleted() {
         return isDeleted;
     }
 
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 
