@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.ReisterController">
-   <children>
-      <Label layoutX="55.0" layoutY="72.0" text="index" />
-      <Label layoutX="91.0" layoutY="150.0" prefHeight="18.0" prefWidth="321.0" text="title" />
-      <Label layoutX="90.0" layoutY="243.0" text="1" />
-      <Label layoutX="90.0" layoutY="348.0" text="2" />
-      <Label layoutX="90.0" layoutY="456.0" text="3" />
-      <Button layoutX="116.0" layoutY="597.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="A" />
-      <Button layoutX="211.0" layoutY="597.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="B" />
-      <Button layoutX="304.0" layoutY="597.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="C" />
-   </children>
+    <children>
+        <Label layoutX="55.0" layoutY="72.0" text="index">
+            <font>
+                <Font name="Microsoft YaHei" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="129.0" layoutY="150.0" prefHeight="18.0" prefWidth="321.0" text="title">
+            <font>
+                <Font name="Microsoft YaHei" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="90.0" layoutY="243.0" text="1">
+            <font>
+                <Font name="Microsoft YaHei" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="90.0" layoutY="348.0" text="2">
+            <font>
+                <Font name="Microsoft YaHei" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="90.0" layoutY="456.0" text="3">
+            <font>
+                <Font name="Microsoft YaHei" size="18.0" />
+            </font>
+        </Label>
+        <Button layoutX="116.0" layoutY="597.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="A" />
+        <Button layoutX="211.0" layoutY="597.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="B" />
+        <Button layoutX="304.0" layoutY="597.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="C" />
+    </children>
 </AnchorPane>

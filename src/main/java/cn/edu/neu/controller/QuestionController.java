@@ -53,6 +53,20 @@ public class QuestionController {
         TableColumn<Question, String> choice3Column = new TableColumn<>("选项3");
         TableColumn<Question, String> typeColumn = new TableColumn<>("类型");
 
+        idColumn.setPrefWidth(50);
+        titleColumn.setPrefWidth(218);
+        choice1Column.setPrefWidth(213);
+        choice2Column.setPrefWidth(213);
+        choice3Column.setPrefWidth(213);
+        typeColumn.setPrefWidth(50);
+
+        idColumn.setStyle("-fx-alignment: CENTER;");
+        titleColumn.setStyle("-fx-alignment: CENTER;");
+        choice1Column.setStyle("-fx-alignment: CENTER;");
+        choice2Column.setStyle("-fx-alignment: CENTER;");
+        choice3Column.setStyle("-fx-alignment: CENTER;");
+        typeColumn.setStyle("-fx-alignment: CENTER;");
+
         idColumn.setCellValueFactory(new PropertyValueFactory<Question, Number>("qid"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Question, String>("title"));
         choice1Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice1"));
@@ -105,7 +119,6 @@ public class QuestionController {
                 Button cancelButton = (Button) anchorPane.getChildren().get(9);
 
 
-
                 cancelButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -121,7 +134,7 @@ public class QuestionController {
                         question.setChoice1(choice1TextField.getText());
                         question.setChoice2(choice2TextField.getText());
                         question.setChoice3(choice3TextField.getText());
-                        if(questionService.addQuestion(question)){
+                        if (questionService.addQuestion(question)) {
                             //如果添加成功，进行数据展示并关闭窗口
                             list.add(question);
                             stage.close();
@@ -141,8 +154,8 @@ public class QuestionController {
                 List<Object> itemList = new ArrayList<>();
                 itemList.addAll(selectedItems);
 
-                for(Object o : itemList){
-                    Question question = (Question)o;
+                for (Object o : itemList) {
+                    Question question = (Question) o;
                     questionService.deletePatientById(question.getQid());
                     list.remove(question);
 
@@ -150,8 +163,6 @@ public class QuestionController {
 
             }
         });
-
-
 
 
     }

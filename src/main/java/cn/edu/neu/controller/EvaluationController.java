@@ -48,7 +48,7 @@ public class EvaluationController {
     private final EmployeeService employeeService = new EmployeeServiceImpl();
 
     @FXML
-    public void initialize(){
+    public void initialize() {
 
         //为可观察列表添加数据
         list.addAll(evaluationInfoService.getAllEvaluationInfos());
@@ -63,6 +63,24 @@ public class EvaluationController {
         TableColumn<EvaluationInfo, String> timeColumn = new TableColumn<>("评估时间");
         TableColumn<EvaluationInfo, String> employeeColumn = new TableColumn<>("评估人");
         TableColumn<EvaluationInfo, String> suggestionColumn = new TableColumn<>("建议");
+
+        nameColumn.setPrefWidth(139);
+        genderColumn.setPrefWidth(139);
+        templateNameColumn.setPrefWidth(139);
+        templateTypeColumn.setPrefWidth(139);
+        timeColumn.setPrefWidth(139);
+        employeeColumn.setPrefWidth(139);
+        suggestionColumn.setPrefWidth(139);
+
+        nameColumn.setStyle("-fx-alignment: CENTER;");
+        genderColumn.setStyle("-fx-alignment: CENTER;");
+        templateNameColumn.setStyle("-fx-alignment: CENTER;");
+        templateTypeColumn.setStyle("-fx-alignment: CENTER;");
+        timeColumn.setStyle("-fx-alignment: CENTER;");
+        employeeColumn.setStyle("-fx-alignment: CENTER;");
+        suggestionColumn.setStyle("-fx-alignment: CENTER;");
+
+
 
         //显示表格信息
         //TODO 将方法写进EvaluationInfoDao中

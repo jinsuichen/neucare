@@ -95,6 +95,25 @@ public class BedController {
         TableColumn<Bed, String> genderColumn = new TableColumn<>("性别");
         TableColumn<Bed, String> ageColumn = new TableColumn<>("年龄");
 
+        idColumn.setPrefWidth(50);
+        locationColumn.setPrefWidth(190);
+        startTimeColumn.setPrefWidth(121);
+        endTimeColumn.setPrefWidth(121);
+        statusColumn.setPrefWidth(121);
+        nameColumn.setPrefWidth(121);
+        genderColumn.setPrefWidth(121);
+        ageColumn.setPrefWidth(121);
+
+        idColumn.setStyle("-fx-alignment: CENTER;");
+        locationColumn.setStyle("-fx-alignment: CENTER;");
+        startTimeColumn.setStyle("-fx-alignment: CENTER;");
+        endTimeColumn.setStyle("-fx-alignment: CENTER;");
+        statusColumn.setStyle("-fx-alignment: CENTER;");
+        nameColumn.setStyle("-fx-alignment: CENTER;");
+        genderColumn.setStyle("-fx-alignment: CENTER;");
+        ageColumn.setStyle("-fx-alignment: CENTER;");
+
+
         //添加表格信息
         idColumn.setCellValueFactory(new PropertyValueFactory<Bed, Number>("bid"));
         locationColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Bed, String>, ObservableValue<String>>() {
@@ -183,10 +202,7 @@ public class BedController {
         });
 
 
-        /*emergencyTelephoneColumn.setCellValueFactory(param -> {
-            SimpleStringProperty emergencyTelephone = new SimpleStringProperty(param.getValue().getEmergencyTelephone());
-            return emergencyTelephone;
-        });*/
+
 
         tableView.getColumns().add(idColumn);
         tableView.getColumns().add(locationColumn);
@@ -216,7 +232,7 @@ public class BedController {
         floorBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(floorBox.getValue() == null){
+                if (floorBox.getValue() == null) {
                     return;
                 }
                 int fid = ((Floor) floorBox.getValue()).getFid();
@@ -245,7 +261,7 @@ public class BedController {
                     Bed bed2 = (Bed) list.get(1);
                     bedService.swap(bed1, bed2);
                     tableView.refresh();
-                }else {
+                } else {
                     FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您需要选择两个床位", "");
                 }
 
@@ -299,6 +315,22 @@ public class BedController {
                     telephoneColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("telephone"));
                     emergencyContactColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("emergencyContact"));
                     emergencyTelephoneColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("emergencyTelephone"));
+
+                    idColumn.setPrefWidth(50);
+                    nameColumn.setPrefWidth(113);
+                    ageColumn.setPrefWidth(113);
+                    genderColumn.setPrefWidth(113);
+                    telephoneColumn.setPrefWidth(113);
+                    emergencyContactColumn.setPrefWidth(113);
+                    emergencyTelephoneColumn.setPrefWidth(113);
+
+                    idColumn.setStyle("-fx-alignment: CENTER;");
+                    nameColumn.setStyle("-fx-alignment: CENTER;");
+                    ageColumn.setStyle("-fx-alignment: CENTER;");
+                    genderColumn.setStyle("-fx-alignment: CENTER;");
+                    telephoneColumn.setStyle("-fx-alignment: CENTER;");
+                    emergencyContactColumn.setStyle("-fx-alignment: CENTER;");
+                    emergencyTelephoneColumn.setStyle("-fx-alignment: CENTER;");
 
                     patientTable.getColumns().add(idColumn);
                     patientTable.getColumns().add(nameColumn);

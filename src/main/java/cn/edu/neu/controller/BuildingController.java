@@ -157,7 +157,6 @@ public class BuildingController {
     private TreeItem<Object> bfs(TreeItem<Object> root, Object obj) {
         Queue<TreeItem<Object>> queue = new ConcurrentLinkedQueue<>();
         queue.add(root);
-
         while (!queue.isEmpty()) {
             TreeItem<Object> item = queue.remove();
             if (item.getValue() == obj) {

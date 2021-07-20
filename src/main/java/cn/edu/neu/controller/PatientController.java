@@ -86,6 +86,24 @@ public class PatientController {
         TableColumn<Patient, String> emergencyContactColumn = new TableColumn<>("紧急联系人");
         TableColumn<Patient, String> emergencyTelephoneColumn = new TableColumn<>("紧急联系电话");
 
+        idColumn.setPrefWidth(50);
+        nameColumn.setPrefWidth(153);
+        ageColumn.setPrefWidth(153);
+        genderColumn.setPrefWidth(153);
+        telephoneColumn.setPrefWidth(153);
+        emergencyContactColumn.setPrefWidth(153);
+        emergencyTelephoneColumn.setPrefWidth(153);
+
+
+        idColumn.setStyle("-fx-alignment: CENTER;");
+        nameColumn.setStyle("-fx-alignment: CENTER;");
+        ageColumn.setStyle("-fx-alignment: CENTER;");
+        genderColumn.setStyle("-fx-alignment: CENTER;");
+        telephoneColumn.setStyle("-fx-alignment: CENTER;");
+        emergencyContactColumn.setStyle("-fx-alignment: CENTER;");
+        emergencyTelephoneColumn.setStyle("-fx-alignment: CENTER;");
+
+
         idColumn.setCellValueFactory(new PropertyValueFactory<Patient, Number>("pid"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<Patient, Number>("age"));
@@ -353,9 +371,9 @@ public class PatientController {
         Question question = list.get(questionIndex);
         index.setText("第" + (questionIndex + 1) + "题");
         title.setText(question.getTitle());
-        choice1.setText(question.getChoice1());
-        choice2.setText(question.getChoice2());
-        choice3.setText(question.getChoice3());
+        choice1.setText("A. "+question.getChoice1());
+        choice2.setText("B. "+question.getChoice2());
+        choice3.setText("C. "+question.getChoice3());
         return true;
     }
 

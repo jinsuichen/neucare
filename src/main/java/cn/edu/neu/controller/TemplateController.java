@@ -62,6 +62,13 @@ public class TemplateController {
         nameColumn.setCellValueFactory(new PropertyValueFactory<Template, String>("name"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<Template, String>("type"));
 
+        idColumn.setPrefWidth(50);
+        nameColumn.setPrefWidth(873);
+        typeColumn.setPrefWidth(50);
+
+        idColumn.setStyle("-fx-alignment: CENTER;");
+        nameColumn.setStyle("-fx-alignment: CENTER;");
+        typeColumn.setStyle("-fx-alignment: CENTER;");
 
         tableView.getColumns().add(idColumn);
         tableView.getColumns().add(nameColumn);
@@ -193,6 +200,20 @@ public class TemplateController {
                 TableColumn<Question, String> choice3Column = new TableColumn<>("选项3");
                 TableColumn<Question, String> typeColumn = new TableColumn<>("类型");
 
+                idColumn.setPrefWidth(50);
+                titleColumn.setPrefWidth(100);
+                choice1Column.setPrefWidth(100);
+                choice2Column.setPrefWidth(100);
+                choice3Column.setPrefWidth(100);
+                typeColumn.setPrefWidth(50);
+
+                idColumn.setStyle("-fx-alignment: CENTER;");
+                titleColumn.setStyle("-fx-alignment: CENTER;");
+                choice1Column.setStyle("-fx-alignment: CENTER;");
+                choice2Column.setStyle("-fx-alignment: CENTER;");
+                choice3Column.setStyle("-fx-alignment: CENTER;");
+                typeColumn.setStyle("-fx-alignment: CENTER;");
+
                 idColumn.setCellValueFactory(new PropertyValueFactory<Question, Number>("qid"));
                 titleColumn.setCellValueFactory(new PropertyValueFactory<Question, String>("title"));
                 choice1Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice1"));
@@ -247,6 +268,20 @@ public class TemplateController {
                         choice2Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice2"));
                         choice3Column.setCellValueFactory(new PropertyValueFactory<Question, String>("choice3"));
                         typeColumn.setCellValueFactory(new PropertyValueFactory<Question, String>("type"));
+
+                        idColumn.setPrefWidth(50);
+                        titleColumn.setPrefWidth(100);
+                        choice1Column.setPrefWidth(100);
+                        choice2Column.setPrefWidth(100);
+                        choice3Column.setPrefWidth(100);
+                        typeColumn.setPrefWidth(50);
+
+                        idColumn.setStyle("-fx-alignment: CENTER;");
+                        titleColumn.setStyle("-fx-alignment: CENTER;");
+                        choice1Column.setStyle("-fx-alignment: CENTER;");
+                        choice2Column.setStyle("-fx-alignment: CENTER;");
+                        choice3Column.setStyle("-fx-alignment: CENTER;");
+                        typeColumn.setStyle("-fx-alignment: CENTER;");
 
                         questionTable.getColumns().add(idColumn);
                         questionTable.getColumns().add(titleColumn);
