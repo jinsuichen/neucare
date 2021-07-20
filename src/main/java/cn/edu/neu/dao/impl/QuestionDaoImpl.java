@@ -37,7 +37,7 @@ public class QuestionDaoImpl implements QuestionDao {
     @Override
     public Question queryQuestionByQid(int qid) {
         for(Question q : DataBase.questionData){
-            if(!q.isDeleted() && q.getQid() == qid){
+            if(q.getQid() == qid){
                 return q;
             }
         }

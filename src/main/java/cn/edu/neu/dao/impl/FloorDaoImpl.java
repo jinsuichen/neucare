@@ -36,7 +36,7 @@ public class FloorDaoImpl implements FloorDao {
     @Override
     public Floor queryFloorByFid(int fid) {
         for(Floor floor : DataBase.floorData){
-            if(!floor.isDeleted() && floor.getFid() == fid){
+            if(floor.getFid() == fid){
                 return floor;
             }
         }

@@ -41,7 +41,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public Employee queryEmployeeByEid(int eid) {
         for(Employee e : DataBase.employeeData){
-            if(!e.isDeleted() && e.getEid() == eid){
+            if(e.getEid() == eid){
                 return e;
             }
         }

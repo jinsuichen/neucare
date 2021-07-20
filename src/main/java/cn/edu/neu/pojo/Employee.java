@@ -15,6 +15,7 @@ public class Employee implements Comparable<Employee>{
     private boolean isDeleted;
 
     public Employee() {
+
     }
 
     public Employee(String username) {

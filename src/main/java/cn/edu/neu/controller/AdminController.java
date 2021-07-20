@@ -4,6 +4,7 @@ import cn.edu.neu.pojo.Employee;
 import cn.edu.neu.pojo.EmployeeType;
 import cn.edu.neu.service.EmployeeService;
 import cn.edu.neu.service.impl.EmployeeServiceImpl;
+import cn.edu.neu.util.FxDialogUtils;
 import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -23,6 +24,7 @@ import javafx.util.Callback;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class AdminController {
     @FXML
@@ -211,10 +213,9 @@ public class AdminController {
                 Button submitButton = (Button) anchorPane.getChildren().get(16);
                 Button cancelButton = (Button) anchorPane.getChildren().get(17);
 
-                comboBox.getItems().add("医生");
-                comboBox.getItems().add("护士");
-                comboBox.getItems().add("护工");
-                comboBox.setValue("医生");
+                typeBox.getItems().add("医生");
+                typeBox.getItems().add("护士");
+                typeBox.getItems().add("护工");
 
 
                 stage.show();
@@ -224,33 +225,78 @@ public class AdminController {
                     @Override
                     public void handle(ActionEvent event) {
                         String errMsg = "";
+                        boolean flag = true;
 
-                        //TODO 表单检验
-                        Employee employee = new Employee();
-                        employee.setUsername(usernameField.getText());
-                        employee.setPassword(passwordField.getText());
-                        employee.setName(nameField.getText());
-                        String value = (String) typeBox.getValue();
-                        EmployeeType type = EmployeeType.DOCTOR;
-                        if ("医生".equals(value)) {
-                            type = EmployeeType.DOCTOR;
-                        } else if ("护士".equals(value)) {
-                            type = EmployeeType.NURSE;
-                        } else if ("护工".equals(value)) {
-                            type = EmployeeType.CAREWORKER;
+                        String username = usernameField.getText();
+                        String password = passwordField.getText();
+                        String name = nameField.getText();
+                        Object typeObj = typeBox.getValue();
+                        String birthday = birthdayField.getText();
+                        String expertSkill = expertSkillField.getText();
+                        String telephone = telephoneField.getText();
+                        String identificationNumber = identificationNumberField.getText();
+
+                        if(username == null || "".equals(username)){
+                            flag = false;
+                            errMsg += "用户名不能为空\n";
                         }
-                        employee.setType(type);
-                        employee.setBirthday(birthdayField.getText());
-                        employee.setExpertSkill(expertSkillField.getText());
-                        employee.setTelephone(telephoneField.getText());
-                        employee.setIdentificationNumber(identificationNumberField.getText());
+                        if(password == null || "".equals(password)){
+                            flag = false;
+                            errMsg += "密码不能为空\n";
+                        }
+                        if(name == null || "".equals(name)){
+                            flag = false;
+                            errMsg += "姓名不能为空\n";
+                        }
+                        if(typeObj == null){
+                            flag = false;
+                            errMsg += "您未选择职称\n";
+                        }
+                        if(birthday == null || "".equals(birthday)){
+                            flag = false;
+                            errMsg += "生日不能为空\n";
+                        }
+                        if(expertSkill == null || "".equals(expertSkill)){
+                            flag = false;
+                            errMsg += "专长不能为空\n";
+                        }
+                        if(!Pattern.matches("^([1]\\d{10}|([\\(（]?0[0-9]{2,3}[）\\)]?[-]?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)$", telephone)){
+                            flag = false;
+                            errMsg += "电话号码填写有误\n";
+                        }
+                        if(!Pattern.matches("^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$", identificationNumber)){
+                            flag = false;
+                            errMsg += "身份证号码填写有误\n";
+                        }
 
+                        if(flag){
+                            Employee employee = new Employee();
+                            employee.setUsername(username);
+                            employee.setPassword(password);
+                            employee.setName(name);
+                            String value = (String) typeObj;
+                            EmployeeType type = null;
+                            if ("医生".equals(value)) {
+                                type = EmployeeType.DOCTOR;
+                            } else if ("护士".equals(value)) {
+                                type = EmployeeType.NURSE;
+                            } else if ("护工".equals(value)) {
+                                type = EmployeeType.CAREWORKER;
+                            }
+                            employee.setType(type);
+                            employee.setBirthday(birthday);
+                            employee.setExpertSkill(expertSkill);
+                            employee.setTelephone(telephone);
+                            employee.setIdentificationNumber(identificationNumber);
 
-                        if (employeeService.addEmployee(employee)) {
-                            //如果添加成功，进行数据展示并关闭窗口
+                            employeeService.addEmployee(employee);
                             tableViewList.add(employee);
                             stage.close();
+
+                        }else{
+                            FxDialogUtils.showMessageDialog((Stage) anchorPane.getScene().getWindow(), errMsg, "信息有误");
                         }
+
                     }
                 });
 

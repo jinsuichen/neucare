@@ -13,6 +13,7 @@ import cn.edu.neu.service.impl.EvaluationInfoServiceImpl;
 import cn.edu.neu.service.impl.PatientServiceImpl;
 import cn.edu.neu.service.impl.QuestionServiceImpl;
 import cn.edu.neu.service.impl.TemplateServiceImpl;
+import cn.edu.neu.util.DateUtils;
 import cn.edu.neu.util.FxDialogUtils;
 import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.collections.FXCollections;
@@ -32,12 +33,13 @@ import javafx.util.StringConverter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Pattern;
 
 public class PatientController {
     @FXML
     private AnchorPane root;
     @FXML
-    private ComboBox comboBox;
+    private ComboBox<Template> comboBox;
     @FXML
     private TextField searchText;
 
@@ -94,7 +96,6 @@ public class PatientController {
         emergencyContactColumn.setPrefWidth(153);
         emergencyTelephoneColumn.setPrefWidth(153);
 
-
         idColumn.setStyle("-fx-alignment: CENTER;");
         nameColumn.setStyle("-fx-alignment: CENTER;");
         ageColumn.setStyle("-fx-alignment: CENTER;");
@@ -111,6 +112,7 @@ public class PatientController {
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("telephone"));
         emergencyContactColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("emergencyContact"));
         emergencyTelephoneColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("emergencyTelephone"));
+
 
         tableView.getColumns().add(idColumn);
         tableView.getColumns().add(nameColumn);
@@ -190,38 +192,81 @@ public class PatientController {
 
 
                 TextField nameField = (TextField) anchorPane.getChildren().get(0);
-                TextField birthdayField = (TextField) anchorPane.getChildren().get(1);
-                TextField genderField = (TextField) anchorPane.getChildren().get(2);
-                TextField telephoneField = (TextField) anchorPane.getChildren().get(3);
-                TextField emergencyContactField = (TextField) anchorPane.getChildren().get(4);
-                TextField emergencyTelephoneField = (TextField) anchorPane.getChildren().get(5);
+                ComboBox yearBox = (ComboBox) anchorPane.getChildren().get(1);
+                ComboBox monthBox = (ComboBox) anchorPane.getChildren().get(2);
+                TextField genderField = (TextField) anchorPane.getChildren().get(3);
+                TextField telephoneField = (TextField) anchorPane.getChildren().get(4);
+                TextField emergencyContactField = (TextField) anchorPane.getChildren().get(5);
+                TextField emergencyTelephoneField = (TextField) anchorPane.getChildren().get(6);
 
-                Button submitButton = (Button) anchorPane.getChildren().get(12);
-                Button cancelButton = (Button) anchorPane.getChildren().get(13);
+                Button submitButton = (Button) anchorPane.getChildren().get(13);
+                Button cancelButton = (Button) anchorPane.getChildren().get(14);
+
+
+                for (int i = 1920; i <= 2021; i++) {
+                    yearBox.getItems().add(i);
+                }
+
+                for (int i = 1; i <= 12; i++) {
+                    monthBox.getItems().add(i);
+                }
 
 
                 submitButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+
+                        boolean flag = true;
                         String errMsg = "";
 
+                        String name = nameField.getText();
+                        String gender = genderField.getText();
+                        Object yearObj = yearBox.getValue();
+                        Object monthObj = monthBox.getValue();
+                        String telephone = telephoneField.getText();
+                        String emergencyContact = emergencyContactField.getText();
+                        String emergencyTelephone = emergencyTelephoneField.getText();
 
-                        Patient patient = new Patient();
-                        patient.setName(nameField.getText());
-                        //TODO 根据生日生成年龄
-                        patient.setAge(16);
-                        patient.setGender(genderField.getText());
-                        patient.setTelephone(telephoneField.getText());
-                        patient.setEmergencyContact(emergencyContactField.getText());
-                        patient.setEmergencyTelephone(emergencyTelephoneField.getText());
-
-                        if (patientService.addPatient(patient)) {
-                            //如果添加成功，进行数据展示并关闭窗口
-                            list.add(patient);
-                            stage.close();
+                        if(name == null || "".equals(name)){
+                            flag = false;
+                            errMsg += "姓名不能为空\n";
+                        }
+                        if(!"男".equals(gender) && !"女".equals(gender)){
+                            flag = false;
+                            errMsg += "性别只能为\"男\"或\"女\"\n";
+                        }
+                        if(yearObj == null || monthObj == null){
+                            flag = false;
+                            errMsg += "您未选择出生年月\n";
+                        }
+                        if(!Pattern.matches("^([1]\\d{10}|([\\(（]?0[0-9]{2,3}[）\\)]?[-]?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)$", telephone)){
+                            flag = false;
+                            errMsg += "您的电话号码填写有误\n";
+                        }
+                        if(emergencyContact == null || "".equals(emergencyContact)){
+                            flag = false;
+                            errMsg += "紧急联系人姓名不能为空\n";
+                        }
+                        if(!Pattern.matches("^([1]\\d{10}|([\\(（]?0[0-9]{2,3}[）\\)]?[-]?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)$", emergencyTelephone)){
+                            flag = false;
+                            errMsg += "您的紧急联系电话号码填写有误\n";
                         }
 
-
+                        if (flag) {
+                            //如果添加成功，添加病患、进行展示并关闭窗口
+                            Patient patient = new Patient();
+                            patient.setName(name);
+                            patient.setAge(2021 - (int)yearObj);
+                            patient.setGender(gender);
+                            patient.setTelephone(telephone);
+                            patient.setEmergencyContact(emergencyContact);
+                            patient.setEmergencyTelephone(emergencyTelephone);
+                            patientService.addPatient(patient);
+                            list.add(patient);
+                            stage.close();
+                        }else{
+                            FxDialogUtils.showMessageDialog((Stage) anchorPane.getScene().getWindow(), errMsg, "信息有误");
+                        }
                     }
                 });
 
@@ -232,9 +277,7 @@ public class PatientController {
                     }
                 });
 
-
                 stage.show();
-
 
             }
         });
@@ -318,20 +361,20 @@ public class PatientController {
                 AtomicReference<Integer> currentQuestionIndex = new AtomicReference<>(0);
                 AtomicReference<Integer> totScore = new AtomicReference<>(0);
 
-                loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index,title,choice1,choice2,choice3);
+                loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3);
 
                 EvaluationInfo evaluationInfo = new EvaluationInfo();
                 evaluationInfo.setTid(template.getTid());
                 evaluationInfo.setPid(patient.getPid());
-                //TODO 设置时间与建议
-                evaluationInfo.setTime("now");
-                evaluationInfo.setSuggestion("dead");
+                //TODO 设置建议
+                evaluationInfo.setTime(DateUtils.format(DateUtils.getSysDate(), DateUtils.DATEFORMATSECOND));
+                evaluationInfo.setSuggestion("");
                 evaluationInfo.setEid(Status.currentEmployee.getEid());
 
 
                 button1.setOnAction(event1 -> {
                     totScore.updateAndGet(v -> v + 5);
-                    if(!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)){
+                    if (!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)) {
                         stage.close();
                         FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您已完成测评", "");
 
@@ -342,19 +385,18 @@ public class PatientController {
                 });
                 button2.setOnAction(event1 -> {
                     totScore.updateAndGet(v -> v + 3);
-                    if(!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)){
+                    if (!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)) {
                         stage.close();
                         System.out.println(totScore);
                     }
                 });
                 button3.setOnAction(event1 -> {
                     totScore.updateAndGet(v -> v + 1);
-                    if(!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)){
+                    if (!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)) {
                         stage.close();
                         System.out.println(totScore);
                     }
                 });
-
 
 
             }
@@ -371,9 +413,9 @@ public class PatientController {
         Question question = list.get(questionIndex);
         index.setText("第" + (questionIndex + 1) + "题");
         title.setText(question.getTitle());
-        choice1.setText("A. "+question.getChoice1());
-        choice2.setText("B. "+question.getChoice2());
-        choice3.setText("C. "+question.getChoice3());
+        choice1.setText("A. " + question.getChoice1());
+        choice2.setText("B. " + question.getChoice2());
+        choice3.setText("C. " + question.getChoice3());
         return true;
     }
 

@@ -18,6 +18,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     /**
      * 查询所有模板
+     *
      * @return 模板集合
      */
     @Override
@@ -28,6 +29,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     /**
      * 根据模板ID查找模板
+     *
      * @param tid 模板ID
      * @return 模板
      */
@@ -38,6 +40,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     /**
      * 根据模板ID删除模板
+     *
      * @param tid 模板的ID
      * @return 是否删除成功
      */
@@ -49,6 +52,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     /**
      * 增加模板
+     *
      * @param template 模板
      * @return 是否增加成功
      */
@@ -59,13 +63,13 @@ public class TemplateServiceImpl implements TemplateService {
 
 
     /**
-     * 根据模板ID删除模板
+     * 为指定模板移除指定问题
      *
-     * @param tid 模板的ID
-     * @return 是否删除成功
+     * @param qid 问题ID
+     * @return 是否移除成功
      */
     @Override
-    public boolean removeQuestion(int tid, int qid) {
+    public boolean removeQuestion(int qid) {
         Question question = questionDao.queryQuestionByQid(qid);
         question.setTid(null);
         return true;
@@ -73,6 +77,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     /**
      * 为指定模板绑定指定问题
+     *
      * @param tid 模板ID
      * @param qid 问题ID
      * @return 是否移除成功

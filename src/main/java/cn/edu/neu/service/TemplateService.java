@@ -16,6 +16,7 @@ public interface TemplateService {
 
     /**
      * 根据模板ID查找模板
+     *
      * @param tid 模板ID
      * @return 模板
      */
@@ -40,14 +41,15 @@ public interface TemplateService {
 
     /**
      * 为指定模板移除指定问题
-     * @param tid 模板ID
+     *
      * @param qid 问题ID
      * @return 是否移除成功
      */
-    boolean removeQuestion(int tid, int qid);
+    boolean removeQuestion(int qid);
 
     /**
      * 为指定模板绑定指定问题
+     *
      * @param tid 模板ID
      * @param qid 问题ID
      * @return 是否移除成功

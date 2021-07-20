@@ -1,7 +1,9 @@
 package cn.edu.neu.dao.impl;
 
+import cn.edu.neu.dao.QuestionDao;
 import cn.edu.neu.dao.TemplateDao;
 import cn.edu.neu.po.DataBase;
+import cn.edu.neu.pojo.Question;
 import cn.edu.neu.pojo.Template;
 
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import java.util.List;
 import static sun.swing.MenuItemLayoutHelper.max;
 
 public class TemplateDaoImpl implements TemplateDao {
+
+    private QuestionDao questionDao = new QuestionDaoImpl();
 
     /**
      * 查询所有模板
@@ -34,7 +38,7 @@ public class TemplateDaoImpl implements TemplateDao {
     @Override
     public Template queryTemplateByTid(int tid) {
         for(Template t : DataBase.templateData){
-            if(!t.isDeleted() && t.getTid() == tid){
+            if(t.getTid() == tid){
                 return t;
             }
         }
@@ -51,6 +55,10 @@ public class TemplateDaoImpl implements TemplateDao {
         for(Template t : DataBase.templateData){
             if(!t.isDeleted() && t.getTid() == tid){
                 t.setDeleted(true);
+                List<Question> questionList = questionDao.queryQuestionsByTid(tid);
+                for(Question q : questionList){
+                    q.setTid(null);
+                }
                 return true;
             }
         }

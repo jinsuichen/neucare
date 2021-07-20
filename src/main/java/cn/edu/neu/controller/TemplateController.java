@@ -336,7 +336,7 @@ public class TemplateController {
                         for (Object o : itemList) {
                             Question question = (Question) o;
                             //FIXME -1
-                            templateService.removeQuestion(-1, question.getQid());
+                            templateService.removeQuestion(question.getQid());
                             questionObservableList.remove(question);
                         }
                     }

@@ -38,7 +38,7 @@ public class StructureDaoImpl implements StructureDao {
     @Override
     public Structure queryStructureBySid(int sid) {
         for(Structure structure : DataBase.structureData){
-            if(!structure.isDeleted() && structure.getSid() == sid){
+            if(structure.getSid() == sid){
                 return structure;
             }
         }

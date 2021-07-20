@@ -89,7 +89,7 @@ public class BedDaoImpl implements BedDao {
     @Override
     public Bed queryBedByBid(int bid) {
         for (Bed bed : DataBase.bedData) {
-            if (!bed.isDeleted() && bed.getBid() == bid) {
+            if (bed.getBid() == bid) {
                 return bed;
             }
         }

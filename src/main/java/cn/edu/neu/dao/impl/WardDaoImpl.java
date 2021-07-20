@@ -37,7 +37,7 @@ public class WardDaoImpl implements WardDao {
     @Override
     public Ward queryWardByWid(int wid) {
         for (Ward ward : DataBase.wardData){
-            if(!ward.isDeleted() && ward.getWid() == wid){
+            if(ward.getWid() == wid){
                 return ward;
             }
         }
