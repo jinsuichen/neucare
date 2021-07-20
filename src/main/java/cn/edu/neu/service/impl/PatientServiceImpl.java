@@ -22,6 +22,17 @@ public class PatientServiceImpl implements PatientService {
         return dao.queryAllPatients();
     }
 
+
+    /**
+     * 根据病患ID查找病患
+     * @param pid 病患ID
+     * @return 病患
+     */
+    @Override
+    public Patient getPatientByPid(int pid) {
+        return dao.queryPatientByPid(pid);
+    }
+
     /**
      * 获取所有没有床位的病患信息
      * @return 病患集合

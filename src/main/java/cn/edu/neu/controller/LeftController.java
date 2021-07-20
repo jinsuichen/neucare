@@ -70,7 +70,11 @@ public class LeftController {
         lbl3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                FxUtils.changeCenter(Status.root, Status.category1, "rareEquipment");
+                if("user".equals(Status.category1)){
+                    FxUtils.changeCenter(Status.root, Status.category1, "rareEquipment");
+                }else if("evaluation".equals(Status.category1)){
+                    FxUtils.changeCenter(Status.root, Status.category1, "evaluation");
+                }
             }
         });
 

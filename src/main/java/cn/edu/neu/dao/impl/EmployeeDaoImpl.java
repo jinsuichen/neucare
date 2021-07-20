@@ -34,6 +34,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     /**
+     * 根据员工ID查找员工
+     * @param eid 员工ID
+     * @return 员工
+     */
+    @Override
+    public Employee queryEmployeeByEid(int eid) {
+        for(Employee e : DataBase.employeeData){
+            if(!e.isDeleted() && e.getEid() == eid){
+                return e;
+            }
+        }
+        return null;
+    }
+
+    /**
      * 根据员工类型查询所有员工
      * @return 员工集合
      * @param employeeType 员工类型

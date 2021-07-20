@@ -37,6 +37,7 @@ public class CreateDataUtils {
         evaluationInfo.setEid(1);
         evaluationInfo.setPid(1);
         evaluationInfo.setTid(1);
+        evaluationInfo.setIid(1);
         evaluationInfo.setTime("now");
         evaluationInfo.setSuggestion("热死的");
         evaluationInfo.setDeleted(false);

@@ -24,6 +24,13 @@ public interface EmployeeService {
     public List<Employee> getAllEmployees();
 
     /**
+     * 根据员工ID查找员工
+     * @param eid 员工ID
+     * @return 员工
+     */
+    public Employee getEmployeeByEid(int eid);
+
+    /**
      * 根据员工的姓名模糊查询员工
      * @param keyword 关键词
      * @return 员工集合

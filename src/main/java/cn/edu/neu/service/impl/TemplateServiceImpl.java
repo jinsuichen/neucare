@@ -25,6 +25,17 @@ public class TemplateServiceImpl implements TemplateService {
         return templateDao.queryAllTemplates();
     }
 
+
+    /**
+     * 根据模板ID查找模板
+     * @param tid 模板ID
+     * @return 模板
+     */
+    @Override
+    public Template getTemplateByTid(int tid) {
+        return templateDao.queryTemplateByTid(tid);
+    }
+
     /**
      * 根据模板ID删除模板
      * @param tid 模板的ID

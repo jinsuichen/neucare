@@ -97,7 +97,7 @@ public class FxUtils {
             Status.lbl1.setStyle("-fx-text-fill: #2585a6");
         }else if("bed".equals(category2) || "question".equals(category2)){
             Status.lbl2.setStyle("-fx-text-fill: #2585a6");
-        }else if("rareEquipment".equals(category2)){
+        }else if("rareEquipment".equals(category2) || "evaluation".equals(category2)){
             Status.lbl3.setStyle("-fx-text-fill: #2585a6");
         }
 

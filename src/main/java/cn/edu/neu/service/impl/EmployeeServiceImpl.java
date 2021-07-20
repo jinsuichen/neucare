@@ -35,6 +35,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     /**
+     * 根据员工ID查找员工
+     * @param eid 员工ID
+     * @return 员工
+     */
+    @Override
+    public Employee getEmployeeByEid(int eid) {
+        return dao.queryEmployeeByEid(eid);
+    }
+
+
+    /**
      * 根据员工的姓名模糊查询员工
      * @param keyword 关键词
      * @return 员工集合

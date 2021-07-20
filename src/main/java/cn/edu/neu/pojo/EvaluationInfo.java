@@ -2,12 +2,21 @@ package cn.edu.neu.pojo;
 
 public class EvaluationInfo {
 
+    private Integer iid;
     private Integer pid;
     private Integer tid;
     private Integer eid;
     private String time;
     private String suggestion;
     private boolean isDeleted;
+
+    public Integer getIid() {
+        return iid;
+    }
+
+    public void setIid(Integer iid) {
+        this.iid = iid;
+    }
 
     public Integer getPid() {
         return pid;

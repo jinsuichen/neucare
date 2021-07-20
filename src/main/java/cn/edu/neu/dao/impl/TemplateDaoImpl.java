@@ -27,6 +27,21 @@ public class TemplateDaoImpl implements TemplateDao {
     }
 
     /**
+     * 根据模板ID查找模板
+     * @param tid 模板ID
+     * @return 模板
+     */
+    @Override
+    public Template queryTemplateByTid(int tid) {
+        for(Template t : DataBase.templateData){
+            if(!t.isDeleted() && t.getTid() == tid){
+                return t;
+            }
+        }
+        return null;
+    }
+
+    /**
      * 根据模板ID删除模板
      * @param tid 模板的ID
      * @return 是否删除成功

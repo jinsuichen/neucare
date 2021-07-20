@@ -13,6 +13,14 @@ public interface TemplateService {
      */
     public List<Template> getAllTemplates();
 
+
+    /**
+     * 根据模板ID查找模板
+     * @param tid 模板ID
+     * @return 模板
+     */
+    public Template getTemplateByTid(int tid);
+
     /**
      * 根据模板ID删除模板
      *

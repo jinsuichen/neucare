@@ -130,7 +130,7 @@ public class TopController {
 
                 Status.lbl1.setText("模板管理");
                 Status.lbl2.setText("问题管理");
-                Status.lbl3.setText("");
+                Status.lbl3.setText("评估记录");
                 Status.lbl4.setText("");
                 Status.lbl5.setText("");
             }

@@ -17,6 +17,13 @@ public interface EmployeeDao {
     public Employee queryEmployeeByUsername(String username);
 
     /**
+     * 根据员工ID查找员工
+     * @param eid 员工ID
+     * @return 员工
+     */
+    public Employee queryEmployeeByEid(int eid);
+
+    /**
      * 根据员工类型查询所有员工
      * @return 员工集合
      * @param employeeType 员工类型
