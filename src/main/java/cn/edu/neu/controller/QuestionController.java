@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionController {
+
     @FXML
     private TableView tableView;
     @FXML
