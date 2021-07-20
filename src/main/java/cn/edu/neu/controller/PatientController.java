@@ -1,15 +1,20 @@
 package cn.edu.neu.controller;
 
+import cn.edu.neu.commom.Status;
+import cn.edu.neu.pojo.EvaluationInfo;
 import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.pojo.Question;
 import cn.edu.neu.pojo.Template;
+import cn.edu.neu.service.EvaluationInfoService;
 import cn.edu.neu.service.PatientService;
 import cn.edu.neu.service.QuestionService;
 import cn.edu.neu.service.TemplateService;
+import cn.edu.neu.service.impl.EvaluationInfoServiceImpl;
 import cn.edu.neu.service.impl.PatientServiceImpl;
 import cn.edu.neu.service.impl.QuestionServiceImpl;
 import cn.edu.neu.service.impl.TemplateServiceImpl;
-import cn.edu.neu.util.FxUtils;
+import cn.edu.neu.util.FxDialogUtils;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +34,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class PatientController {
+    @FXML
+    private AnchorPane root;
     @FXML
     private ComboBox comboBox;
     @FXML
@@ -52,6 +59,7 @@ public class PatientController {
     private final PatientService patientService = new PatientServiceImpl();
     private final TemplateService templateService = new TemplateServiceImpl();
     private final QuestionService questionService = new QuestionServiceImpl();
+    private final EvaluationInfoService evaluationInfoService = new EvaluationInfoServiceImpl();
 
     private ObservableList<Patient> list = FXCollections.observableArrayList();
 
@@ -155,16 +163,13 @@ public class PatientController {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addPatient.fxml");
+                AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/addPatient.fxml");
                 Stage stage = new Stage();
                 Scene scene = new Scene(anchorPane);
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.initModality(Modality.APPLICATION_MODAL);
 
-                //FIXME for test
-                //System.out.println(anchorPane.getChildren());
-                //anchorPane.getChildren().forEach(System.out::println);
 
                 TextField nameField = (TextField) anchorPane.getChildren().get(0);
                 TextField birthdayField = (TextField) anchorPane.getChildren().get(1);
@@ -249,14 +254,14 @@ public class PatientController {
 
                 //判断用户是否选择模板
                 if (value == null) {
-                    //TODO errmsg
+                    FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "请选择测评模板", "");
                     return;
                 }
 
                 //判断模板是否为空
                 List<Question> questionList = questionService.getQuestionsByTid(template.getTid());
                 if (questionList.size() == 0) {
-                    //TODO errmsg
+                    FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您选择的模板尚未添加问题", "");
                     return;
                 }
 
@@ -265,14 +270,14 @@ public class PatientController {
 
                 //判断用户是否选择一个病人
                 if (selectedItems.size() != 1) {
-                    //TODO errmsg
+                    FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您需要选择一名病人", "");
                     return;
                 }
 
                 Patient patient = (Patient) selectedItems.get(0);
 
 
-                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/quiz.fxml");
+                AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/quiz.fxml");
                 Scene scene = new Scene(anchorPane);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -297,12 +302,24 @@ public class PatientController {
 
                 loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index,title,choice1,choice2,choice3);
 
+                EvaluationInfo evaluationInfo = new EvaluationInfo();
+                evaluationInfo.setTid(template.getTid());
+                evaluationInfo.setPid(patient.getPid());
+                //TODO 设置时间与建议
+                evaluationInfo.setTime("now");
+                evaluationInfo.setSuggestion("dead");
+                evaluationInfo.setEid(Status.currentEmployee.getEid());
+
+
                 button1.setOnAction(event1 -> {
                     totScore.updateAndGet(v -> v + 5);
                     if(!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)){
                         stage.close();
-                        //TODO 弹出 测评完成
-                        System.out.println(totScore);
+                        FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您已完成测评", "");
+
+
+                        evaluationInfoService.addEvaluationInfo(evaluationInfo);
+
                     }
                 });
                 button2.setOnAction(event1 -> {

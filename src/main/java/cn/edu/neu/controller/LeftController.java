@@ -1,13 +1,12 @@
 package cn.edu.neu.controller;
 
 import cn.edu.neu.commom.Status;
-import cn.edu.neu.util.FxUtils;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 
 public class LeftController {
     @FXML
@@ -47,9 +46,9 @@ public class LeftController {
             @Override
             public void handle(MouseEvent event) {
                 if("user".equals(Status.category1)){
-                    FxUtils.changeCenter(Status.root, Status.category1, "patient");
+                    FxLoadNodeUtils.changeCenter(Status.root, Status.category1, "patient");
                 }else if("evaluation".equals(Status.category1)){
-                    FxUtils.changeCenter(Status.root, Status.category1, "template");
+                    FxLoadNodeUtils.changeCenter(Status.root, Status.category1, "template");
                 }
             }
         });
@@ -59,9 +58,9 @@ public class LeftController {
             @Override
             public void handle(MouseEvent event) {
                 if("user".equals(Status.category1)){
-                    FxUtils.changeCenter(Status.root, Status.category1, "bed");
+                    FxLoadNodeUtils.changeCenter(Status.root, Status.category1, "bed");
                 }else if("evaluation".equals(Status.category1)){
-                    FxUtils.changeCenter(Status.root, Status.category1, "question");
+                    FxLoadNodeUtils.changeCenter(Status.root, Status.category1, "question");
                 }
             }
         });
@@ -71,9 +70,9 @@ public class LeftController {
             @Override
             public void handle(MouseEvent event) {
                 if("user".equals(Status.category1)){
-                    FxUtils.changeCenter(Status.root, Status.category1, "rareEquipment");
+                    FxLoadNodeUtils.changeCenter(Status.root, Status.category1, "rareEquipment");
                 }else if("evaluation".equals(Status.category1)){
-                    FxUtils.changeCenter(Status.root, Status.category1, "evaluation");
+                    FxLoadNodeUtils.changeCenter(Status.root, Status.category1, "evaluation");
                 }
             }
         });

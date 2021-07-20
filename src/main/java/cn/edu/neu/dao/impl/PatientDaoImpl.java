@@ -80,7 +80,7 @@ public class PatientDaoImpl implements PatientDao {
     @Override
     public Patient queryPatientByPid(int pid) {
         for(Patient patient : DataBase.patientData){
-            if(!patient.isDeleted() && patient.getPid() == pid){
+            if( patient.getPid() == pid){
                 return patient;
             }
         }

@@ -1,11 +1,9 @@
 package cn.edu.neu.controller;
 
-import cn.edu.neu.dao.QuestionDao;
-import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.pojo.Question;
 import cn.edu.neu.service.QuestionService;
 import cn.edu.neu.service.impl.QuestionServiceImpl;
-import cn.edu.neu.util.FxUtils;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +16,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +89,7 @@ public class QuestionController {
             @Override
             public void handle(ActionEvent event) {
                 Stage stage = new Stage();
-                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addQuestion.fxml");
+                AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/addQuestion.fxml");
                 Scene scene = new Scene(anchorPane);
                 stage.setScene(scene);
                 stage.initModality(Modality.APPLICATION_MODAL);

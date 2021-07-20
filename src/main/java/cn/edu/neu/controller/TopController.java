@@ -1,15 +1,10 @@
 package cn.edu.neu.controller;
 
 import cn.edu.neu.commom.Status;
-import cn.edu.neu.util.FxUtils;
-import javafx.event.EventHandler;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.effect.InnerShadow;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 
 public class TopController {
@@ -65,7 +60,7 @@ public class TopController {
         greeting.setText("你好，" + Status.currentUsername);
 
         //TODO 将上部标签的点击事件封装为方法
-        FxUtils.changeCenter(Status.root, "overview", "hospital");
+        FxLoadNodeUtils.changeCenter(Status.root, "overview", "hospital");
         Status.lbl1.setText("医院");
         Status.lbl2.setText("");
         Status.lbl3.setText("");
@@ -83,7 +78,7 @@ public class TopController {
                 //do nothing
             }else{
 
-                FxUtils.changeCenter(Status.root, "overview", "hospital");
+                FxLoadNodeUtils.changeCenter(Status.root, "overview", "hospital");
                 Status.lbl1.setText("医院");
                 Status.lbl2.setText("");
                 Status.lbl3.setText("");
@@ -97,7 +92,7 @@ public class TopController {
                 //do nothing
             }else{
 
-                FxUtils.changeCenter(Status.root, "structure", "building");
+                FxLoadNodeUtils.changeCenter(Status.root, "structure", "building");
                 Status.lbl1.setText("楼宇管理");
                 Status.lbl2.setText("");
                 Status.lbl3.setText("");
@@ -112,7 +107,7 @@ public class TopController {
                 //do nothing
             }else{
 
-                FxUtils.changeCenter(Status.root, "user", "patient");
+                FxLoadNodeUtils.changeCenter(Status.root, "user", "patient");
                 Status.lbl1.setText("病患管理");
                 Status.lbl2.setText("床位管理");
                 Status.lbl3.setText("稀有设备管理");
@@ -126,7 +121,7 @@ public class TopController {
                 //do nothing
             }else{
 
-                FxUtils.changeCenter(Status.root, "evaluation", "template");
+                FxLoadNodeUtils.changeCenter(Status.root, "evaluation", "template");
 
                 Status.lbl1.setText("模板管理");
                 Status.lbl2.setText("问题管理");

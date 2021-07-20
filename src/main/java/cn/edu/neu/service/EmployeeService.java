@@ -30,6 +30,14 @@ public interface EmployeeService {
      */
     public Employee getEmployeeByEid(int eid);
 
+
+    /**
+     * 根据用户名获取员工
+     * @param username 用户名
+     * @return 员工
+     */
+    public Employee getEmployeeByUsername(String username);
+
     /**
      * 根据员工的姓名模糊查询员工
      * @param keyword 关键词

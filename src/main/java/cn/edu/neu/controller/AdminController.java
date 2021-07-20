@@ -2,10 +2,9 @@ package cn.edu.neu.controller;
 
 import cn.edu.neu.pojo.Employee;
 import cn.edu.neu.pojo.EmployeeType;
-import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.service.EmployeeService;
 import cn.edu.neu.service.impl.EmployeeServiceImpl;
-import cn.edu.neu.util.FxUtils;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -193,7 +192,7 @@ public class AdminController {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addEmployee.fxml");
+                AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/addEmployee.fxml");
                 Stage stage = new Stage();
                 Scene scene = new Scene(anchorPane);
                 stage.setScene(scene);

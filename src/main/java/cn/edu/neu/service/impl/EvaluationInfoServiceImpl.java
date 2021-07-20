@@ -30,4 +30,15 @@ public class EvaluationInfoServiceImpl implements EvaluationInfoService {
     public boolean deleteEvaluationInfoByIid(int iid) {
         return evaluationInfoDao.deleteEvaluationInfoByIid(iid);
     }
+
+
+    /**
+     * 增加评估信息
+     * @param evaluationInfo 评估信息
+     * @return 是否增加成功
+     */
+    @Override
+    public boolean addEvaluationInfo(EvaluationInfo evaluationInfo) {
+        return evaluationInfoDao.createEvaluationInfo(evaluationInfo);
+    }
 }

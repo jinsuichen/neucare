@@ -1,5 +1,6 @@
 package cn.edu.neu.commom;
 
+import cn.edu.neu.pojo.Employee;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
@@ -10,6 +11,7 @@ public class Status {
 
     public static boolean isAdmin;
     public static String currentUsername;
+    public static Employee currentEmployee;
     public static String category1;
     public static String category2;
     public static BorderPane root;

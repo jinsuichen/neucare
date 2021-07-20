@@ -1,21 +1,17 @@
 package cn.edu.neu.controller;
 
-import cn.edu.neu.pojo.Patient;
 import cn.edu.neu.pojo.Question;
 import cn.edu.neu.pojo.Template;
-import cn.edu.neu.service.PatientService;
 import cn.edu.neu.service.QuestionService;
 import cn.edu.neu.service.TemplateService;
-import cn.edu.neu.service.impl.PatientServiceImpl;
 import cn.edu.neu.service.impl.QuestionServiceImpl;
 import cn.edu.neu.service.impl.TemplateServiceImpl;
-import cn.edu.neu.util.FxUtils;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,9 +19,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
-import javax.xml.transform.Templates;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,7 +102,7 @@ public class TemplateController {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/addTemplate.fxml");
+                AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/addTemplate.fxml");
                 Scene scene = new Scene(anchorPane);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -166,7 +160,7 @@ public class TemplateController {
                     return;
                 }
 
-                AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/templateDetail.fxml");
+                AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/templateDetail.fxml");
                 Scene scene = new Scene(anchorPane);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -221,7 +215,7 @@ public class TemplateController {
                 addQuestionButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        AnchorPane ap = (AnchorPane) FxUtils.loadNode("fxml/other/bindQuestion.fxml");
+                        AnchorPane ap = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/bindQuestion.fxml");
                         Scene scene = new Scene(ap);
                         Stage bindQuestionStage = new Stage();
                         bindQuestionStage.setScene(scene);

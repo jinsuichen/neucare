@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 /**
  * 提供与JavaFX相关的方法
  */
-public class FxUtils {
+public class FxLoadNodeUtils {
 
     /**
      * 根据fxml文件获得AnchorPane对象。注意: fxml文件的根结点应为AnchorPane。
@@ -37,7 +37,7 @@ public class FxUtils {
     public static Node loadNode(String path){
         FXMLLoader fxmlLoader = new FXMLLoader();
         try {
-            fxmlLoader.setLocation(FxUtils.class.getClassLoader().getResource(path));
+            fxmlLoader.setLocation(FxLoadNodeUtils.class.getClassLoader().getResource(path));
             return fxmlLoader.load();
         } catch (Exception e) {
             System.err.println("无法成功解析fxml文件，路径为: " + path);

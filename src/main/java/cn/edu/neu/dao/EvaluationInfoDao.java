@@ -19,4 +19,11 @@ public interface EvaluationInfoDao {
      */
     public boolean deleteEvaluationInfoByIid(int iid);
 
+    /**
+     * 创建评估信息
+     * @param evaluationInfo 评估信息
+     * @return 是否创建成功
+     */
+    public boolean createEvaluationInfo(EvaluationInfo evaluationInfo);
+
 }

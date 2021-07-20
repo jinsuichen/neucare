@@ -1,17 +1,14 @@
 package cn.edu.neu;
 
 import cn.edu.neu.po.DataBase;
-import cn.edu.neu.util.CreateDataUtils;
 import cn.edu.neu.util.FileUtils;
-import cn.edu.neu.util.FxUtils;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import cn.edu.neu.util.JsonUtils;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Main extends Application {
 
@@ -23,9 +20,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         //FIXME 造假数据测试使用 记得删除
-        CreateDataUtils.main(null);
+        //CreateDataUtils.main(null);
 
-        AnchorPane root = FxUtils.loadAnchor("fxml/other/login.fxml");
+        AnchorPane root = FxLoadNodeUtils.loadAnchor("fxml/other/login.fxml");
 
         //设置背景图片
         BackgroundImage backgroundImage= new BackgroundImage(new Image("img/login.jpg",1280,720,false,true),

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane fx:controller="cn.edu.neu.controller.BedController" prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
+<AnchorPane fx:id="root" fx:controller="cn.edu.neu.controller.BedController" prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <TableView fx:id="tableView" layoutX="54.0" layoutY="94.0" prefHeight="447.0" prefWidth="973.0">

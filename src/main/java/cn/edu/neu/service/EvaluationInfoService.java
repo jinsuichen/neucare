@@ -18,4 +18,11 @@ public interface EvaluationInfoService {
      * @return 是否删除成功
      */
     public boolean deleteEvaluationInfoByIid(int iid);
+
+    /**
+     * 增加评估信息
+     * @param evaluationInfo 评估信息
+     * @return 是否增加成功
+     */
+    public boolean addEvaluationInfo(EvaluationInfo evaluationInfo);
 }

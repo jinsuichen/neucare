@@ -9,6 +9,7 @@ import cn.edu.neu.service.impl.BedServiceImpl;
 import cn.edu.neu.service.impl.FloorServiceImpl;
 import cn.edu.neu.service.impl.StructureServiceImpl;
 import cn.edu.neu.service.impl.WardServiceImpl;
+import cn.edu.neu.util.FxDialogUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,12 +17,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class BuildingController {
+    @FXML
+    private AnchorPane ap;
     @FXML
     private TextField textField;
     @FXML
@@ -59,16 +64,22 @@ public class BuildingController {
                     if (selectedItem.getChildren().size() == 0) {
                         selectedItem.getParent().getChildren().remove(selectedItem);
                         ((Structure) obj).setDeleted(true);
+                    }else{
+                        FxDialogUtils.showMessageDialog((Stage) ap.getScene().getWindow(), "该建筑下有楼层，无法删除", "");
                     }
                 } else if (obj instanceof Floor) {
                     if (selectedItem.getChildren().size() == 0) {
                         selectedItem.getParent().getChildren().remove(selectedItem);
                         ((Floor) obj).setDeleted(true);
+                    }else{
+                        FxDialogUtils.showMessageDialog((Stage) ap.getScene().getWindow(), "该楼层下有病房，无法删除", "");
                     }
                 } else if (obj instanceof Ward) {
                     if (selectedItem.getChildren().size() == 0) {
                         selectedItem.getParent().getChildren().remove(selectedItem);
                         ((Ward) obj).setDeleted(true);
+                    }else{
+                        FxDialogUtils.showMessageDialog((Stage) ap.getScene().getWindow(), "该病房下有病床，无法删除", "");
                     }
                 } else if (obj instanceof Bed) {
                     selectedItem.getParent().getChildren().remove(selectedItem);
@@ -85,37 +96,46 @@ public class BuildingController {
             @Override
             public void handle(ActionEvent event) {
                 TreeItem<Object> selectedItem = treeView.getSelectionModel().getSelectedItem();
+                if(selectedItem == null){
+                    FxDialogUtils.showMessageDialog((Stage) ap.getScene().getWindow(), "请您选择一个建筑", "");
+                    return;
+                }
                 Object obj = selectedItem.getValue();
 
 
-                //TODO 提示框
+
                 if(obj instanceof Bed){
-                    return;
+                    FxDialogUtils.showMessageDialog((Stage) ap.getScene().getWindow(), "您不能在床位下添加内容", "");
                 }
 
+                String name = textField.getText();
+                if(name == null || "".equals(name)){
+                    FxDialogUtils.showMessageDialog((Stage) ap.getScene().getWindow(), "名字不能为空", "");
+                    return;
+                }
                 //根据选择的建筑的不同，进行不同的操作
                 if(obj instanceof String){
                     Structure structure = new Structure();
-                    structure.setName(textField.getText());
+                    structure.setName(name);
                     structureService.addStructure(structure);
                     selectedItem.getChildren().add(new TreeItem<>(structure));
                 }else if (obj instanceof Structure) {
                     Floor floor = new Floor();
                     floor.setSid(((Structure)selectedItem.getValue()).getSid());
-                    floor.setName(textField.getText());
+                    floor.setName(name);
                     floorService.addFloor(floor);
                     selectedItem.getChildren().add(new TreeItem<>(floor));
                 } else if (obj instanceof Floor) {
                     Ward ward = new Ward();
                     ward.setFid(((Floor)selectedItem.getValue()).getFid());
-                    ward.setName(textField.getText());
+                    ward.setName(name);
                     wardService.addWard(ward);
                     selectedItem.getChildren().add(new TreeItem<>(ward));
 
                 } else if (obj instanceof Ward) {
                     Bed bed = new Bed();
                     bed.setWid(((Ward)selectedItem.getValue()).getWid());
-                    bed.setName(textField.getText());
+                    bed.setName(name);
                     bedService.addBed(bed);
                     selectedItem.getChildren().add(new TreeItem<>(bed));
                 }

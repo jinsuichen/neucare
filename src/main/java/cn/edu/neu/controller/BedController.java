@@ -1,20 +1,18 @@
 package cn.edu.neu.controller;
 
 
-import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.*;
 import cn.edu.neu.service.*;
 import cn.edu.neu.service.impl.*;
-import cn.edu.neu.util.FxUtils;
+import cn.edu.neu.util.FxDialogUtils;
+import cn.edu.neu.util.FxLoadNodeUtils;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,6 +25,8 @@ public class BedController {
 
     @FXML
     public Button checkinButton;
+    @FXML
+    private AnchorPane root;
     @FXML
     private TableView tableView;
     @FXML
@@ -245,6 +245,8 @@ public class BedController {
                     Bed bed2 = (Bed) list.get(1);
                     bedService.swap(bed1, bed2);
                     tableView.refresh();
+                }else {
+                    FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您需要选择两个床位", "");
                 }
 
             }
@@ -258,12 +260,13 @@ public class BedController {
 
 
                 if (bedList.size() != 1) {
-                    //TODO 弹出提示框，提示选择有误
+                    FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您需要选择一个床位", "");
+
                 } else {
                     Bed bed = (Bed) bedList.get(0);
 
                     Stage stage = new Stage();
-                    AnchorPane anchorPane = (AnchorPane) FxUtils.loadNode("fxml/other/bedCheckin.fxml");
+                    AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/bedCheckin.fxml");
                     Scene scene = new Scene(anchorPane);
                     stage.setScene(scene);
                     stage.setResizable(false);
@@ -316,8 +319,7 @@ public class BedController {
                                 tableView.refresh();
 
                             } catch (Exception e) {
-                                System.err.println("选择失败");
-                                //TODO 弹窗
+                                FxDialogUtils.showMessageDialog(stage, "用户名或密码有误", "");
                             }
                         }
                     });

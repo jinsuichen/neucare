@@ -3,9 +3,13 @@ package cn.edu.neu.dao.impl;
 import cn.edu.neu.dao.EvaluationInfoDao;
 import cn.edu.neu.po.DataBase;
 import cn.edu.neu.pojo.EvaluationInfo;
+import cn.edu.neu.pojo.Floor;
+import cn.edu.neu.pojo.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static sun.swing.MenuItemLayoutHelper.max;
 
 public class EvaluationInfoDaoImpl implements EvaluationInfoDao {
 
@@ -39,6 +43,24 @@ public class EvaluationInfoDaoImpl implements EvaluationInfoDao {
             }
         }
         return false;
+    }
+
+
+    /**
+     * 创建评估信息
+     * @param evaluationInfo 评估信息
+     * @return 是否创建成功
+     */
+    @Override
+    public boolean createEvaluationInfo(EvaluationInfo evaluationInfo) {
+        int maxIid = 1;
+        for (EvaluationInfo e : DataBase.evaluationInfoData) {
+            maxIid = max(maxIid, e.getIid());
+        }
+        evaluationInfo.setIid(maxIid + 1);
+        evaluationInfo.setDeleted(false);
+        DataBase.evaluationInfoData.add(evaluationInfo);
+        return true;
     }
 
 
