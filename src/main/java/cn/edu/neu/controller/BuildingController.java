@@ -59,7 +59,6 @@ public class BuildingController {
                 TreeItem<Object> selectedItem = treeView.getSelectionModel().getSelectedItem();
                 Object obj = selectedItem.getValue();
 
-                //FIXME 将123合并
                 if (obj instanceof Structure) {
                     if (selectedItem.getChildren().size() == 0) {
                         selectedItem.getParent().getChildren().remove(selectedItem);

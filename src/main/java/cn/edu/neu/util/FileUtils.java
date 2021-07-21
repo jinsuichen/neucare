@@ -31,7 +31,6 @@ public class FileUtils {
     }
 
 
-    //FIXME 异常已经捕获，不应该抛出异常
     public static void write(String content, String path) throws IOException {
         path = FileUtils.class.getClassLoader().getResource(path).getPath();
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path))) {

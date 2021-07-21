@@ -21,7 +21,6 @@ public class DataBase {
     public static List<Template> templateData;
     public static List<EvaluationInfo> evaluationInfoData;
 
-    //FIXME 抽取为方法
 
     static{
         adminData = JsonUtils.parseList(FileUtils.toString("data/admins.json"), Admin.class);

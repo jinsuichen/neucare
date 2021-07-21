@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//fixme 删除这个类
 
 /**
  * 该类提供将创建数据并写入json文件的方法

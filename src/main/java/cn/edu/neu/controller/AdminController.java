@@ -69,7 +69,7 @@ public class AdminController {
         idColumn.setCellValueFactory(new PropertyValueFactory<Employee, Number>("eid"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("username"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
-        birthdayColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Employee, String>, ObservableValue<String>>() {
+        typeColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Employee, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Employee, String> param) {
                 EmployeeType type = param.getValue().getType();
@@ -88,8 +88,7 @@ public class AdminController {
                 return simpleStringProperty;
             }
         });
-//        birthdayColumn.setCellValueFactory(new PropertyValueFactory<Employee, EmployeeType>("type"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("birthday"));
+        birthdayColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("birthday"));
         expertSkillColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("expertSkill"));
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("telephone"));
         identificationNumberColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("identificationNumber"));
@@ -123,6 +122,22 @@ public class AdminController {
         expertSkillColumn.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
         telephoneColumn.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
         identificationNumberColumn.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
+
+        idColumn.setPrefWidth(50);
+        nameColumn.setPrefWidth(153);
+        birthdayColumn.setPrefWidth(153);
+        typeColumn.setPrefWidth(153);
+        expertSkillColumn.setPrefWidth(153);
+        telephoneColumn.setPrefWidth(153);
+        identificationNumberColumn.setPrefWidth(153);
+
+        idColumn.setStyle("-fx-alignment: CENTER;");
+        nameColumn.setStyle("-fx-alignment: CENTER;");
+        birthdayColumn.setStyle("-fx-alignment: CENTER;");
+        typeColumn.setStyle("-fx-alignment: CENTER;");
+        expertSkillColumn.setStyle("-fx-alignment: CENTER;");
+        telephoneColumn.setStyle("-fx-alignment: CENTER;");
+        identificationNumberColumn.setStyle("-fx-alignment: CENTER;");
 
         //设置可多选
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -219,6 +234,7 @@ public class AdminController {
 
 
                 stage.show();
+
 
 
                 submitButton.setOnAction(new EventHandler<ActionEvent>() {
