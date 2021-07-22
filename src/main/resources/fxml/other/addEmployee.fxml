@@ -6,7 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.ReisterController">
+<AnchorPane prefHeight="720.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+    <stylesheets>
+        <String fx:value="org/kordamp/bootstrapfx/bootstrapfx.css" />
+    </stylesheets>
     <children>
         <TextField layoutX="220.0" layoutY="97.0" />
         <TextField layoutX="220.0" layoutY="167.0" />
@@ -17,17 +20,27 @@
         <TextField layoutX="221.0" layoutY="517.0" />
         <TextField layoutX="221.0" layoutY="587.0" />
 
-        <Label layoutX="135.0" layoutY="103.0" text="用户名" />
-        <Label layoutX="115.0" layoutY="173.0" text="密码" />
-        <Label layoutX="135.0" layoutY="243.0" text="真实姓名" />
-        <Label layoutX="135.0" layoutY="314.0" text="职称" />
-        <Label layoutX="100.0" layoutY="383.0" text="出生日期" />
-        <Label layoutX="110.0" layoutY="453.0" text="专长" />
-        <Label layoutX="111.0" layoutY="523.0" text="电话" />
-        <Label layoutX="111.0" layoutY="593.0" text="身份证号码" />
+        <Label layoutX="120.0" layoutY="103.0" text="用户名" />
+        <Label layoutX="128.0" layoutY="173.0" text="密码" />
+        <Label layoutX="110.0" layoutY="243.0" text="真实姓名" />
+        <Label layoutX="128.0" layoutY="313.0" text="职称" />
+        <Label layoutX="111.0" layoutY="383.0" text="出生日期" />
+        <Label layoutX="129.0" layoutY="453.0" text="专长" />
+        <Label layoutX="129.0" layoutY="523.0" text="电话" />
+        <Label layoutX="101.0" layoutY="593.0" text="身份证号码" />
 
-        <Button layoutX="131.0" layoutY="640.0" mnemonicParsing="false" text="确定" />
-        <Button layoutX="287.0" layoutY="640.0" mnemonicParsing="false" text="取消" />
+        <Button layoutX="131.0" layoutY="640.0" mnemonicParsing="false" text="确定">
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
+        <Button layoutX="287.0" layoutY="640.0" mnemonicParsing="false" text="取消">
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
 
     </children>
 </AnchorPane>

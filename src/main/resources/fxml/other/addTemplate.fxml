@@ -7,6 +7,9 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <String fx:value="org/kordamp/bootstrapfx/bootstrapfx.css" />
+    </stylesheets>
     <children>
         <Label layoutX="107.0" layoutY="93.0" text="名称" />
         <Label layoutX="107.0" layoutY="142.0" text="类型" />
@@ -14,7 +17,17 @@
         <TextField layoutX="183.0" layoutY="87.0" />
         <TextField layoutX="183.0" layoutY="136.0" />
 
-        <Button layoutX="126.0" layoutY="238.0" mnemonicParsing="false" text="确定" />
-        <Button layoutX="288.0" layoutY="238.0" mnemonicParsing="false" text="取消" />
+        <Button layoutX="126.0" layoutY="238.0" mnemonicParsing="false" text="确定" >
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
+        <Button layoutX="288.0" layoutY="238.0" mnemonicParsing="false" text="取消" >
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
     </children>
 </AnchorPane>

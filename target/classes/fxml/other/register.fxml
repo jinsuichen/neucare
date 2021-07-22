@@ -8,6 +8,9 @@
 
 <?import javafx.scene.image.ImageView?>
 <AnchorPane prefHeight="720.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <String fx:value="org/kordamp/bootstrapfx/bootstrapfx.css" />
+    </stylesheets>
     <children>
         <TextField layoutX="175.0" layoutY="80.0"/>
         <TextField layoutX="175.0" layoutY="140.0"/>
@@ -27,7 +30,17 @@
         <Label layoutX="59.0" layoutY="505.0" text="身份证号码"/>
         <Label layoutX="86.0" layoutY="385.0" text="性别"/>
         <Label layoutX="86.0" layoutY="565.0" text="职称"/>
-        <Button layoutX="131.0" layoutY="640.0" mnemonicParsing="false" text="确定"/>
-        <Button layoutX="287.0" layoutY="640.0" mnemonicParsing="false" text="取消"/>
+        <Button layoutX="131.0" layoutY="640.0" mnemonicParsing="false" text="确定">
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
+        <Button layoutX="287.0" layoutY="640.0" mnemonicParsing="false" text="取消">
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
     </children>
 </AnchorPane>

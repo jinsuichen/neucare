@@ -4,11 +4,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import java.lang.String?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <String fx:value="org/kordamp/bootstrapfx/bootstrapfx.css" />
+    </stylesheets>
     <children>
         <Label layoutX="57.0" layoutY="43.0" text="请选择问题" />
         <TableView layoutX="40.0" layoutY="84.0" prefHeight="278.0" prefWidth="521.0" />
-        <Button layoutX="481.0" layoutY="37.0" mnemonicParsing="false" text="确定" />
-        <Button layoutX="406.0" layoutY="37.0" mnemonicParsing="false" text="取消" />
+        <Button layoutX="481.0" layoutY="37.0" mnemonicParsing="false" text="确定" >
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
+        <Button layoutX="406.0" layoutY="37.0" mnemonicParsing="false" text="取消" >
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
     </children>
 </AnchorPane>

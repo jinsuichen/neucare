@@ -43,6 +43,9 @@ public class AdminController {
     public AdminController() {
     }
 
+    /**
+     * 表格数据源
+     */
     private ObservableList<Employee> tableViewList = FXCollections.observableArrayList();
 
     private EmployeeService employeeService = new EmployeeServiceImpl();
@@ -57,6 +60,7 @@ public class AdminController {
         tableView.setItems(tableViewList);
 
 
+        //创建列
         TableColumn<Employee, Number> idColumn = new TableColumn<>("ID");
         TableColumn<Employee, String> usernameColumn = new TableColumn<>("用户名");
         TableColumn<Employee, String> nameColumn = new TableColumn<>("姓名");
@@ -66,6 +70,7 @@ public class AdminController {
         TableColumn<Employee, String> telephoneColumn = new TableColumn<>("电话");
         TableColumn<Employee, String> identificationNumberColumn = new TableColumn<>("身份证号码");
 
+        //添加数据
         idColumn.setCellValueFactory(new PropertyValueFactory<Employee, Number>("eid"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("username"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
@@ -93,6 +98,7 @@ public class AdminController {
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("telephone"));
         identificationNumberColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("identificationNumber"));
 
+        //为表格添加列
         tableView.getColumns().add(idColumn);
         tableView.getColumns().add(usernameColumn);
         tableView.getColumns().add(nameColumn);
@@ -123,6 +129,7 @@ public class AdminController {
         telephoneColumn.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
         identificationNumberColumn.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
 
+        //设置列宽
         idColumn.setPrefWidth(50);
         nameColumn.setPrefWidth(153);
         birthdayColumn.setPrefWidth(153);
@@ -131,6 +138,7 @@ public class AdminController {
         telephoneColumn.setPrefWidth(153);
         identificationNumberColumn.setPrefWidth(153);
 
+        //设置居中
         idColumn.setStyle("-fx-alignment: CENTER;");
         nameColumn.setStyle("-fx-alignment: CENTER;");
         birthdayColumn.setStyle("-fx-alignment: CENTER;");

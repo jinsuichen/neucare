@@ -9,8 +9,18 @@
 <AnchorPane fx:id="ap" prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.BuildingController">
     <children>
       <TreeView fx:id="treeView" layoutX="416.0" layoutY="144.0" prefHeight="400.0" prefWidth="248.0" />
-      <Button fx:id="deleteButton" layoutX="687.0" layoutY="54.0" mnemonicParsing="false" text="删除" />
-      <Button fx:id="addButton" layoutX="590.0" layoutY="54.0" mnemonicParsing="false" text="新建" />
+        <Button fx:id="deleteButton" layoutX="687.0" layoutY="50.0" mnemonicParsing="false" text="删除" >
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-danger" />
+            </styleClass>
+        </Button>
+      <Button fx:id="addButton" layoutX="500.0" layoutY="50.0" mnemonicParsing="false" text="新建" >
+          <styleClass>
+              <String fx:value="btn" />
+              <String fx:value="btn-success" />
+          </styleClass>
+      </Button>
       <TextField fx:id="textField" layoutX="333.0" layoutY="54.0" />
 
     </children>

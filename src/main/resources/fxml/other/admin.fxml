@@ -8,12 +8,30 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="cn.edu.neu.controller.AdminController">
+    <stylesheets>
+        <String fx:value="org/kordamp/bootstrapfx/bootstrapfx.css" />
+    </stylesheets>
     <children>
         <TableView fx:id="tableView" layoutX="77.0" layoutY="175.0" prefHeight="461.0" prefWidth="1122.0"/>
-        <Button fx:id="addButton" layoutX="1008.0" layoutY="92.0" mnemonicParsing="false" text="添加"/>
-        <Button fx:id="deleteButton" layoutX="1094.0" layoutY="92.0" mnemonicParsing="false" text="删除"/>
+        <Button fx:id="addButton" layoutX="1008.0" layoutY="88.0" mnemonicParsing="false" text="添加">
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-success" />
+            </styleClass>
+        </Button>
+        <Button fx:id="deleteButton" layoutX="1094.0" layoutY="88.0" mnemonicParsing="false" text="删除">
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-danger" />
+            </styleClass>
+        </Button>
         <TextField fx:id="textField" layoutX="324.0" layoutY="92.0"/>
-        <Button fx:id="queryButton" layoutX="591.0" layoutY="92.0" mnemonicParsing="false" text="姓名查询"/>
+        <Button fx:id="queryButton" layoutX="500.0" layoutY="88.0" mnemonicParsing="false" text="姓名查询">
+            <styleClass>
+                <String fx:value="btn" />
+                <String fx:value="btn-default" />
+            </styleClass>
+        </Button>
         <ComboBox fx:id="comboBox" layoutX="108.0" layoutY="92.0" prefWidth="150.0"/>
 
     </children>
