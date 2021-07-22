@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Text?>
-<AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <Text layoutX="447.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hospital" />
 
-    </children>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="620.0" prefWidth="1080.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.neu.controller.hospitalController">
+   <children>
+      <Label fx:id="patientTot" layoutX="171.0" layoutY="90.0" prefHeight="50.0" prefWidth="134.0" text="病人总数" >
+          <font>
+              <Font name="Microsoft YaHei" size="18.0"/>
+          </font>
+      </Label>
+      <Label fx:id="bedLeft" layoutX="171.0" layoutY="240.0" prefHeight="50.0" prefWidth="134.0" text="剩余床位" >
+          <font>
+              <Font name="Microsoft YaHei" size="18.0"/>
+          </font>
+      </Label>
+      <Label fx:id="employeeTot" layoutX="171.0" layoutY="400.0" prefHeight="50.0" prefWidth="134.0" text="在职员工" >
+          <font>
+              <Font name="Microsoft YaHei" size="18.0"/>
+          </font>
+      </Label>
+   </children>
 </AnchorPane>
