@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -69,6 +70,8 @@ public class LoginController {
                 AnchorPane anchorPane = (AnchorPane) FxLoadNodeUtils.loadNode("fxml/other/admin.fxml");
                 Scene scene = new Scene(anchorPane);
                 Stage stage = new Stage();
+                stage.setTitle("东软颐养中心-超级管理员");
+                stage.getIcons().add(new Image("/img/icon.png"));
                 stage.setScene(scene);
 
                 stage.show();
@@ -91,6 +94,8 @@ public class LoginController {
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.setTitle("东软颐养中心");
+                stage.getIcons().add(new Image("/img/icon.png"));
                 stage.show();
             }else{
                 FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "用户名或密码有误", "");

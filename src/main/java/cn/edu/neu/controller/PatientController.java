@@ -377,8 +377,6 @@ public class PatientController {
                     if (!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)) {
                         stage.close();
                         FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您已完成测评", "");
-
-
                         evaluationInfoService.addEvaluationInfo(evaluationInfo);
 
                     }
@@ -387,14 +385,16 @@ public class PatientController {
                     totScore.updateAndGet(v -> v + 3);
                     if (!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)) {
                         stage.close();
-                        System.out.println(totScore);
+                        FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您已完成测评", "");
+                        evaluationInfoService.addEvaluationInfo(evaluationInfo);
                     }
                 });
                 button3.setOnAction(event1 -> {
                     totScore.updateAndGet(v -> v + 1);
                     if (!loadQuestion(questionList, currentQuestionIndex.getAndSet(currentQuestionIndex.get() + 1), index, title, choice1, choice2, choice3)) {
                         stage.close();
-                        System.out.println(totScore);
+                        FxDialogUtils.showMessageDialog((Stage) root.getScene().getWindow(), "您已完成测评", "");
+                        evaluationInfoService.addEvaluationInfo(evaluationInfo);
                     }
                 });
 
